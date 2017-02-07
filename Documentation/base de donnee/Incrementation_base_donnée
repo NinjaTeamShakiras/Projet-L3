@@ -1,0 +1,43 @@
+##################################
+######## ADRESSE #######
+INSERT INTO `adresse`(`rue`, `ville`, `code_postal`)
+	VALUES  ('10 rue perceval','chy','73000'),
+			('11 rue perceval','annecy','74000'),
+			('12 rue perceval','gre','38000'),
+
+
+##################################
+######## COMPTETANCES_cv #######
+INSERT INTO `competences_cv`(`nom_competence`)
+	VALUES  (comp1),
+			(comp2),
+			(comp3),
+			(comp4);
+
+
+##################################
+######## CV #######
+INSERT INTO `cv`() VALUES (),(),();
+
+
+##################################
+######## EMPLOYE #######
+INSERT INTO `employe`(`nom_employe`, `prenom_employe`, `age_employe`, `employe_travaille`, `mail_employe`, `telephone_employe`, `id_adresse`)
+	SELECT 'Vanhove', 'Alice', '92', 1, 'mamyVanhove@lesMéméduweb.onion', '0661121314', id_adresse
+    	FROM adresse
+    WHERE id_adresse = 1;
+
+
+##################################
+######## cv_EMPLOYE #######
+INSERT INTO `cv_employe`(`niveau_competence`, `id_employe`, `id_competence`, `id_cv`)
+	SELECT 5, id_employe, id_competence, id_cv
+    	FROM employe,competences_cv,cv
+    WHERE id_employe = 1
+    	AND id_competence = 2
+        AND id_cv = 2;
+
+
+##################################
+######## ENTREPRISE #######
+INSERT INTO `entreprise`(`nom_entreprise`, `nombre_employes`, `recherche_employes`, `mail_entreprise`, `telephone_entreprise`, `id_adresse`) SELECT 'Github',69,0,'github@noob.onion','0696969696',id_adresse FROM adresse WHERE id_adresse = 1
