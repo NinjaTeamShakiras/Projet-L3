@@ -1,0 +1,4 @@
+INSERT INTO `adresse`(`rue`, `ville`, `code_postal`)
+	VALUES  ('10 rue perceval','chy','73000'),
+			('11 rue perceval','annecy','74000'),
+			('12 rue perceval','gre','38000'),
