@@ -1,6 +1,6 @@
 ##################################
 ######## ADRESSE #######
-INSERT INTO `adresse`(`rue`, `ville`, `code_postal`)
+INSERT INTO `prozzl`.`adresse`(`rue`, `ville`, `code_postal`)
 	VALUES  ('10 rue perceval','chy','73000'),
 			('11 rue perceval','annecy','74000'),
 			('12 rue perceval','gre','38000'),
@@ -8,7 +8,7 @@ INSERT INTO `adresse`(`rue`, `ville`, `code_postal`)
 
 ##################################
 ######## COMPTETANCES_cv #######
-INSERT INTO `competences_cv`(`nom_competence`)
+INSERT INTO `prozzl`.`competences_cv`(`nom_competence`)
 	VALUES  (comp1),
 			(comp2),
 			(comp3),
@@ -17,12 +17,12 @@ INSERT INTO `competences_cv`(`nom_competence`)
 
 ##################################
 ######## CV #######
-INSERT INTO `cv`() VALUES (),(),();
+INSERT INTO `prozzl`.`cv`() VALUES (),(),();
 
 
 ##################################
 ######## EMPLOYE #######
-INSERT INTO `employe`(`nom_employe`, `prenom_employe`, `age_employe`, `employe_travaille`, `mail_employe`, `telephone_employe`, `id_adresse`)
+INSERT INTO `prozzl`.`employe`(`nom_employe`, `prenom_employe`, `age_employe`, `employe_travaille`, `mail_employe`, `telephone_employe`, `id_adresse`)
 	SELECT 'Vanhove', 'Alice', '92', 1, 'mamyVanhove@lesMéméduweb.onion', '0661121314', id_adresse
     	FROM adresse
     WHERE id_adresse = 1;
@@ -30,7 +30,7 @@ INSERT INTO `employe`(`nom_employe`, `prenom_employe`, `age_employe`, `employe_t
 
 ##################################
 ######## cv_EMPLOYE #######
-INSERT INTO `cv_employe`(`niveau_competence`, `id_employe`, `id_competence`, `id_cv`)
+INSERT INTO `prozzl`.`cv_employe`(`niveau_competence`, `id_employe`, `id_competence`, `id_cv`)
 	SELECT 5, id_employe, id_competence, id_cv
     	FROM employe,competences_cv,cv
     WHERE id_employe = 1
@@ -40,4 +40,20 @@ INSERT INTO `cv_employe`(`niveau_competence`, `id_employe`, `id_competence`, `id
 
 ##################################
 ######## ENTREPRISE #######
-INSERT INTO `entreprise`(`nom_entreprise`, `nombre_employes`, `recherche_employes`, `mail_entreprise`, `telephone_entreprise`, `id_adresse`) SELECT 'Github',69,0,'github@noob.onion','0696969696',id_adresse FROM adresse WHERE id_adresse = 1
+INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `nombre_employes`, `recherche_employes`, `mail_entreprise`, `telephone_entreprise`, `id_adresse`)
+	SELECT 'Github',69,0,'github@noob.onion','0696969696',id_adresse
+		FROM adresse
+	WHERE id_adresse = 1
+
+
+##################################
+######## TRAVAILLE #######
+INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+	SELECT '2017-02-01', '2017-03-01',30, id_employe, id_entreprise
+    	FROM employe,entreprise
+    WHERE id_employe = 1 AND id_entreprise = 1;
+
+
+##################################
+######## CRITERE NOTATION EMPLOYE #######
+INSERT INTO `prozzl`.`criteres_notation_employe` (`id_critere_employe`, `nom_critere_employe`, `critere_note_employe`) VALUES ('2', 'Crit2', '0');
