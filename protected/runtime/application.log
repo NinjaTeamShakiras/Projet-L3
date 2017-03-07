@@ -2376,6 +2376,11 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=entreprise/admin
 HTTP_REFERER=http://localhost/projet/index.php?r=entreprise/view&id=1
 ---
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> fdea41417306bde217045606723e6c8cc4782312
 2017/03/07 09:55:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in C:\wamp\www\yii\framework\db\CDbConnection.php:399
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
@@ -3717,3 +3722,7 @@ Stack trace:
 REQUEST_URI=/projet/
 HTTP_REFERER=http://localhost/
 ---
+<<<<<<< HEAD
+=======
+>>>>>>> 04cd8719128306e0ec271146f0a473c8595ca2d4
+>>>>>>> fdea41417306bde217045606723e6c8cc4782312
