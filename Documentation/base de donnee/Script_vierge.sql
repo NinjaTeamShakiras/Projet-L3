@@ -169,7 +169,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `prozzl`.`Criteres_Notation_Employe` ;
 
 CREATE TABLE IF NOT EXISTS `prozzl`.`Criteres_Notation_Employe` (
-  `id_critere_employe` INT NOT NULL,
+  `id_critere_employe` INT NOT NULL AUTO_INCREMENT,
   `nom_critere_employe` VARCHAR(30) NULL,
   `critere_note_employe` TINYINT(1) NULL,
   PRIMARY KEY (`id_critere_employe`))
@@ -217,7 +217,7 @@ DROP TABLE IF EXISTS `prozzl`.`Avis_Employe` ;
 CREATE TABLE IF NOT EXISTS `prozzl`.`Avis_Employe` (
   `id_avis_employe` INT NOT NULL AUTO_INCREMENT,
   `note_generale` INT NULL,
-  `comentaire_avis_employe` VARCHAR(300) NULL,
+  `commentaire_avis_employe` VARCHAR(300) NULL,
   `id_employe` INT NULL,
   PRIMARY KEY (`id_avis_employe`),
   INDEX `index_id_employe_avis_employe` (`id_employe` ASC),
@@ -290,6 +290,35 @@ CREATE TABLE IF NOT EXISTS `prozzl`.`Employe_Avis_Critere` (
   CONSTRAINT `fk_id_avis_employe_avis_critere_avis_employe`
     FOREIGN KEY (`id_avis_employe`)
     REFERENCES `prozzl`.`Avis_Employe` (`id_avis_employe`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `prozzl`.`Utilisateur`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prozzl`.`Utilisateur` ;
+
+CREATE TABLE IF NOT EXISTS `prozzl`.`Utilisateur` (
+  `id_utilisateur` INT(11) NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(50) NOT NULL,
+  `mot_de_passe` VARCHAR(100) NULL DEFAULT NULL,
+  `role` VARCHAR(45) NULL DEFAULT NULL,
+  `id_employe` INT(11) NULL DEFAULT NULL,
+  `id_entreprise` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_utilisateur`),
+  UNIQUE INDEX `id_user_UNIQUE` (`id_utilisateur` ASC),
+  INDEX `fk_id_employe_utilisateur_employe` (`id_employe` ASC),
+  INDEX `fk_id_entreprise_utilisateur_entreprise` (`id_entreprise` ASC),
+  CONSTRAINT `fk_id_employe_utilisateur_employe`
+    FOREIGN KEY (`id_employe`)
+    REFERENCES `prozzl`.`Employe` (`id_employe`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_entreprise_utilisateur_entreprise`
+    FOREIGN KEY (`id_entreprise`)
+    REFERENCES `prozzl`.`Entreprise` (`id_entreprise`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
