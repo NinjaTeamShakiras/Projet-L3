@@ -68,11 +68,11 @@ class Entreprise extends CActiveRecord
 	{
 		return array(
 			'id_entreprise' => 'Id Entreprise',
-			'nom_entreprise' => 'Nom Entreprise',
-			'nombre_employes' => 'Nombre Employes',
+			'nom_entreprise' => 'Nom',
+			'nombre_employes' => 'Nombre employés',
 			'recherche_employes' => 'Recherche Employes',
-			'mail_entreprise' => 'Mail Entreprise',
-			'telephone_entreprise' => 'Telephone Entreprise',
+			'mail_entreprise' => 'Mail',
+			'telephone_entreprise' => 'Telephone',
 			'id_adresse' => 'Id Adresse',
 		);
 	}

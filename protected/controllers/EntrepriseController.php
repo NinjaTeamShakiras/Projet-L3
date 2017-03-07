@@ -26,7 +26,7 @@ class EntrepriseController extends Controller
 	 */
 	public function accessRules()
 	{
-
+		
 		if(Yii::app()->user->role == 'entreprise')
 		{
 			return array(
@@ -34,7 +34,7 @@ class EntrepriseController extends Controller
 						'actions'=>['index','view', 'update'],
 						),
 					array('deny',
-						'actions'=>['admin'],
+						'actions'=>['admin', 'delete'],
 						),
 					);
 		}
@@ -52,6 +52,7 @@ class EntrepriseController extends Controller
 					);
 		}
 
+
 		/*return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
@@ -68,7 +69,7 @@ class EntrepriseController extends Controller
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
-		); */
+		);*/
 	}
 
 	/**

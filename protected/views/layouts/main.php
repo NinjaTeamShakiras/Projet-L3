@@ -32,13 +32,11 @@
 
 		//On récupère les données de l'utilisateur qui est sur le site
 		$user = Yii::app()->user;
-
 		$utilisateur = Utilisateur::model()->FindByAttributes(array('login'=>$user->id));
-
+		
 		//Si c'est un employé, on lui affiche certains onglets
 		if($user->getState('type') == "employe")
 		{
-
 
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
