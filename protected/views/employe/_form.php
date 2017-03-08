@@ -60,6 +60,13 @@
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
+<<<<<<< HEAD
+=======
+	<div>
+		<h1>Attention, maj adresse impossible ! Voir dans _form, Controller ET model</h1>
+	</div>	
+
+>>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 	<div class="row">
 		<?php echo $form->labelEx($adresse,'rue'); ?>
 		<?php echo $form->textField($adresse,'rue'); ?>
@@ -80,7 +87,10 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
+<<<<<<< HEAD
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'View' : 'Annuler'); ?>
+=======
+>>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 	</div>
 
 <?php $this->endWidget(); ?>

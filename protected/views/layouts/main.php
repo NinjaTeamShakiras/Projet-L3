@@ -32,11 +32,18 @@
 
 		//On récupère les données de l'utilisateur qui est sur le site
 		$user = Yii::app()->user;
+<<<<<<< HEAD
 
 		$utilisateur = Utilisateur::model()->FindByAttributes(array('login'=>$user->id));
 
 		//Si c'est un employé, on lui affiche certains onglets
 		if($user->getState('type') == "employe" && $utilisateur != null)
+=======
+		$utilisateur = Utilisateur::model()->FindByAttributes(array('login'=>$user->id));
+		
+		//Si c'est un employé, on lui affiche certains onglets
+		if($user->getState('type') == "employe")
+>>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 		{
 
 			$this->widget('zii.widgets.CMenu',array(
@@ -50,7 +57,11 @@
 			));
 		}
 		//Si c'est une entreprise, on lui affiche certains autres onglets
+<<<<<<< HEAD
 		else if($user->getState('type') == "entreprise" && $utilisateur != null)
+=======
+		else if($user->getState('type') == "entreprise")
+>>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
