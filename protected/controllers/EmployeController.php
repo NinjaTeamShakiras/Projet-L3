@@ -30,14 +30,10 @@ class EmployeController extends Controller
 		{
 			return array(
 					array('allow',
-<<<<<<< HEAD
-						'actions'=>['index','view', 'update', 'admin'],
-=======
-						'actions'=>['index','view', 'update'],
+						'actions'=>['index','view', 'update', 'delete'],
 						),
 					array('deny',
 						'actions'=>['admin'],
->>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 						),
 					);
 		}
@@ -54,25 +50,6 @@ class EmployeController extends Controller
 						),
 					);
 		}
-
-		/*return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				//'users'=>array('employe'),
-				//'roles'=>array('employe'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);*/
 	}
 
 	/**
@@ -130,7 +107,6 @@ class EmployeController extends Controller
 			//$model->Adresse->ville = $_POST['Adresse->ville'];
 			//$model->Adresse->code_postal = $_POST['Code_Postal'];
 
-<<<<<<< HEAD
 			$valid = $model->validate();
 			$valid = $adresse->validate() && $valid;;
 
@@ -142,15 +118,6 @@ class EmployeController extends Controller
 					$this->redirect(array('view','id'=>$model->id_employe));
 				}
 			}			
-			
-=======
-			$model->validate();
-			$adresse->validate();
-
-
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_employe));
->>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 		}
 
 		$this->render('update',array(
@@ -166,7 +133,6 @@ class EmployeController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-<<<<<<< HEAD
 		$model = $this->loadModel($id);
 
 		//on supprime les users
@@ -216,17 +182,6 @@ class EmployeController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect("index.php");
-
-
-
-
-=======
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
->>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3
 	}
 
 	/**
