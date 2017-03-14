@@ -6906,6 +6906,7 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=entreprise/_view
 >>>>>>> 6fc86a7b1e0ce2f1009feeb52c6b71bbc211abdb
 ---
+<<<<<<< HEAD
 2017/03/14 10:49:29 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:113)
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
@@ -7406,12 +7407,40 @@ Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
 #1 C:\wamp\www\projet\protected\models\AvisEmploye.php(113): CActiveRecord->findByAttributes(Array)
 #2 C:\wamp\www\projet\protected\views\employe\view.php(65): AvisEmploye::afficher_avis(Object(AvisEmploye))
+=======
+2017/03/14 10:34:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('employe/update')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp\www\projet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/projet/index.php?r=employe/update&id=2
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=2
+---
+2017/03/14 11:18:31 [error] [exception.CException] exception 'CException' with message 'Employe and its behaviors do not have a method or closure named "AfficheTelephone".' in C:\wamp\www\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('AfficheTelephon...', Array)
+#1 C:\wamp\www\projet\protected\views\employe\view.php(43): CActiveRecord->__call('AfficheTelephon...', Array)
+#2 C:\wamp\www\projet\protected\views\employe\view.php(43): Employe->AfficheTelephone('0605040302', ' ')
+>>>>>>> dd779ca71f6d5af80882e2b35b1e30742699b556
 #3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
 #4 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
 #5 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
 #6 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
 #7 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): CController->render('view', Array)
+<<<<<<< HEAD
 #8 [internal function]: EmployeController->actionView('1')
+=======
+#8 [internal function]: EmployeController->actionView('2')
+>>>>>>> dd779ca71f6d5af80882e2b35b1e30742699b556
 #9 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EmployeController), Array)
 #10 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EmployeController), Object(ReflectionMethod), Array)
 #11 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
@@ -7427,6 +7456,7 @@ Stack trace:
 #21 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
 #22 C:\wamp\www\projet\index.php(13): CApplication->run()
 #23 {main}
+<<<<<<< HEAD
 REQUEST_URI=/projet/index.php?r=employe/view&id=1
 ---
 2017/03/14 10:54:21 [error] [php] Undefined variable: entreprise (C:\wamp\www\projet\protected\models\AvisEmploye.php:123)
@@ -7716,3 +7746,8 @@ REQUEST_URI=/projet/index.php?r=entreprise/view&id=1
 in C:\wamp\www\projet\protected\models\AvisEntreprise.php (122)
 in C:\wamp\www\projet\protected\views\entreprise\view.php (43)
 in C:\wamp\www\projet\protected\controllers\EntrepriseController.php (83)
+=======
+REQUEST_URI=/projet/index.php?r=employe/view&id=2
+HTTP_REFERER=http://localhost/projet/index.php
+---
+>>>>>>> dd779ca71f6d5af80882e2b35b1e30742699b556

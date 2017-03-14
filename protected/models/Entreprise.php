@@ -108,6 +108,34 @@ class Entreprise extends CActiveRecord
 		));
 	}
 
+
+
+	public function AfficheTelephone($tel,$carEspacement=" ")
+	{
+		/**
+		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
+		* @tel : numéro de téléphone de l'entreprise
+		* @carEspacement : caractère à placer entre chaque 2 chiffres
+		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
+		* 			affiché
+		*/
+
+		$res ="";
+
+		for($i=0; $i<=10; $i++)
+		{
+			// On ajoute "carEspacement" tous les 2 chiffres.
+			if($i%2==0)
+			{
+				$res .= substr($tel, $i, 2);
+				$res .= $carEspacement;
+			}
+		}
+		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
+
+		return($res);
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
