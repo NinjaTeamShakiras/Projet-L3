@@ -38,7 +38,10 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 			'value'=>$model->employe_travaille == 0 ? "Oui" : "Non",
 			),
 		'mail_employe',
-		'telephone_employe',
+		array(
+			'label'=>'Télephone',
+			'value'=>$model->AfficheTelephone($model->telephone_employe," "),
+		),
 		//On affiche l'adresse en passant par la clé étrangère
 		array(
 			'label'=>'Adresse',
@@ -55,7 +58,7 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 <?php endif; ?>
 
-
+<br/><br/>
 <h2>Voici la liste de vos avis :</h2>
 <?php 
 	$avis_all = AvisEmploye::model()->findAll("id_employe = " . $model->id_employe);

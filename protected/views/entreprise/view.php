@@ -45,6 +45,7 @@ $this->menu=array(
 	);
 ?>
 
+<br/><br/>
 <h2>Voici la liste de vos avis :</h2>
 <?php 
 	$avis_all = AvisEntreprise::model()->findAll("id_entreprise = " . $model->id_entreprise);
