@@ -7,6 +7,8 @@ $this->breadcrumbs=array(
 	$model->id_entreprise,
 );
 
+
+
 $this->menu=array(
 	array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_entreprise)),
 );
@@ -43,6 +45,14 @@ $this->menu=array(
 	);
 ?>
 
-<br/><br/>
-<h1>Voici la liste des avis</h1>
+<h2>Voici la liste de vos avis :</h2>
+<?php 
+	$avis_all = AvisEntreprise::model()->findAll("id_entreprise = " . $model->id_entreprise);
+	
+	foreach ($avis_all as $key => $value)
+	{
+		AvisEntreprise::afficher_avis($value);
+	}
+ ?>
+
 

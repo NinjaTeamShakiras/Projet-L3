@@ -112,4 +112,12 @@ class Utilisateur extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	/*	Fonction pour savoir si l'utilisateur qui est connecté est un employé	
+		Paramètres : Rôle de l'utilisateur connecté
+		Return : Booléen 		*/
+	public static function est_employe($role_str)
+	{
+		return $role_str == "employe" ? true : false ;
+	}
 }

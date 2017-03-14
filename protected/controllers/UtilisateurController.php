@@ -170,4 +170,5 @@ class UtilisateurController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }
