@@ -62,6 +62,7 @@ class AvisEntreprise extends CActiveRecord
 			'note_generale' => 'Note Generale',
 			'commentaire_avis_entreprise' => 'Commentaire Avis Entreprise',
 			'id_entreprise' => 'Id Entreprise',
+			'id_utilisateur' => 'Id Utilisateur'
 		);
 	}
 
@@ -108,13 +109,17 @@ class AvisEntreprise extends CActiveRecord
 
 	public static function afficher_avis($objet)
 	{
+
+		$employe_obj = Employe::get_employe_by_id_utilisateur($objet->id_utilisateur);
+
 		if( is_a( $objet, __CLASS__ ) )
 		{
 			print
 			(
 				'<div>
 					<p>Note : ' . $objet->note_generale  . '<p>
-					<p>' . $objet->commentaire_avis_entreprise  . '<p>
+					<p>Commentaire : ' . $objet->commentaire_avis_entreprise  . '<p>
+					<p>Par : ' . $employe_obj->nom_employe . '</p>
 				</div>'
 
 			);
