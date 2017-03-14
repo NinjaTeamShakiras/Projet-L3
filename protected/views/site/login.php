@@ -2,29 +2,28 @@
 /* @var $this SiteController */
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
-
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
 ?>
 
-<h1>Login</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<h1>Connexion</h1>
 
 <div class="form">
 <?php 
 
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
+	$form=$this->beginWidget('CActiveForm', array(
+		'id'=>'login-form',
+		'enableClientValidation'=>true,
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+		),
+	)); 
+?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<!--<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -37,7 +36,7 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
+			<!-- Commentaire ? -->
 		</p>
 	</div>
 
@@ -48,12 +47,12 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('Se connecter'); ?>
 	</div>
 
 	<div>
-		<p>Login : CP pour employe, GIT pour entreprise</p>
-		<p>MDP : password pour les 2</p>
+		<p>Login : CP (pour employe), GIT (pour entreprise)</p>
+		<p>MDP : password (pour les 2)</p>
 	</div>
 
 <?php $this->endWidget(); ?>
