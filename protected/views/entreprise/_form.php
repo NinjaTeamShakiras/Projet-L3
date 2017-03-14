@@ -25,6 +25,7 @@
 
 	?>
 
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'nom_entreprise'); ?>
 		<?php echo $form->textField($model,'nom_entreprise',array('size'=>45,'maxlength'=>45)); ?>

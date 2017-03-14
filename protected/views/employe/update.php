@@ -5,10 +5,11 @@
 $this->breadcrumbs=array(
 	'Employes'=>array('index'),
 	$model->id_employe=>array('view','id'=>$model->id_employe),
-	'Update',
+	'Mise à jour',
 );?>
 
+<!--TITRE PAGE -->
 <h1>Mise à jour de mon profil</h1>
 
+
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
->>>>>>> 6fffe0093b55e71b25410b9358858b255c26f4c3

@@ -4793,3 +4793,13 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=entreprise/update&id=1
 HTTP_REFERER=http://localhost/projet/index.php?r=entreprise/view&id=1
 ---
+2017/03/14 10:05:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "_view".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('_view')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('_view')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('entreprise/_vie...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=entreprise/_view
+---
