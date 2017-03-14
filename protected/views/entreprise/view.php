@@ -8,17 +8,18 @@ $this->breadcrumbs=array(
 );
 
 
-
-$this->menu=array(
-	array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_entreprise)),
-);
+if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()))
+{
+	$this->menu=array(
+		array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_entreprise)),
+	);
+}
 ?>
 
 
 <!-- AFFICHAGE ESPACE PERSO -->
 
 <h1>Votre espace personnel :</h1>
-<br/>
 
 <?php 
 	$this->widget('zii.widgets.CDetailView',
@@ -45,14 +46,26 @@ $this->menu=array(
 	);
 ?>
 
-<h2>Voici la liste de vos avis :</h2>
+
+<?php if(Utilisateur::est_employe(Yii::app()->user->role)) : ?>
+
+<h2>Laissez votre avis à cette entreprise</h2>
+
 <?php 
-	$avis_all = AvisEntreprise::model()->findAll("id_entreprise = " . $model->id_entreprise);
-	
-	foreach ($avis_all as $key => $value)
-	{
-		AvisEntreprise::afficher_avis($value);
-	}
- ?>
+	$this->renderPartial('./../AvisEntreprise/_form', array( 'model' => AvisEntreprise::model()) ); 
+	endif;
+?>
+
+
+<h2>Voici la liste des avis :</h2>
+
+<?php $avis_all = AvisEntreprise::model()->findAll("id_entreprise = " . $model->id_entreprise); ?>
+<ul>
+<?php foreach ($avis_all as $key => $value) : ?>
+
+		<li><?php AvisEntreprise::afficher_avis($value) ?></li>
+
+<?php endforeach;?>
+</ul>
 
 

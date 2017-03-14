@@ -115,11 +115,11 @@ class AvisEmploye extends CActiveRecord
 
 		$entreprise_obj = Entreprise::get_entreprise_by_id_utilisateur($objet->id_utilisateur);
 
-		if( is_a( $objet, __CLASS__ ) )
+		if( is_a( $objet, __CLASS__ ) && is_a( $entreprise_obj, "Entreprise" ) )
 		{
 			print
 			(
-				'<div>
+				'<div style="border: solid 1px; margin : 2% 0%; padding: 2%;">
 					<p>Note : ' . $objet->note_generale  . '<p>
 					<p>Commentaire : ' . $objet->commentaire_avis_employe  . '<p>
 					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
