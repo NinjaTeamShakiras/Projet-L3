@@ -16,7 +16,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
 
 	<?php echo $form->errorSummary($model); 
 
@@ -24,6 +24,7 @@
 		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
 
 	?>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nom_employe'); ?>
