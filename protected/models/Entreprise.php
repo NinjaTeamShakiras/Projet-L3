@@ -67,13 +67,13 @@ class Entreprise extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_entreprise' => 'Id Entreprise',
-			'nom_entreprise' => 'Nom',
-			'nombre_employes' => 'Nombre employés',
-			'recherche_employes' => 'Recherche Employes',
+			'id_entreprise' => 'Id de l\'entreprise',
+			'nom_entreprise' => 'Nom de l\'entreprise',
+			'nombre_employes' => 'Nombre d\'employés',
+			'recherche_employes' => 'Recherche employés',
 			'mail_entreprise' => 'Mail',
 			'telephone_entreprise' => 'Telephone',
-			'id_adresse' => 'Id Adresse',
+			'id_adresse' => 'Id adresse',
 		);
 	}
 

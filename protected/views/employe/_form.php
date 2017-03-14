@@ -1,6 +1,7 @@
 <?php
 /* @var $this EmployeController */
 /* @var $model Employe */
+/* @var $adresse Adresse */
 /* @var $form CActiveForm */
 ?>
 
@@ -18,7 +19,8 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); 
-
+	
+		// Récupération de l'adresse
 		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
 
 	?>
