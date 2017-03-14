@@ -51,9 +51,10 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 <h2>Laissez votre avis à cette employé</h2>
 
-<?php $this->renderPartial('./../avisEmploye/_form', array( "model" => AvisEmploye::model()) ); ?>
-
-<?php endif; ?>
+<?php 
+	$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 
+	endif;
+?>
 
 
 <h2>Voici la liste de vos avis :</h2>

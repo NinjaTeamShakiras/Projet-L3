@@ -123,4 +123,24 @@ class Employe extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+	/*
+		Fonction qui retourne l'employe à partir de l'identifiant d'un utilisateur
+		Paramètres : l'identifiant de l'utilisateur
+		Return : Un employe(Objet Employe) ou false si rien n'a été trouvé		*/
+
+	public static function get_employe_by_id_utilisateur($id_int)
+	{
+
+		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
+
+		if( is_null($utilisateur_obj) )
+			return false;
+		else 
+		{
+			return Employe::model()->findByAttributes( array("id_employe" => $utilisateur_obj->id_employe ) );
+		}
+	}
+
 }

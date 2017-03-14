@@ -118,4 +118,22 @@ class Entreprise extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	/*
+		Fonction qui retourne l'entreprise de l'entreprise
+		Paramètres : l'identifiant de l'utilisateur
+		Return : Une entreprise ou false si rien n'a été trouvé		*/
+
+	public static function get_entreprise_by_id_utilisateur($id_int)
+	{
+
+		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
+
+		if( is_null($utilisateur_obj) )
+			return false;
+		else 
+		{
+			return entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
+		}
+	}
 }

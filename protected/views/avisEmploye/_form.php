@@ -37,6 +37,12 @@
 		<?php echo $form->error($model,'id_employe'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_utilisateur'); ?>
+		<?php echo $form->textField($model,'id_utilisateur'); ?>
+		<?php echo $form->error($model,'id_utilisateur'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

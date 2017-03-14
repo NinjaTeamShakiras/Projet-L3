@@ -66,9 +66,11 @@ class AvisEmployeController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		var_dump($_POST['AvisEmploye']);
+		
 		if(isset($_POST['AvisEmploye']))
 		{
+
 			$model->attributes=$_POST['AvisEmploye'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_avis_employe));
