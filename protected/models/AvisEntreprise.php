@@ -103,4 +103,25 @@ class AvisEntreprise extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+
+	public static function afficher_avis($objet)
+	{
+		if( is_a( $objet, __CLASS__ ) )
+		{
+			print
+			(
+				'<div>
+					<p>Note : ' . $objet->note_generale  . '<p>
+					<p>' . $objet->commentaire_avis_entreprise  . '<p>
+				</div>'
+
+			);
+		}
+		else 
+		{
+			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
+		}
+	}
 }

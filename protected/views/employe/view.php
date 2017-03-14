@@ -7,10 +7,16 @@ $this->breadcrumbs=array(
 	$model->id_employe,
 );
 
-$this->menu=array(
-	array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
-	array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir supprimer votre profil?')),
-);
+
+/* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
+
+if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()))
+{
+	$this->menu=array(
+		array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
+		array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir supprimer votre profil?')),
+	);
+}
 ?>
 
 <p>
@@ -40,3 +46,22 @@ $this->menu=array(
 			),
 	),
 )); ?>
+
+<?php if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
+
+<h2>Laissez votre avis à cette employé</h2>
+
+<?php $this->renderPartial('./../avisEmploye/_form', array( "model" => AvisEmploye::model()) ); ?>
+
+<?php endif; ?>
+
+
+<h2>Voici la liste de vos avis :</h2>
+<?php 
+	$avis_all = AvisEmploye::model()->findAll("id_employe = " . $model->id_employe);
+	
+	foreach ($avis_all as $key => $value)
+	{
+		AvisEmploye::afficher_avis($value);
+	}
+ ?>
