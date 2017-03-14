@@ -25,5 +25,6 @@ $this->menu=array(
 		'note_generale',
 		'commentaire_avis_employe',
 		'id_employe',
+		'id_utilisateur',
 	),
 )); ?>

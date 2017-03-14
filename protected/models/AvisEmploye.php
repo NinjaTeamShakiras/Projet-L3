@@ -8,8 +8,10 @@
  * @property integer $note_generale
  * @property string $commentaire_avis_employe
  * @property integer $id_employe
+ * @property integer $id_utilisateur
  *
  * The followings are the available model relations:
+ * @property Utilisateur $idUtilisateur
  * @property Employe $idEmploye
  * @property EmployeAvisCritere[] $employeAvisCriteres
  */
@@ -31,11 +33,11 @@ class AvisEmploye extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale, id_employe', 'numerical', 'integerOnly'=>true),
+			array('note_generale, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			array('commentaire_avis_employe', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_employe, note_generale, commentaire_avis_employe, id_employe', 'safe', 'on'=>'search'),
+			array('id_avis_employe, note_generale, commentaire_avis_employe, id_employe, id_utilisateur', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,8 +49,9 @@ class AvisEmploye extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Employe' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
-			'EmployeAvisCriteres' => array(self::HAS_MANY, 'EmployeAvisCritere', 'id_avis_employe'),
+			'idUtilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_utilisateur'),
+			'idEmploye' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
+			'employeAvisCriteres' => array(self::HAS_MANY, 'EmployeAvisCritere', 'id_avis_employe'),
 		);
 	}
 
@@ -62,7 +65,7 @@ class AvisEmploye extends CActiveRecord
 			'note_generale' => 'Note Generale',
 			'commentaire_avis_employe' => 'Commentaire Avis Employe',
 			'id_employe' => 'Id Employe',
-			'id_utilisateur' => 'Id Utilisateur'
+			'id_utilisateur' => 'Id Utilisateur',
 		);
 	}
 
@@ -88,6 +91,7 @@ class AvisEmploye extends CActiveRecord
 		$criteria->compare('note_generale',$this->note_generale);
 		$criteria->compare('commentaire_avis_employe',$this->commentaire_avis_employe,true);
 		$criteria->compare('id_employe',$this->id_employe);
+		$criteria->compare('id_utilisateur',$this->id_utilisateur);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,7 +108,6 @@ class AvisEmploye extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
 
 
 	public static function afficher_avis($objet)

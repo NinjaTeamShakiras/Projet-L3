@@ -49,6 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'note_generale',
 		'commentaire_avis_employe',
 		'id_employe',
+		'id_utilisateur',
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -52,7 +52,7 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 <?php if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
-<h2>Laissez votre avis à cette employé</h2>
+<h2>Laissez votre avis à cet employé</h2>
 
 <?php 
 	$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 

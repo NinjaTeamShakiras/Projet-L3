@@ -7751,3 +7751,342 @@ REQUEST_URI=/projet/index.php?r=employe/view&id=2
 HTTP_REFERER=http://localhost/projet/index.php
 ---
 >>>>>>> dd779ca71f6d5af80882e2b35b1e30742699b556
+2017/03/14 13:04:52 [warning] [application] Failed to set unsafe attribute "id_utilisateur" of "AvisEmploye".
+in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (74)
+in C:\wamp\www\projet\index.php (13)
+2017/03/14 13:05:03 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:122)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (122)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:05:07 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:122)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (122)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:05:08 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:122)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (122)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:05:13 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:122)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (122)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:05:25 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:122)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (122)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:08:06 [warning] [application] Failed to set unsafe attribute "id_utilisateur" of "AvisEmploye".
+in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (74)
+in C:\wamp\www\projet\index.php (13)
+2017/03/14 13:09:34 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\models\AvisEmploye.php:123)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): EmployeController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): EmployeController->renderFile()
+#2 C:\wamp\www\yii\framework\web\CController.php(782): EmployeController->renderPartial()
+#3 C:\wamp\www\projet\protected\controllers\EmployeController.php(63): EmployeController->render()
+#4 unknown(0): EmployeController->actionView()
+#5 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): EmployeController->runAction()
+#9 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): EmployeController->filterAccessControl()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(265): EmployeController->runActionWithFilters()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): EmployeController->run()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=employe/view&id=1
+in C:\wamp\www\projet\protected\models\AvisEmploye.php (123)
+in C:\wamp\www\projet\protected\views\employe\view.php (69)
+in C:\wamp\www\projet\protected\controllers\EmployeController.php (63)
+2017/03/14 13:14:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\projet\protected\controllers\EntrepriseController.php:197
+Stack trace:
+#0 C:\wamp\www\projet\protected\controllers\EntrepriseController.php(82): EntrepriseController->loadModel('2')
+#1 [internal function]: EntrepriseController->actionView('2')
+#2 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EntrepriseController), Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EntrepriseController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('entreprise/view')
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/projet/index.php?r=entreprise/view&id=2
+---
+2017/03/14 13:16:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\projet\protected\controllers\EntrepriseController.php:197
+Stack trace:
+#0 C:\wamp\www\projet\protected\controllers\EntrepriseController.php(82): EntrepriseController->loadModel('2')
+#1 [internal function]: EntrepriseController->actionView('2')
+#2 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EntrepriseController), Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EntrepriseController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('entreprise/view')
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/projet/index.php?r=entreprise/view&id=2
+---
+2017/03/14 13:17:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "amploye/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('amploye/view')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=amploye/view&id=3
+---
+2017/03/14 13:17:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\projet\protected\controllers\EmployeController.php:222
+Stack trace:
+#0 C:\wamp\www\projet\protected\controllers\EmployeController.php(62): EmployeController->loadModel('3')
+#1 [internal function]: EmployeController->actionView('3')
+#2 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EmployeController), Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EmployeController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('employe/view')
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/projet/index.php?r=employe/view&id=3
+---
+2017/03/14 13:22:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:22:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:22:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "./../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('./../employe/vi...')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=./../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('../employe/view')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('../employe/view')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:23:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "../employe/view".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('../employe/view')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp\www\projet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/projet/index.php?r=../employe/view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:24:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action ".employe.view".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('.employe.view')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('.employe.view')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/.em...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/.employe.view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
+2017/03/14 13:25:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action ".employe.view".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('.employe.view')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('.employe.view')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/.em...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/.employe.view&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=1
+---
