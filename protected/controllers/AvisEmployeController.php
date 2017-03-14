@@ -71,8 +71,8 @@ class AvisEmployeController extends Controller
 		{
 			$model->attributes=$_POST['AvisEmploye'];
 			if($model->save())
-				$this->redirect(array( 'employe/view&id=' . $model->id_avis_employe));
-			
+				$this->redirect( 'index.php?r=employe/view&id=' . $model->id_employe );
+
 		}
 		
 		$this->render('create',array(
