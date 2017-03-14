@@ -29,9 +29,15 @@ class UserIdentity extends CUserIdentity
 		);
 
 		if(!isset($users[$this->username]))
+		{
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
+			// CHANGER CODE ERREUR UTILISATEUR
+		}
 		elseif($users[$this->username]!==$this->password)
+		{
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+			// CHANGER CODE ERREUR PASSWORD
+		}
 		else
 			$this->errorCode=self::ERROR_NONE;
 

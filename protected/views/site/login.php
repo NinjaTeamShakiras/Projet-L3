@@ -2,25 +2,26 @@
 /* @var $this SiteController */
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
-
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
 ?>
 
+
 <h1>Connexion</h1>
 
 <div class="form">
 <?php 
 
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
+	$form=$this->beginWidget('CActiveForm', array(
+		'id'=>'login-form',
+		'enableClientValidation'=>true,
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+		),
+	)); 
+?>
 
 	<!--<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>-->
 
@@ -50,8 +51,8 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 
 	<div>
-		<p>Login : CP pour employe, GIT pour entreprise</p>
-		<p>MDP : password pour les 2</p>
+		<p>Login : CP (pour employe), GIT (pour entreprise)</p>
+		<p>MDP : password (pour les 2)</p>
 	</div>
 
 <?php $this->endWidget(); ?>
