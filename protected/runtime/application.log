@@ -4776,6 +4776,7 @@ REQUEST_URI=/projet/index.php?r=site/login
 in C:\wamp64\www\projet\protected\components\UserIdentity.php (28)
 in C:\wamp64\www\projet\protected\models\LoginForm.php (52)
 in C:\wamp64\www\projet\protected\controllers\SiteController.php (94)
+<<<<<<< HEAD
 2017/03/08 13:48:58 [error] [php] Non-static method CActiveRecord::findAll() should not be called statically, assuming $this from incompatible context (C:\wamp\www\projet\protected\views\entreprise\view.php:37)
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CController.php(869): EntrepriseController->renderFile()
@@ -5183,6 +5184,9 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=entreprise/view&id=2
 ---
 2017/03/14 08:35:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:182
+=======
+2017/03/14 09:06:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:182
+>>>>>>> 6fc86a7b1e0ce2f1009feeb52c6b71bbc211abdb
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
 #1 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
@@ -5199,6 +5203,7 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=entreprise/update&id=1
 HTTP_REFERER=http://localhost/projet/index.php?r=entreprise/view&id=1
 ---
+<<<<<<< HEAD
 2017/03/14 08:42:22 [error] [exception.CException] exception 'CException' with message 'Property "EmployeController._id" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 C:\wamp\www\projet\protected\views\employe\view.php(25): CComponent->__get('_id')
@@ -6889,4 +6894,15 @@ Stack trace:
 #20 C:\wamp\www\projet\index.php(13): CApplication->run()
 #21 {main}
 REQUEST_URI=/projet/index.php?r=employe/view&id=1
+=======
+2017/03/14 10:05:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "_view".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('_view')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('_view')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('entreprise/_vie...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=entreprise/_view
+>>>>>>> 6fc86a7b1e0ce2f1009feeb52c6b71bbc211abdb
 ---

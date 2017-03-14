@@ -114,19 +114,32 @@ class EntrepriseController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$adresse= Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Entreprise']))
+		if(isset($_POST['Entreprise'])  && isset($_POST['Adresse']))
 		{
 			$model->attributes=$_POST['Entreprise'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_entreprise));
+			$adresse->attributes = $_POST['Adresse'];
+
+			$valid = $model->validate();
+			$valid = $adresse->validate() && $valid;;
+
+			if($valid)
+			{
+				if($model->save())
+				{
+					$adresse->save();
+					$this->redirect(array('view','id'=>$model->id_entreprise));
+				}
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'adresse'=>$adresse,
 		));
 	}
 

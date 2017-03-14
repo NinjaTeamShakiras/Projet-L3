@@ -1,6 +1,7 @@
 <?php
 /* @var $this EmployeController */
 /* @var $model Employe */
+/* @var $adresse Adresse */
 /* @var $form CActiveForm */
 ?>
 
@@ -19,6 +20,7 @@
 
 	<?php echo $form->errorSummary($model); 
 
+		// Récupération de l'adresse
 		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
 
 	?>
@@ -60,6 +62,8 @@
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
+
+	<!-- Changement de source, on recherche dans $adresse-->
 	<div class="row">
 		<?php echo $form->labelEx($adresse,'rue'); ?>
 		<?php echo $form->textField($adresse,'rue'); ?>
@@ -77,11 +81,15 @@
 		<?php echo $form->textField($adresse,'code_postal'); ?>
 		<?php echo $form->error($adresse,'code_postal'); ?>
 	</div>
+	<!-- Fin changement de source -->
 
+
+	<!-- BUTTON -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'View' : 'Annuler'); ?>
 	</div>
+	<!-- FIN BUTTON -->
 
 <?php $this->endWidget(); ?>
 

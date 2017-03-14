@@ -104,8 +104,6 @@ class EmployeController extends Controller
 
 			$model->attributes = $_POST['Employe'];
 			$adresse->attributes = $_POST['Adresse'];
-			//$model->Adresse->ville = $_POST['Adresse->ville'];
-			//$model->Adresse->code_postal = $_POST['Code_Postal'];
 
 			$valid = $model->validate();
 			$valid = $adresse->validate() && $valid;;
