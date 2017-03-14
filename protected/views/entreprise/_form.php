@@ -16,7 +16,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
 
 	<?php echo $form->errorSummary($model);
 
@@ -39,7 +39,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'recherche_employes'); ?>
-		<?php echo $form->textField($model,'recherche_employes'); ?>
+		<?php echo $form->dropDownList($model,'recherche_employes',array('1' => 'Oui', '0' => 'Non')); ?>
 		<?php echo $form->error($model,'recherche_employes'); ?>
 	</div>
 
@@ -77,10 +77,12 @@
 	<!-- Fin changement de source -->
 
 
+	<!-- BUTTON -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'View' : 'Annuler'); ?>
 	</div>
+	<!-- FIN BUTTON -->
 
 <?php $this->endWidget(); ?>
 
