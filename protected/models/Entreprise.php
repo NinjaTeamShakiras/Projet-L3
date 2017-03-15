@@ -118,4 +118,6 @@ class Entreprise extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
 }

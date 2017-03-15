@@ -197,4 +197,27 @@ class EntrepriseController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	public function actionSearch(){
+		
+		$entreprise = $_GET["Entreprise"];
+		$temp_entre = $entreprise["nom_entreprise"];
+
+		$model=Entreprise::model();
+
+		$criteria = new CDbCriteria;
+
+
+		$criteria->compare('nom_entreprise',$temp_entre);
+
+		$dataProvider = new CActiveDataProvider($model, array(
+			'criteria'=>$criteria,
+		));
+
+
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+
+	}
 }

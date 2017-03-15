@@ -19,6 +19,7 @@
 
 	<?php echo $form->errorSummary($model); 
 
+		//récupération de l'adresse de l'employé
 		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
 
 	?>
@@ -43,7 +44,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'employe_travaille'); ?>
-		<?php echo $form->textField($model,'employe_travaille'); ?>
+		<?php echo $form->dropDownList($model, 'employe_travaille', array('0' => 'Oui', '1' => 'Non')); ?>
 		<?php echo $form->error($model,'employe_travaille'); ?>
 	</div>
 
@@ -60,6 +61,7 @@
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
+	<!-- On utilise le model Adresse pour récupérer l'adresse de l'employé -->
 	<div class="row">
 		<?php echo $form->labelEx($adresse,'rue'); ?>
 		<?php echo $form->textField($adresse,'rue'); ?>
@@ -77,10 +79,10 @@
 		<?php echo $form->textField($adresse,'code_postal'); ?>
 		<?php echo $form->error($adresse,'code_postal'); ?>
 	</div>
+	<!-- Fin de l'utilisation d'adresse -->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'View' : 'Annuler'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

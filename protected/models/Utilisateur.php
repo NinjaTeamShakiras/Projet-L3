@@ -52,8 +52,8 @@ class Utilisateur extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idEmploye' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
-			'idEntreprise' => array(self::BELONGS_TO, 'Entreprise', 'id_entreprise'),
+			'Employe' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
+			'Entreprise' => array(self::BELONGS_TO, 'Entreprise', 'id_entreprise'),
 		);
 	}
 
