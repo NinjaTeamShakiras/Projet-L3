@@ -8,8 +8,10 @@
  * @property integer $note_generale
  * @property string $commentaire_avis_entreprise
  * @property integer $id_entreprise
+ * @property integer $id_utilisateur
  *
  * The followings are the available model relations:
+ * @property Utilisateur $idUtilisateur
  * @property Entreprise $idEntreprise
  * @property EntrepriseAvisCritere[] $entrepriseAvisCriteres
  */
@@ -31,11 +33,11 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale, id_entreprise', 'numerical', 'integerOnly'=>true),
+			array('note_generale, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			array('commentaire_avis_entreprise', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_entreprise, note_generale, commentaire_avis_entreprise, id_entreprise', 'safe', 'on'=>'search'),
+			array('id_avis_entreprise, note_generale, commentaire_avis_entreprise, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,8 +49,9 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Entreprise' => array(self::BELONGS_TO, 'Entreprise', 'id_entreprise'),
-			'EntrepriseAvisCriteres' => array(self::HAS_MANY, 'EntrepriseAvisCritere', 'id_avis_entreprise'),
+			'idUtilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_utilisateur'),
+			'idEntreprise' => array(self::BELONGS_TO, 'Entreprise', 'id_entreprise'),
+			'entrepriseAvisCriteres' => array(self::HAS_MANY, 'EntrepriseAvisCritere', 'id_avis_entreprise'),
 		);
 	}
 
@@ -62,6 +65,7 @@ class AvisEntreprise extends CActiveRecord
 			'note_generale' => 'Note Generale',
 			'commentaire_avis_entreprise' => 'Commentaire Avis Entreprise',
 			'id_entreprise' => 'Id Entreprise',
+			'id_utilisateur' => 'Id Utilisateur',
 		);
 	}
 
@@ -87,6 +91,7 @@ class AvisEntreprise extends CActiveRecord
 		$criteria->compare('note_generale',$this->note_generale);
 		$criteria->compare('commentaire_avis_entreprise',$this->commentaire_avis_entreprise,true);
 		$criteria->compare('id_entreprise',$this->id_entreprise);
+		$criteria->compare('id_utilisateur',$this->id_utilisateur);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -102,5 +107,29 @@ class AvisEntreprise extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+
+	public static function afficher_avis($objet)
+	{
+
+		$employe_obj = Employe::get_employe_by_id_utilisateur($objet->id_utilisateur);
+
+		if( is_a( $objet, __CLASS__ ) && is_a( $employe_obj, "Employe" ) )
+		{
+			print
+			(
+				'<div style="border: solid 1px; margin : 2% 0%; padding: 2%;">
+					<p>Note : ' . $objet->note_generale  . '<p>
+					<p>Commentaire : ' . $objet->commentaire_avis_entreprise  . '<p>
+					<p>Par : ' . $employe_obj->nom_employe . '</p>
+				</div>'
+
+			);
+		}
+		else 
+		{
+			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
+		}
 	}
 }

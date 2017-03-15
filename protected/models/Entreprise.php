@@ -67,13 +67,13 @@ class Entreprise extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_entreprise' => 'Id Entreprise',
-			'nom_entreprise' => 'Nom',
-			'nombre_employes' => 'Nombre employés',
-			'recherche_employes' => 'Recherche Employes',
+			'id_entreprise' => 'Id de l\'entreprise',
+			'nom_entreprise' => 'Nom de l\'entreprise',
+			'nombre_employes' => 'Nombre d\'employés',
+			'recherche_employes' => 'Recherche employés',
 			'mail_entreprise' => 'Mail',
 			'telephone_entreprise' => 'Telephone',
-			'id_adresse' => 'Id Adresse',
+			'id_adresse' => 'Id adresse',
 		);
 	}
 
@@ -108,6 +108,34 @@ class Entreprise extends CActiveRecord
 		));
 	}
 
+
+
+	public function AfficheTelephone($tel,$carEspacement=" ")
+	{
+		/**
+		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
+		* @tel : numéro de téléphone de l'entreprise
+		* @carEspacement : caractère à placer entre chaque 2 chiffres
+		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
+		* 			affiché
+		*/
+
+		$res ="";
+
+		for($i=0; $i<=10; $i++)
+		{
+			// On ajoute "carEspacement" tous les 2 chiffres.
+			if($i%2==0)
+			{
+				$res .= substr($tel, $i, 2);
+				$res .= $carEspacement;
+			}
+		}
+		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
+
+		return($res);
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -119,5 +147,21 @@ class Entreprise extends CActiveRecord
 		return parent::model($className);
 	}
 
+	/*
+		Fonction qui retourne l'entreprise de l'entreprise
+		Paramètres : l'identifiant de l'utilisateur
+		Return : Une entreprise ou false si rien n'a été trouvé		*/
 
+	public static function get_entreprise_by_id_utilisateur($id_int)
+	{
+
+		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
+
+		if( is_null($utilisateur_obj) )
+			return false;
+		else 
+		{
+			return entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
+		}
+	}
 }

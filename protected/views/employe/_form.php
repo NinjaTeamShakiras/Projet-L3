@@ -1,6 +1,7 @@
 <?php
 /* @var $this EmployeController */
 /* @var $model Employe */
+/* @var $adresse Adresse */
 /* @var $form CActiveForm */
 ?>
 
@@ -15,14 +16,14 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
 
 	<?php echo $form->errorSummary($model); 
 
-		//récupération de l'adresse de l'employé
+		// Récupération de l'adresse
 		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
-
 	?>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nom_employe'); ?>
@@ -61,7 +62,8 @@
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
-	<!-- On utilise le model Adresse pour récupérer l'adresse de l'employé -->
+	<!-- Changement de source, on recherche dans $adresse-->
+
 	<div class="row">
 		<?php echo $form->labelEx($adresse,'rue'); ?>
 		<?php echo $form->textField($adresse,'rue'); ?>
@@ -79,11 +81,13 @@
 		<?php echo $form->textField($adresse,'code_postal'); ?>
 		<?php echo $form->error($adresse,'code_postal'); ?>
 	</div>
-	<!-- Fin de l'utilisation d'adresse -->
+	<!-- Fin changement de source -->
 
+	<!-- BUTTON -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
 	</div>
+	<!-- FIN BUTTON -->
 
 <?php $this->endWidget(); ?>
 

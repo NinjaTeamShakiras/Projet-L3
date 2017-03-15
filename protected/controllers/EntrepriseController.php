@@ -114,19 +114,32 @@ class EntrepriseController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$adresse= Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Entreprise']))
+		if(isset($_POST['Entreprise'])  && isset($_POST['Adresse']))
 		{
 			$model->attributes=$_POST['Entreprise'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_entreprise));
+			$adresse->attributes = $_POST['Adresse'];
+
+			$valid = $model->validate();
+			$valid = $adresse->validate() && $valid;;
+
+			if($valid)
+			{
+				if($model->save())
+				{
+					$adresse->save();
+					$this->redirect(array('view','id'=>$model->id_entreprise));
+				}
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'adresse'=>$adresse,
 		));
 	}
 
@@ -198,6 +211,8 @@ class EntrepriseController extends Controller
 		}
 	}
 
+
+	/*	Fonction de recherche d'une entreprise par l'employé	*/
 	public function actionSearch(){
 		
 		$entreprise = $_GET["Entreprise"];
@@ -218,6 +233,16 @@ class EntrepriseController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}	
+
+
+
+	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
+		Paramètres : L'identifiant de l'utilisateur 
+		Return : Un identifiant (Integer) 		*/
+	protected function get_id_utilisateur_connexion($login_str)
+	{
+		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
 
 	}
 }

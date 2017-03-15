@@ -21,5 +21,9 @@
 	<?php echo CHtml::encode($data->id_employe); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id_utilisateur')); ?>:</b>
+	<?php echo CHtml::encode($data->id_utilisateur); ?>
+	<br />
+
 
 </div>

@@ -71,7 +71,8 @@ class AvisEntrepriseController extends Controller
 		{
 			$model->attributes=$_POST['AvisEntreprise'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_avis_entreprise));
+				$this->redirect( 'index.php?r=entreprise/view&id=' . $model->id_entreprise );
+
 		}
 
 		$this->render('create',array(

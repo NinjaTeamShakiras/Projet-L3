@@ -7,10 +7,16 @@ $this->breadcrumbs=array(
 	$model->id_employe,
 );
 
-$this->menu=array(
-	array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
-	array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir supprimer votre profil?')),
-);
+
+/* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
+
+if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()))
+{
+	$this->menu=array(
+		array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
+		array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir supprimer votre profil?')),
+	);
+}
 ?>
 
 <p>
@@ -32,7 +38,10 @@ $this->menu=array(
 			'value'=>$model->employe_travaille == 0 ? "Oui" : "Non",
 			),
 		'mail_employe',
-		'telephone_employe',
+		array(
+			'label'=>'Télephone',
+			'value'=>$model->AfficheTelephone($model->telephone_employe," "),
+		),
 		//On affiche l'adresse en passant par la clé étrangère
 		array(
 			'label'=>'Adresse',
@@ -40,3 +49,25 @@ $this->menu=array(
 			),
 	),
 )); ?>
+
+<?php if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
+
+<h2>Laissez votre avis à cet employé</h2>
+
+<?php 
+	$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 
+	endif;
+?>
+
+<br/><br/>
+<h2>Voici la liste des avis :</h2>
+
+<?php $avis_all = AvisEmploye::model()->findAll("id_employe = " . $model->id_employe); ?>
+<ul>
+
+<?php foreach ($avis_all as $key => $value) : ?>
+
+		<li><?php AvisEmploye::afficher_avis($value); ?></li>
+
+<?php endforeach; ?>
+</ul>
