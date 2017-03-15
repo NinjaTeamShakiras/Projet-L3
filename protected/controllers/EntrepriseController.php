@@ -212,11 +212,37 @@ class EntrepriseController extends Controller
 	}
 
 
+	/*	Fonction de recherche d'une entreprise par l'employé	*/
+	public function actionSearch(){
+		
+		$entreprise = $_GET["Entreprise"];
+		$temp_entre = $entreprise["nom_entreprise"];
+
+		$model=Entreprise::model();
+
+		$criteria = new CDbCriteria;
+
+
+		$criteria->compare('nom_entreprise',$temp_entre);
+
+		$dataProvider = new CActiveDataProvider($model, array(
+			'criteria'=>$criteria,
+		));
+
+
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}	
+
+
+
 	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
 		Paramètres : L'identifiant de l'utilisateur 
 		Return : Un identifiant (Integer) 		*/
 	protected function get_id_utilisateur_connexion($login_str)
 	{
 		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
+
 	}
 }

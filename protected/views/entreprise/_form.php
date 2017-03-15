@@ -40,7 +40,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'recherche_employes'); ?>
-		<?php echo $form->dropDownList($model,'recherche_employes',array('1' => 'Oui', '0' => 'Non')); ?>
+		<?php echo $form->dropDownList($model, 'recherche_employes', array('1' => 'Oui', '0' => 'Non')); ?>
 		<?php echo $form->error($model,'recherche_employes'); ?>
 	</div>
 
