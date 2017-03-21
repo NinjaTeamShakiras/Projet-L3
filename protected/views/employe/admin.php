@@ -48,7 +48,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id_employe',
 		'nom_employe',
 		'prenom_employe',
-		'age_employe',
+		'date_naissance_employe',
 		'employe_travaille',
 		'mail_employe',
 		/*

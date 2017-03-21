@@ -13,8 +13,12 @@
 	<?php echo CHtml::encode($data->nom_critere_entreprise); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('critere_note_entreprise')); ?>:</b>
-	<?php echo CHtml::encode($data->critere_note_entreprise); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('critere_note')); ?>:</b>
+	<?php echo CHtml::encode($data->critere_note); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('description_critere')); ?>:</b>
+	<?php echo CHtml::encode($data->description_critere); ?>
 	<br />
 
 

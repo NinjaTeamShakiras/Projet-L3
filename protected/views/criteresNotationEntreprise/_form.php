@@ -26,9 +26,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'critere_note_entreprise'); ?>
-		<?php echo $form->textField($model,'critere_note_entreprise'); ?>
-		<?php echo $form->error($model,'critere_note_entreprise'); ?>
+		<?php echo $form->labelEx($model,'critere_note'); ?>
+		<?php echo $form->textField($model,'critere_note'); ?>
+		<?php echo $form->error($model,'critere_note'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'description_critere'); ?>
+		<?php echo $form->textField($model,'description_critere',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'description_critere'); ?>
 	</div>
 
 	<div class="row buttons">

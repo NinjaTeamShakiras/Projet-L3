@@ -6,7 +6,8 @@
  * The followings are the available columns in table 'criteres_notation_employe':
  * @property integer $id_critere_employe
  * @property string $nom_critere_employe
- * @property integer $critere_note_employe
+ * @property integer $critere_note
+ * @property string $description_critere
  *
  * The followings are the available model relations:
  * @property EmployeAvisCritere[] $employeAvisCriteres
@@ -29,11 +30,13 @@ class CriteresNotationEmploye extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('critere_note_employe', 'numerical', 'integerOnly'=>true),
+			array('id_critere_employe, nom_critere_employe, critere_note, description_critere', 'required'),
+			array('id_critere_employe, critere_note', 'numerical', 'integerOnly'=>true),
 			array('nom_critere_employe', 'length', 'max'=>30),
+			array('description_critere', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_critere_employe, nom_critere_employe, critere_note_employe', 'safe', 'on'=>'search'),
+			array('id_critere_employe, nom_critere_employe, critere_note, description_critere', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +48,7 @@ class CriteresNotationEmploye extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'EmployeAvisCriteres' => array(self::HAS_MANY, 'EmployeAvisCritere', 'id_critere_notation_employe'),
+			'employeAvisCriteres' => array(self::HAS_MANY, 'EmployeAvisCritere', 'id_critere_notation_employe'),
 		);
 	}
 
@@ -57,7 +60,8 @@ class CriteresNotationEmploye extends CActiveRecord
 		return array(
 			'id_critere_employe' => 'Id Critere Employe',
 			'nom_critere_employe' => 'Nom Critere Employe',
-			'critere_note_employe' => 'Critere Note Employe',
+			'critere_note' => 'Critere Note',
+			'description_critere' => 'Description Critere',
 		);
 	}
 
@@ -81,7 +85,8 @@ class CriteresNotationEmploye extends CActiveRecord
 
 		$criteria->compare('id_critere_employe',$this->id_critere_employe);
 		$criteria->compare('nom_critere_employe',$this->nom_critere_employe,true);
-		$criteria->compare('critere_note_employe',$this->critere_note_employe);
+		$criteria->compare('critere_note',$this->critere_note);
+		$criteria->compare('description_critere',$this->description_critere,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

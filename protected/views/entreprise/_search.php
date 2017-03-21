@@ -22,11 +22,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'nombre_employes'); ?>
-		<?php echo $form->textField($model,'nombre_employes'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'recherche_employes'); ?>
 		<?php echo $form->textField($model,'recherche_employes'); ?>
 	</div>
