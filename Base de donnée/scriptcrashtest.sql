@@ -29,7 +29,7 @@ INSERT INTO `prozzl_test`.`adresse`(`rue`, `ville`, `code_postal`)
 
 
 --
--- COMPETENCES_CV
+-- COMPETENCES_CV /!\ ne pas remplir !! /!\
 --
 
 
@@ -81,14 +81,14 @@ VALUES  ("Type de contrat", 0, "Type de contrat de l'employé au sin de l'entrep
 
 
 --
--- CV
+-- CV /!\ ne pas remplir !! /!\
 --
 
 
 
 
 --
--- CV_EMPLOYE
+-- CV_EMPLOYE /!\ ne pas remplir !! /!\
 --
 
 
@@ -119,6 +119,26 @@ VALUES  ("Type de contrat", 0, "Type de contrat de l'employé au sin de l'entrep
 -- ENTREPRISE_AVIS_CRITERE
 --
 
+
+
+--
+-- INFOS_COMPLEMENTAIRES_EMPLOYE
+--
+
+
+--
+-- INFOS_COMPLEMENTAIRES_ENTREPRISE
+--
+
+
+--
+-- INFOS_COMPLEMENTAIRES_PROFIL
+--
+
+
+--
+-- NOTIFICATIONS 
+--
 
 
 
