@@ -42,27 +42,27 @@ INSERT INTO `prozzl_test`.`adresse`(`rue`, `ville`, `code_postal`)
 -- 2) EMPLOYE (ok)
 --
 INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naissance_employe`, `employe_travaille`, 			`mail_employe`, 	`telephone_employe`, 	`id_adresse`)
-	SELECT 							'Pablo',		'Juan',			 				20,				1,				     'JuanPablo@prozzl.fr',		'0605040302',			id_adresse
+	SELECT 							'Pablo',		'Juan',			 			'1994-03-16',			1,			     'JuanPablo@prozzl.fr',		'0605040302',			id_adresse
 		FROM adresse
 	WHERE id_adresse = 1 ;
 
 INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naissance_employe`, `employe_travaille`, 			`mail_employe`, 	`telephone_employe`, 	`id_adresse`)
-	SELECT 							'Jean',			'Neige',		 				40,			 	0,				     'JeanNeige@prozzl.fr',		'0606060606',			id_adresse
+	SELECT 							'Jean',			'Neige',		 			'1980-06-01',			0,			     'JeanNeige@prozzl.fr',		'0606060606',			id_adresse
 		FROM adresse
 	WHERE id_adresse = 2 ;
 
 INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naissance_employe`, `employe_travaille`, 			`mail_employe`, 	`telephone_employe`, 	`id_adresse`)
-	SELECT 							'Martin',		'Dupont',						30,			 	0,				  'MartinDupont@prozzl.fr',		'0615649789',			id_adresse
+	SELECT 							'Martin',		'Dupont',					'1999-11-02',			0,			  'MartinDupont@prozzl.fr',		'0615649789',			id_adresse
 		FROM adresse
 	WHERE id_adresse = 3 ;
 
 INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naissance_employe`, `employe_travaille`, 			`mail_employe`, 	`telephone_employe`, 	`id_adresse`)
-	SELECT 							'Muraton',		'Francky',						45,				1,				'FranckyMuraton@prozzl.fr',		'0605040302',			id_adresse
+	SELECT 							'Muraton',		'Francky',					'1996-05-22',			1,			'FranckyMuraton@prozzl.fr',		'0605040302',			id_adresse
 		FROM adresse
 	WHERE id_adresse = 4 ;
 
 INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naissance_employe`, `employe_travaille`, 			`mail_employe`, 	`telephone_employe`, 	`id_adresse`)
-	SELECT 							'Sacquet',		'Frodon',						18,				0,				'FrodonSacquet@prozzl.fr',		'0687976434',			id_adresse
+	SELECT 							'Sacquet',		'Frodon',					'1956-04-04',			0,			'FrodonSacquet@prozzl.fr',		'0687976434',			id_adresse
 		FROM adresse
 	WHERE id_adresse = 5 ;	
 
@@ -73,23 +73,23 @@ INSERT INTO `prozzl_test`.`employe`(`nom_employe`, `prenom_employe`, `date_naiss
 --
 -- 3) ENTREPRISE (ok)
 --
-INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
+INSERT INTO `prozzl_test`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
 	SELECT 							'Facebook',			0,					'Facebook@facebook.us',	'0646565646',				id_adresse
 		FROM adresse
 	WHERE id_adresse = 1;
 
-INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
-	SELECT 							'Linkedin',			0,					'Linkedin@lkdn.us',		'555-698-485',				id_adresse
+INSERT INTO `prozzl_test`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
+	SELECT 							'Linkedin',			1,					'Linkedin@lkdn.us',		'555-698-485',				id_adresse
 		FROM adresse
 	WHERE id_adresse = 2;
 
-INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
+INSERT INTO `prozzl_test`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
 	SELECT 							'Github',			0,					'github@github.fr',		'0456879795',				id_adresse
 		FROM adresse
 	WHERE id_adresse = 3;
 
-INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
-	SELECT 							'Twitter',			0,					'Twitter@twitter.uk',	'555-897-456',				id_adresse
+INSERT INTO `prozzl_test`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mail_entreprise`, 	`telephone_entreprise`, 	`id_adresse`)
+	SELECT 							'Twitter',			1,					'Twitter@twitter.uk',	'555-897-456',				id_adresse
 		FROM adresse
 	WHERE id_adresse = 4;
 
@@ -100,51 +100,51 @@ INSERT INTO `prozzl`.`entreprise`(`nom_entreprise`, `recherche_employes`, 		`mai
 -- 4) UTILISATEUR (ok)
 --
 			-- employe
-INSERT INTO `prozzl`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'MF', 			'password', 	'employe', 		id_employe, 		NULL
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'MF', 			'password', 	'employe', 		id_employe, 		NULL,					NOW(),						NOW()
 		FROM employe
 	WHERE nom_employe = "Muraton";
 
-INSERT INTO `prozzl`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'MD', 			'password', 	'employe', 		id_employe,			 NULL
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'MD', 			'password', 	'employe', 		id_employe,			NULL,					NOW(),						NOW()
 		FROM employe
 	WHERE nom_employe = "Martin";
 
-INSERT INTO `prozzl`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'JN', 			'password', 	'employe', 		id_employe, 		NULL
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'JN', 			'password', 	'employe', 		id_employe, 		NULL,					NOW(),						NOW()
 		FROM employe
 	WHERE nom_employe = "Jean";
 
-INSERT INTO `prozzl`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'PJ', 			'password', 	'employe', 		id_employe, 		NULL
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'PJ', 			'password', 	'employe', 		id_employe, 		NULL,					NOW(),						NOW()
 		FROM employe
 	WHERE nom_employe = "Pablo";
 
-INSERT INTO `prozzl`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'SF', 			'password', 	'employe', 		id_employe,			NULL
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'SF', 			'password', 	'employe', 		id_employe,			NULL,					NOW(),						NOW()
 		FROM employe
 	WHERE nom_employe = "Sacquet";
 
 
 
 			-- entreprise
-INSERT INTO `prozzl`.`Utilisateur`(`	login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'FB', 			'password', 'entreprise', 			NULL,		 id_entreprise
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'FB', 			'password', 'entreprise', 			NULL,		 id_entreprise,				NOW(),						NOW()
 		FROM entreprise
 	WHERE nom_entreprise = "Facebook";
 
-INSERT INTO `prozzl`.`Utilisateur`(`	login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'TW', 			'password',	'entreprise',			 NULL, 		id_entreprise
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'TW', 			'password',	'entreprise',			 NULL, 		id_entreprise,				NOW(),						NOW()
 		FROM entreprise
 	WHERE nom_entreprise = "Twitter";
 
-INSERT INTO `prozzl`.`Utilisateur`(`	login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'LKDN', 		'password', 'entreprise',			NULL, 		id_entreprise
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'LKDN', 		'password', 'entreprise',			NULL, 		id_entreprise,				NOW(),						NOW()
 		FROM entreprise
 	WHERE nom_entreprise = "Linkedin";
 
-INSERT INTO `prozzl`.`Utilisateur`(`	login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, now(), now())
-	SELECT 								'GIT', 			'password', 'entreprise', 			NULL, 		id_entreprise
+INSERT INTO `prozzl_test`.`Utilisateur`(		`login`, 	`mot_de_passe`, 		`role`, 	`id_employe`, 	`id_entreprise`, `date_creation_utilisateur`, `date_derniere_connexion`)
+	SELECT 								'GIT', 			'password', 'entreprise', 			NULL, 		id_entreprise,				NOW(),						NOW()
 		FROM entreprise
 	WHERE nom_entreprise = "Github";
 
@@ -155,27 +155,27 @@ INSERT INTO `prozzl`.`Utilisateur`(`	login`, 	`mot_de_passe`, 		`role`, 	`id_emp
 --
 -- 5) TRAVAILLE (ok)
 --
-INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
 	SELECT 							'2017-04-01', 		'2017-04-03',			2,	 		id_employe,		id_entreprise
     	FROM employe,entreprise
     WHERE id_employe = 1 AND id_entreprise = 1;
 
-INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
 	SELECT 							'2017-04-01', 		'2017-04-29',			29, 		id_employe, 	id_entreprise
     	FROM employe,entreprise
     WHERE id_employe = 2 AND id_entreprise = 2;
 
-INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
 	SELECT 							'2017-04-01', 		'2017-04-28',			28, 		id_employe, 	id_entreprise
     	FROM employe,entreprise
     WHERE id_employe = 3 AND id_entreprise = 3;
 
-INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
 	SELECT 							'2017-04-01', 		'2017-04-27',			27,			id_employe, 	id_entreprise
     	FROM employe,entreprise
     WHERE id_employe = 4 AND id_entreprise = 4;
 
-INSERT INTO `prozzl`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
+INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, `duree_contrat`, `id_employe`, `id_entreprise`)
 	SELECT 							'2017-04-01', 		'2017-05-01',			30, 		id_employe, 	id_entreprise
     	FROM employe,entreprise
     WHERE id_employe = 5 AND id_entreprise = 2;
@@ -310,7 +310,7 @@ INSERT INTO `prozzl_test`.`avis_entreprise`(`note_generale_avis`, `date_creation
 --
 -- 14) ENTREPRISE_AVIS_CRITERE ()
 --
-INSERT INTO `prozzl`.`entreprise_avis_critere`(`note_entreprise_avis`, `id_employe`, `id_critere_notation_entreprise`, `id_avis_entreprise`) 
+INSERT INTO `prozzl_test`.`entreprise_avis_critere`(`note_entreprise_avis`, `id_employe`, `id_critere_notation_entreprise`, `id_avis_entreprise`) 
 	SELECT 											5, 					id_employe, 	id_critere_entreprise, 			id_avis_entreprise
 		FROM employe, criteres_notation_entreprise, avis_entreprise
 	WHERE id_employe = 1
