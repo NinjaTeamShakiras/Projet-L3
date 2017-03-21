@@ -26,37 +26,10 @@ class EntrepriseController extends Controller
 	 */
 	public function accessRules()
 	{
-		
-		if(Yii::app()->user->role == 'entreprise')
-		{
-			return array(
-					array('allow',
-						'actions'=>['index','view', 'update'],
-						),
-					array('deny',
-						'actions'=>['admin', 'delete'],
-						),
-					);
-		}
-
-		if(Yii::app()->user->role == 'employe')
-		{
-
-			return array(
-					array('allow',
-						'actions'=>['view'],
-						),
-					array('deny',
-						'actions'=>['index','update','admin'],
-						),
-					);
-		}
-
-
-		/*return array(
+		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('entreprise'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -69,7 +42,7 @@ class EntrepriseController extends Controller
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
-		);*/
+		);
 	}
 
 	/**
@@ -114,32 +87,19 @@ class EntrepriseController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$adresse= Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Entreprise'])  && isset($_POST['Adresse']))
+		if(isset($_POST['Entreprise']))
 		{
 			$model->attributes=$_POST['Entreprise'];
-			$adresse->attributes = $_POST['Adresse'];
-
-			$valid = $model->validate();
-			$valid = $adresse->validate() && $valid;;
-
-			if($valid)
-			{
-				if($model->save())
-				{
-					$adresse->save();
-					$this->redirect(array('view','id'=>$model->id_entreprise));
-				}
-			}
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_entreprise));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-			'adresse'=>$adresse,
 		));
 	}
 
@@ -209,40 +169,5 @@ class EntrepriseController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-
-
-	/*	Fonction de recherche d'une entreprise par l'employé	*/
-	public function actionSearch(){
-		
-		$entreprise = $_GET["Entreprise"];
-		$temp_entre = $entreprise["nom_entreprise"];
-
-		$model=Entreprise::model();
-
-		$criteria = new CDbCriteria;
-
-
-		$criteria->compare('nom_entreprise',$temp_entre);
-
-		$dataProvider = new CActiveDataProvider($model, array(
-			'criteria'=>$criteria,
-		));
-
-
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}	
-
-
-
-	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
-		Paramètres : L'identifiant de l'utilisateur 
-		Return : Un identifiant (Integer) 		*/
-	protected function get_id_utilisateur_connexion($login_str)
-	{
-		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
-
 	}
 }

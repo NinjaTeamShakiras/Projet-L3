@@ -28,6 +28,7 @@ class CompetencesCv extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('nom_competence', 'required'),
 			array('nom_competence', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -43,7 +44,7 @@ class CompetencesCv extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'CvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_competence'),
+			'cvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_competence'),
 		);
 	}
 

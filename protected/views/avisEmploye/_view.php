@@ -13,8 +13,12 @@
 	<?php echo CHtml::encode($data->note_generale); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('commentaire_avis_employe')); ?>:</b>
-	<?php echo CHtml::encode($data->commentaire_avis_employe); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('date_creation')); ?>:</b>
+	<?php echo CHtml::encode($data->date_creation); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('nb_signalements')); ?>:</b>
+	<?php echo CHtml::encode($data->nb_signalements); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id_employe')); ?>:</b>

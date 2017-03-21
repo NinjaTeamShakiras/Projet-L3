@@ -51,6 +51,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'role',
 		'id_employe',
 		'id_entreprise',
+		/*
+		'date_creation_utilisateur',
+		'date_derniere_connexion',
+		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

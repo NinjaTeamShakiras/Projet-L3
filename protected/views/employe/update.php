@@ -5,11 +5,17 @@
 $this->breadcrumbs=array(
 	'Employes'=>array('index'),
 	$model->id_employe=>array('view','id'=>$model->id_employe),
-	'Mise à jour',
-);?>
+	'Update',
+);
 
-<!--TITRE PAGE -->
-<h1>Mise à jour de mon profil</h1>
+$this->menu=array(
+	array('label'=>'List Employe', 'url'=>array('index')),
+	array('label'=>'Create Employe', 'url'=>array('create')),
+	array('label'=>'View Employe', 'url'=>array('view', 'id'=>$model->id_employe)),
+	array('label'=>'Manage Employe', 'url'=>array('admin')),
+);
+?>
 
+<h1>Update Employe <?php echo $model->id_employe; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

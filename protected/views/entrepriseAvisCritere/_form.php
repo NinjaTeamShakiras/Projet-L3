@@ -20,15 +20,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'note_entreprise_avis'); ?>
-		<?php echo $form->textField($model,'note_entreprise_avis'); ?>
-		<?php echo $form->error($model,'note_entreprise_avis'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_employe'); ?>
-		<?php echo $form->textField($model,'id_employe'); ?>
-		<?php echo $form->error($model,'id_employe'); ?>
+		<?php echo $form->labelEx($model,'note_entreprise_critere'); ?>
+		<?php echo $form->textField($model,'note_entreprise_critere'); ?>
+		<?php echo $form->error($model,'note_entreprise_critere'); ?>
 	</div>
 
 	<div class="row">
@@ -41,6 +35,12 @@
 		<?php echo $form->labelEx($model,'id_avis_entreprise'); ?>
 		<?php echo $form->textField($model,'id_avis_entreprise'); ?>
 		<?php echo $form->error($model,'id_avis_entreprise'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'commentaire_evaluation_critere'); ?>
+		<?php echo $form->textField($model,'commentaire_evaluation_critere',array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->error($model,'commentaire_evaluation_critere'); ?>
 	</div>
 
 	<div class="row buttons">
