@@ -248,10 +248,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Employe` ;
 
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Employe` (
-  `id_critere_employe` INT NOT NULL,
-  `nom_critere_employe` VARCHAR(30) NOT NULL,
+  `id_critere_employe` INT NOT NULL AUTO_INCREMENT,
+  `nom_critere_employe` VARCHAR(100) NOT NULL,
   `critere_note` TINYINT(1) NOT NULL,
-  `description_critere` VARCHAR(200) NOT NULL,
+  `description_critere` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id_critere_employe`))
 ENGINE = InnoDB;
 
@@ -263,9 +263,9 @@ DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` ;
 
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` (
   `id_critere_entreprise` INT NOT NULL AUTO_INCREMENT,
-  `nom_critere_entreprise` VARCHAR(30) NOT NULL,
+  `nom_critere_entreprise` VARCHAR(100) NOT NULL,
   `critere_note` TINYINT(1) NOT NULL,
-  `description_critere` VARCHAR(200) NOT NULL,
+  `description_critere` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id_critere_entreprise`))
 ENGINE = InnoDB;
 
