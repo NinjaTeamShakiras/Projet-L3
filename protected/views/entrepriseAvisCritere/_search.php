@@ -17,13 +17,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'note_entreprise_avis'); ?>
-		<?php echo $form->textField($model,'note_entreprise_avis'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_employe'); ?>
-		<?php echo $form->textField($model,'id_employe'); ?>
+		<?php echo $form->label($model,'note_entreprise_critere'); ?>
+		<?php echo $form->textField($model,'note_entreprise_critere'); ?>
 	</div>
 
 	<div class="row">
@@ -34,6 +29,11 @@
 	<div class="row">
 		<?php echo $form->label($model,'id_avis_entreprise'); ?>
 		<?php echo $form->textField($model,'id_avis_entreprise'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'commentaire_evaluation_critere'); ?>
+		<?php echo $form->textField($model,'commentaire_evaluation_critere',array('size'=>60,'maxlength'=>300)); ?>
 	</div>
 
 	<div class="row buttons">

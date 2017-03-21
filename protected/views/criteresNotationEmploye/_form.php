@@ -20,15 +20,27 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'id_critere_employe'); ?>
+		<?php echo $form->textField($model,'id_critere_employe'); ?>
+		<?php echo $form->error($model,'id_critere_employe'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'nom_critere_employe'); ?>
 		<?php echo $form->textField($model,'nom_critere_employe',array('size'=>30,'maxlength'=>30)); ?>
 		<?php echo $form->error($model,'nom_critere_employe'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'critere_note_employe'); ?>
-		<?php echo $form->textField($model,'critere_note_employe'); ?>
-		<?php echo $form->error($model,'critere_note_employe'); ?>
+		<?php echo $form->labelEx($model,'critere_note'); ?>
+		<?php echo $form->textField($model,'critere_note'); ?>
+		<?php echo $form->error($model,'critere_note'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'description_critere'); ?>
+		<?php echo $form->textField($model,'description_critere',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'description_critere'); ?>
 	</div>
 
 	<div class="row buttons">

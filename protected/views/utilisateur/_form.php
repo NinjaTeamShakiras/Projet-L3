@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -47,6 +47,18 @@
 		<?php echo $form->labelEx($model,'id_entreprise'); ?>
 		<?php echo $form->textField($model,'id_entreprise'); ?>
 		<?php echo $form->error($model,'id_entreprise'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'date_creation_utilisateur'); ?>
+		<?php echo $form->textField($model,'date_creation_utilisateur'); ?>
+		<?php echo $form->error($model,'date_creation_utilisateur'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'date_derniere_connexion'); ?>
+		<?php echo $form->textField($model,'date_derniere_connexion'); ?>
+		<?php echo $form->error($model,'date_derniere_connexion'); ?>
 	</div>
 
 	<div class="row buttons">

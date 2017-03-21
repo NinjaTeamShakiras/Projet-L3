@@ -23,7 +23,8 @@ $this->menu=array(
 	'attributes'=>array(
 		'id_avis_employe',
 		'note_generale',
-		'commentaire_avis_employe',
+		'date_creation',
+		'nb_signalements',
 		'id_employe',
 		'id_utilisateur',
 	),

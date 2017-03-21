@@ -11,9 +11,9 @@
  * @property integer $id_cv
  *
  * The followings are the available model relations:
+ * @property Employe $idEmploye
  * @property CompetencesCv $idCompetence
  * @property Cv $idCv
- * @property Employe $idEmploye
  */
 class CvEmploye extends CActiveRecord
 {
@@ -33,6 +33,7 @@ class CvEmploye extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('niveau_competence, id_employe, id_competence, id_cv', 'required'),
 			array('niveau_competence, id_employe, id_competence, id_cv', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -48,9 +49,9 @@ class CvEmploye extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Competence' => array(self::BELONGS_TO, 'CompetencesCv', 'id_competence'),
-			'Cv' => array(self::BELONGS_TO, 'Cv', 'id_cv'),
-			'Employe' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
+			'idEmploye' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
+			'idCompetence' => array(self::BELONGS_TO, 'CompetencesCv', 'id_competence'),
+			'idCv' => array(self::BELONGS_TO, 'Cv', 'id_cv'),
 		);
 	}
 

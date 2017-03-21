@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->prenom_employe); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('age_employe')); ?>:</b>
-	<?php echo CHtml::encode($data->age_employe); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('date_naissance_employe')); ?>:</b>
+	<?php echo CHtml::encode($data->date_naissance_employe); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('employe_travaille')); ?>:</b>

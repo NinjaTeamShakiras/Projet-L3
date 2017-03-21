@@ -23,6 +23,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'id_critere_employe',
 		'nom_critere_employe',
-		'critere_note_employe',
+		'critere_note',
+		'description_critere',
 	),
 )); ?>

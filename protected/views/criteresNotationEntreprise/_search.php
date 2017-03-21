@@ -22,8 +22,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'critere_note_entreprise'); ?>
-		<?php echo $form->textField($model,'critere_note_entreprise'); ?>
+		<?php echo $form->label($model,'critere_note'); ?>
+		<?php echo $form->textField($model,'critere_note'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'description_critere'); ?>
+		<?php echo $form->textField($model,'description_critere',array('size'=>60,'maxlength'=>200)); ?>
 	</div>
 
 	<div class="row buttons">

@@ -13,10 +13,6 @@
 	<?php echo CHtml::encode($data->nom_entreprise); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('nombre_employes')); ?>:</b>
-	<?php echo CHtml::encode($data->nombre_employes); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('recherche_employes')); ?>:</b>
 	<?php echo CHtml::encode($data->recherche_employes); ?>
 	<br />
