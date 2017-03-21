@@ -41,6 +41,16 @@
 		<?php echo $form->textField($model,'id_entreprise'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'date_creation_utilisateur'); ?>
+		<?php echo $form->textField($model,'date_creation_utilisateur'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'date_derniere_connexion'); ?>
+		<?php echo $form->textField($model,'date_derniere_connexion'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

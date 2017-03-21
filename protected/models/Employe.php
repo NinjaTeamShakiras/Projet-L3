@@ -7,7 +7,7 @@
  * @property integer $id_employe
  * @property string $nom_employe
  * @property string $prenom_employe
- * @property integer $age_employe
+ * @property string $date_naissance_employe
  * @property integer $employe_travaille
  * @property string $mail_employe
  * @property string $telephone_employe
@@ -17,8 +17,9 @@
  * @property AvisEmploye[] $avisEmployes
  * @property CvEmploye[] $cvEmployes
  * @property Adresse $idAdresse
- * @property EntrepriseAvisCritere[] $entrepriseAvisCriteres
+ * @property InfosComplementairesEmploye[] $infosComplementairesEmployes
  * @property Travaille[] $travailles
+ * @property Utilisateur[] $utilisateurs
  */
 class Employe extends CActiveRecord
 {
@@ -38,13 +39,14 @@ class Employe extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('age_employe, employe_travaille, id_adresse', 'numerical', 'integerOnly'=>true),
+			array('nom_employe, prenom_employe, date_naissance_employe', 'required'),
+			array('employe_travaille, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_employe, prenom_employe', 'length', 'max'=>45),
 			array('mail_employe', 'length', 'max'=>70),
 			array('telephone_employe', 'length', 'max'=>12),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_employe, nom_employe, prenom_employe, age_employe, employe_travaille, mail_employe, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
+			array('id_employe, nom_employe, prenom_employe, date_naissance_employe, employe_travaille, mail_employe, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,11 +58,12 @@ class Employe extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'AvisEmployes' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
-			'CvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
-			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
-			'EntrepriseAvisCriteres' => array(self::HAS_MANY, 'EntrepriseAvisCritere', 'id_employe'),
-			'Travaille' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
+			'avisEmployes' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
+			'cvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
+			'idAdresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
+			'infosComplementairesEmployes' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
+			'travailles' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
+			'utilisateurs' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
 		);
 	}
 
@@ -71,13 +74,13 @@ class Employe extends CActiveRecord
 	{
 		return array(
 			'id_employe' => 'Id Employe',
-			'nom_employe' => 'Nom',
-			'prenom_employe' => 'Prenom',
-			'age_employe' => 'Age',
-			'employe_travaille' => 'Recherche un emploi',
-			'mail_employe' => 'Mail',
-			'telephone_employe' => 'Telephone',
-			'id_adresse' => 'Adresse',
+			'nom_employe' => 'Nom Employe',
+			'prenom_employe' => 'Prenom Employe',
+			'date_naissance_employe' => 'Date Naissance Employe',
+			'employe_travaille' => 'Employe Travaille',
+			'mail_employe' => 'Mail Employe',
+			'telephone_employe' => 'Telephone Employe',
+			'id_adresse' => 'Id Adresse',
 		);
 	}
 
@@ -102,7 +105,7 @@ class Employe extends CActiveRecord
 		$criteria->compare('id_employe',$this->id_employe);
 		$criteria->compare('nom_employe',$this->nom_employe,true);
 		$criteria->compare('prenom_employe',$this->prenom_employe,true);
-		$criteria->compare('age_employe',$this->age_employe);
+		$criteria->compare('date_naissance_employe',$this->date_naissance_employe,true);
 		$criteria->compare('employe_travaille',$this->employe_travaille);
 		$criteria->compare('mail_employe',$this->mail_employe,true);
 		$criteria->compare('telephone_employe',$this->telephone_employe,true);
@@ -113,35 +116,6 @@ class Employe extends CActiveRecord
 		));
 	}
 
-
-
-	public function AfficheTelephone($tel,$carEspacement=" ")
-	{
-		/**
-		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
-		* @tel : numéro de téléphone de l'entreprise
-		* @carEspacement : caractère à placer entre chaque 2 chiffres
-		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
-		* 			affiché
-		*/
-
-		$res ="";
-
-		for($i=0; $i<=10; $i++)
-		{
-			// On ajoute "carEspacement" tous les 2 chiffres.
-			if($i%2==0)
-			{
-				$res .= substr($tel, $i, 2);
-				$res .= $carEspacement;
-			}
-		}
-		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
-
-		return($res);
-	}
-
-	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -152,24 +126,4 @@ class Employe extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
-
-	/*
-		Fonction qui retourne l'employe à partir de l'identifiant d'un utilisateur
-		Paramètres : l'identifiant de l'utilisateur
-		Return : Un employe(Objet Employe) ou false si rien n'a été trouvé		*/
-
-	public static function get_employe_by_id_utilisateur($id_int)
-	{
-
-		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
-
-		if( is_null($utilisateur_obj) )
-			return false;
-		else 
-		{
-			return Employe::model()->findByAttributes( array("id_employe" => $utilisateur_obj->id_employe ) );
-		}
-	}
-
 }

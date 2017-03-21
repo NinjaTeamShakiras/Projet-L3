@@ -8,7 +8,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'avis-employe-form',
-	'action' => Yii::app()->createUrl('avisEmploye/create'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -27,9 +26,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'commentaire_avis_employe'); ?>
-		<?php echo $form->textField($model,'commentaire_avis_employe',array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'commentaire_avis_employe'); ?>
+		<?php echo $form->labelEx($model,'date_creation'); ?>
+		<?php echo $form->textField($model,'date_creation'); ?>
+		<?php echo $form->error($model,'date_creation'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'nb_signalements'); ?>
+		<?php echo $form->textField($model,'nb_signalements'); ?>
+		<?php echo $form->error($model,'nb_signalements'); ?>
 	</div>
 
 	<div class="row">

@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'age_employe'); ?>
-		<?php echo $form->textField($model,'age_employe'); ?>
+		<?php echo $form->label($model,'date_naissance_employe'); ?>
+		<?php echo $form->textField($model,'date_naissance_employe'); ?>
 	</div>
 
 	<div class="row">

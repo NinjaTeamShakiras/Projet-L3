@@ -1,7 +1,6 @@
 <?php
 /* @var $this EmployeController */
 /* @var $model Employe */
-/* @var $adresse Adresse */
 /* @var $form CActiveForm */
 ?>
 
@@ -16,14 +15,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); 
-
-		// Récupération de l'adresse
-		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
-	?>
-
+	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nom_employe'); ?>
@@ -38,14 +32,14 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'age_employe'); ?>
-		<?php echo $form->textField($model,'age_employe'); ?>
-		<?php echo $form->error($model,'age_employe'); ?>
+		<?php echo $form->labelEx($model,'date_naissance_employe'); ?>
+		<?php echo $form->textField($model,'date_naissance_employe'); ?>
+		<?php echo $form->error($model,'date_naissance_employe'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'employe_travaille'); ?>
-		<?php echo $form->dropDownList($model, 'employe_travaille', array('0' => 'Oui', '1' => 'Non')); ?>
+		<?php echo $form->textField($model,'employe_travaille'); ?>
 		<?php echo $form->error($model,'employe_travaille'); ?>
 	</div>
 
@@ -57,37 +51,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telephone_employe'); ?>
-		<?php echo "Veuillez entrer votre numéro sous la forme 0606060606<br/>"; ?>
 		<?php echo $form->textField($model,'telephone_employe',array('size'=>12,'maxlength'=>12)); ?>
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
-	<!-- Changement de source, on recherche dans $adresse-->
-
 	<div class="row">
-		<?php echo $form->labelEx($adresse,'rue'); ?>
-		<?php echo $form->textField($adresse,'rue'); ?>
-		<?php echo $form->error($adresse,'rue'); ?>
+		<?php echo $form->labelEx($model,'id_adresse'); ?>
+		<?php echo $form->textField($model,'id_adresse'); ?>
+		<?php echo $form->error($model,'id_adresse'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($adresse,'ville'); ?>
-		<?php echo $form->textField($adresse,'ville'); ?>
-		<?php echo $form->error($adresse,'ville'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($adresse,'code_postal'); ?>
-		<?php echo $form->textField($adresse,'code_postal'); ?>
-		<?php echo $form->error($adresse,'code_postal'); ?>
-	</div>
-	<!-- Fin changement de source -->
-
-	<!-- BUTTON -->
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
-	<!-- FIN BUTTON -->
 
 <?php $this->endWidget(); ?>
 

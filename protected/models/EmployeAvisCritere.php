@@ -5,15 +5,14 @@
  *
  * The followings are the available columns in table 'employe_avis_critere':
  * @property integer $id_employe_avis
- * @property integer $note_employe_avis
- * @property integer $id_entreprise
+ * @property integer $note_employe_critere
+ * @property string $commentaire_evaluation_critere
  * @property integer $id_critere_notation_employe
  * @property integer $id_avis_employe
  *
  * The followings are the available model relations:
- * @property AvisEmploye $idAvisEmploye
  * @property CriteresNotationEmploye $idCritereNotationEmploye
- * @property Entreprise $idEntreprise
+ * @property AvisEmploye $idAvisEmploye
  */
 class EmployeAvisCritere extends CActiveRecord
 {
@@ -33,10 +32,12 @@ class EmployeAvisCritere extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_employe_avis, id_entreprise, id_critere_notation_employe, id_avis_employe', 'numerical', 'integerOnly'=>true),
+			array('id_critere_notation_employe, id_avis_employe', 'required'),
+			array('note_employe_critere, id_critere_notation_employe, id_avis_employe', 'numerical', 'integerOnly'=>true),
+			array('commentaire_evaluation_critere', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_employe_avis, note_employe_avis, id_entreprise, id_critere_notation_employe, id_avis_employe', 'safe', 'on'=>'search'),
+			array('id_employe_avis, note_employe_critere, commentaire_evaluation_critere, id_critere_notation_employe, id_avis_employe', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,9 +49,8 @@ class EmployeAvisCritere extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'AvisEmploye' => array(self::BELONGS_TO, 'AvisEmploye', 'id_avis_employe'),
-			'CritereNotationEmploye' => array(self::BELONGS_TO, 'CriteresNotationEmploye', 'id_critere_notation_employe'),
-			'Entreprise' => array(self::BELONGS_TO, 'Entreprise', 'id_entreprise'),
+			'idCritereNotationEmploye' => array(self::BELONGS_TO, 'CriteresNotationEmploye', 'id_critere_notation_employe'),
+			'idAvisEmploye' => array(self::BELONGS_TO, 'AvisEmploye', 'id_avis_employe'),
 		);
 	}
 
@@ -61,8 +61,8 @@ class EmployeAvisCritere extends CActiveRecord
 	{
 		return array(
 			'id_employe_avis' => 'Id Employe Avis',
-			'note_employe_avis' => 'Note Employe Avis',
-			'id_entreprise' => 'Id Entreprise',
+			'note_employe_critere' => 'Note Employe Critere',
+			'commentaire_evaluation_critere' => 'Commentaire Evaluation Critere',
 			'id_critere_notation_employe' => 'Id Critere Notation Employe',
 			'id_avis_employe' => 'Id Avis Employe',
 		);
@@ -87,8 +87,8 @@ class EmployeAvisCritere extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_employe_avis',$this->id_employe_avis);
-		$criteria->compare('note_employe_avis',$this->note_employe_avis);
-		$criteria->compare('id_entreprise',$this->id_entreprise);
+		$criteria->compare('note_employe_critere',$this->note_employe_critere);
+		$criteria->compare('commentaire_evaluation_critere',$this->commentaire_evaluation_critere,true);
 		$criteria->compare('id_critere_notation_employe',$this->id_critere_notation_employe);
 		$criteria->compare('id_avis_employe',$this->id_avis_employe);
 

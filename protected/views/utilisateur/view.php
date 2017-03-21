@@ -27,5 +27,7 @@ $this->menu=array(
 		'role',
 		'id_employe',
 		'id_entreprise',
+		'date_creation_utilisateur',
+		'date_derniere_connexion',
 	),
 )); ?>

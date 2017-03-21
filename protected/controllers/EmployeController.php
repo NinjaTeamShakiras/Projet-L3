@@ -26,30 +26,23 @@ class EmployeController extends Controller
 	 */
 	public function accessRules()
 	{
-		if(Yii::app()->user->role == 'employe')
-		{
-			return array(
-					array('allow',
-						'actions'=>['index','view', 'update', 'delete'],
-						),
-					array('deny',
-						'actions'=>['admin'],
-						),
-					);
-		}
-
-		if(Yii::app()->user->role == 'entreprise')
-		{
-
-			return array(
-					array('allow',
-						'actions'=>['view'],
-						),
-					array('deny',
-						'actions'=>['index','update','admin'],
-						),
-					);
-		}
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
 	}
 
 	/**
@@ -94,33 +87,19 @@ class EmployeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$adresse= Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Employe']) && isset($_POST['Adresse']))
+		if(isset($_POST['Employe']))
 		{
-
-			$model->attributes = $_POST['Employe'];
-			$adresse->attributes = $_POST['Adresse'];
-
-			$valid = $model->validate();
-			$valid = $adresse->validate() && $valid;;
-
-			if($valid)
-			{
-				if($model->save())
-				{
-					$adresse->save();
-					$this->redirect(array('view','id'=>$model->id_employe));
-				}
-			}			
+			$model->attributes=$_POST['Employe'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_employe));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-			'adresse'=>$adresse,
 		));
 	}
 
@@ -131,55 +110,11 @@ class EmployeController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$model = $this->loadModel($id);
-
-		//on supprime les users
-		$users = $users = Utilisateur::model()->findall("id_employe = ".$model->id_employe);
-		if(count($users>=0))
-		{
-			foreach($users as $user)
-			{
-				$user->delete();
-			}
-		}
-
-		//on supprime les occurences de la table travaille
-		$travailles = $travailles = Travaille::model()->findall("id_employe = ".$model->id_employe);
-		if(count($travailles>=0))
-		{
-			foreach($travailles as $travaille)
-			{
-				$travaille->delete();
-			}
-		}
-
-		//on supprime le cv de l'employé
-		$CVs = $CVs = CvEmploye::model()->findall("id_employe = ".$model->id_employe);
-		if(count($CVs>=0))
-		{
-			foreach($CVs as $CV)
-			{
-				$CV->delete();
-			}
-		}
-
-
-		//Pour chaque avis, on supprime 
-		$avis_emp = $avis_emp = AvisEmploye::model()->findall("id_employe = ".$model->id_employe);
-		if(count($avis_emp>=0))
-		{
-			foreach($avis_emp as $avis)
-			{
-				$avis->delete();
-			}
-		}
-
-		Yii::app()->user->logout();
-		$model->delete();	
+		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect("index.php");
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -234,13 +169,5 @@ class EmployeController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-
-	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
-		Paramètres : L'identifiant de l'utilisateur 
-		Return : Un identifiant (Integer) 		*/
-	protected function get_id_utilisateur_connexion($login_str)
-	{
-		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_employe;
 	}
 }

@@ -1,7 +1,6 @@
 <?php
 /* @var $this EntrepriseController */
 /* @var $model Entreprise */
-/* @var $adresse Adresse */
 /* @var $form CActiveForm */
 ?>
 
@@ -16,15 +15,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model);
-
-		// Récupération de l'adresse
-		$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
-
-	?>
-
+	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nom_entreprise'); ?>
@@ -33,14 +26,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'nombre_employes'); ?>
-		<?php echo $form->textField($model,'nombre_employes'); ?>
-		<?php echo $form->error($model,'nombre_employes'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'recherche_employes'); ?>
-		<?php echo $form->dropDownList($model, 'recherche_employes', array('1' => 'Oui', '0' => 'Non')); ?>
+		<?php echo $form->textField($model,'recherche_employes'); ?>
 		<?php echo $form->error($model,'recherche_employes'); ?>
 	</div>
 
@@ -56,34 +43,15 @@
 		<?php echo $form->error($model,'telephone_entreprise'); ?>
 	</div>
 
-
-	<!-- Changement de source, on recherche dans $adresse-->
 	<div class="row">
-		<?php echo $form->labelEx($adresse,'rue'); ?>
-		<?php echo $form->textField($adresse,'rue'); ?>	
-		<?php echo $form->error($adresse,'rue'); ?>
+		<?php echo $form->labelEx($model,'id_adresse'); ?>
+		<?php echo $form->textField($model,'id_adresse'); ?>
+		<?php echo $form->error($model,'id_adresse'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($adresse,'ville'); ?>
-		<?php echo $form->textField($adresse,'ville'); ?>
-		<?php echo $form->error($adresse,'ville'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($adresse,'code_postal'); ?>
-		<?php echo $form->textField($adresse,'code_postal'); ?>
-		<?php echo $form->error($adresse,'code_postal'); ?>
-	</div>
-	<!-- Fin changement de source -->
-
-
-	<!-- BUTTON -->
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Enregistrer'); ?>
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'View' : 'Annuler'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
-	<!-- FIN BUTTON -->
 
 <?php $this->endWidget(); ?>
 

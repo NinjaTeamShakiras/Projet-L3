@@ -22,8 +22,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'commentaire_avis_employe'); ?>
-		<?php echo $form->textField($model,'commentaire_avis_employe',array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->label($model,'date_creation'); ?>
+		<?php echo $form->textField($model,'date_creation'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'nb_signalements'); ?>
+		<?php echo $form->textField($model,'nb_signalements'); ?>
 	</div>
 
 	<div class="row">

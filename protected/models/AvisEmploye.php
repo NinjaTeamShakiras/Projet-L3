@@ -6,13 +6,14 @@
  * The followings are the available columns in table 'avis_employe':
  * @property integer $id_avis_employe
  * @property integer $note_generale
- * @property string $commentaire_avis_employe
+ * @property string $date_creation
+ * @property integer $nb_signalements
  * @property integer $id_employe
  * @property integer $id_utilisateur
  *
  * The followings are the available model relations:
- * @property Utilisateur $idUtilisateur
  * @property Employe $idEmploye
+ * @property Utilisateur $idUtilisateur
  * @property EmployeAvisCritere[] $employeAvisCriteres
  */
 class AvisEmploye extends CActiveRecord
@@ -33,11 +34,11 @@ class AvisEmploye extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
-			array('commentaire_avis_employe', 'length', 'max'=>300),
+			array('note_generale, date_creation, nb_signalements, id_employe, id_utilisateur', 'required'),
+			array('note_generale, nb_signalements, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_employe, note_generale, commentaire_avis_employe, id_employe, id_utilisateur', 'safe', 'on'=>'search'),
+			array('id_avis_employe, note_generale, date_creation, nb_signalements, id_employe, id_utilisateur', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,8 +50,8 @@ class AvisEmploye extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idUtilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_utilisateur'),
 			'idEmploye' => array(self::BELONGS_TO, 'Employe', 'id_employe'),
+			'idUtilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_utilisateur'),
 			'employeAvisCriteres' => array(self::HAS_MANY, 'EmployeAvisCritere', 'id_avis_employe'),
 		);
 	}
@@ -63,7 +64,8 @@ class AvisEmploye extends CActiveRecord
 		return array(
 			'id_avis_employe' => 'Id Avis Employe',
 			'note_generale' => 'Note Generale',
-			'commentaire_avis_employe' => 'Commentaire Avis Employe',
+			'date_creation' => 'Date Creation',
+			'nb_signalements' => 'Nb Signalements',
 			'id_employe' => 'Id Employe',
 			'id_utilisateur' => 'Id Utilisateur',
 		);
@@ -89,7 +91,8 @@ class AvisEmploye extends CActiveRecord
 
 		$criteria->compare('id_avis_employe',$this->id_avis_employe);
 		$criteria->compare('note_generale',$this->note_generale);
-		$criteria->compare('commentaire_avis_employe',$this->commentaire_avis_employe,true);
+		$criteria->compare('date_creation',$this->date_creation,true);
+		$criteria->compare('nb_signalements',$this->nb_signalements);
 		$criteria->compare('id_employe',$this->id_employe);
 		$criteria->compare('id_utilisateur',$this->id_utilisateur);
 
@@ -107,29 +110,5 @@ class AvisEmploye extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-
-	public static function afficher_avis($objet)
-	{
-
-		$entreprise_obj = Entreprise::get_entreprise_by_id_utilisateur($objet->id_utilisateur);
-
-		if( is_a( $objet, __CLASS__ ) && is_a( $entreprise_obj, "Entreprise" ) )
-		{
-			print
-			(
-				'<div style="border: solid 1px; margin : 2% 0%; padding: 2%;">
-					<p>Note : ' . $objet->note_generale  . '<p>
-					<p>Commentaire : ' . $objet->commentaire_avis_employe  . '<p>
-					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
-				</div>'
-
-			);
-		}
-		else 
-		{
-			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
-		}
 	}
 }
