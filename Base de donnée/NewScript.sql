@@ -3,6 +3,35 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
+-- ORDRE D'IMPORTATION
+-- ---------------------------------
+-- 1) adresse
+-- 2) employe
+-- 3) entreprise
+-- 4) Utilisateur
+-- 5) travaille
+-- 6) Competences_CV
+-- 7) CV
+-- 8) CV_Employe
+-- 9) Criteres_Notation_Employe
+-- 10) Criteres_notation_entreprise
+-- 11) avis_employe
+-- 12) avis_entreprise
+-- 13) employe_avis_critere
+-- 14) entreprise_avis_critere
+-- 15) Infos_Complementaires_Profil
+-- 16) Infos_Complementaires_Employe
+-- 17) Infos_Complementaires_Entreprise
+-- 18) Notification
+-- ---------------------------------
+
+
+
+
+
+
+
+
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
@@ -12,14 +41,20 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `prozzl_test` ;
 
+
 -- -----------------------------------------------------
 -- Schema prozzl_test
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `prozzl_test` DEFAULT CHARACTER SET utf8 ;
 USE `prozzl_test` ;
 
+
+
+
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Adresse`
+-- 1) Table `prozzl_test`.`Adresse`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Adresse` ;
 
@@ -32,8 +67,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Adresse` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Employe`
+-- 2) Table `prozzl_test`.`Employe`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Employe` ;
 
@@ -57,7 +94,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Entreprise`
+-- 3) Table `prozzl_test`.`Entreprise`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Entreprise` ;
 
@@ -78,8 +115,44 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Entreprise` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Travaille`
+-- 4) Table `prozzl_test`.`Utilisateur`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prozzl_test`.`Utilisateur` ;
+
+CREATE TABLE IF NOT EXISTS `prozzl_test`.`Utilisateur` (
+  `id_utilisateur` INT NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(50) NOT NULL,
+  `mot_de_passe` VARCHAR(100) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  `id_employe` INT NULL,
+  `id_entreprise` INT NULL,
+  `date_creation_utilisateur` DATETIME NOT NULL,
+  `date_derniere_connexion` DATETIME NOT NULL,
+  PRIMARY KEY (`id_utilisateur`),
+  UNIQUE INDEX `id_user_UNIQUE` (`id_utilisateur` ASC),
+  INDEX `fk_id_employe_utilisateur_employe` (`id_employe` ASC),
+  INDEX `fk_id_entreprise_utilisateur_entreprise` (`id_entreprise` ASC),
+  CONSTRAINT `fk_id_employe_utilisateur_employe`
+    FOREIGN KEY (`id_employe`)
+    REFERENCES `prozzl_test`.`Employe` (`id_employe`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_entreprise_utilisateur_entreprise`
+    FOREIGN KEY (`id_entreprise`)
+    REFERENCES `prozzl_test`.`Entreprise` (`id_entreprise`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+
+
+
+-- -----------------------------------------------------
+-- 5) Table `prozzl_test`.`Travaille`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Travaille` ;
 
@@ -106,8 +179,11 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Travaille` (
 ENGINE = InnoDB;
 
 
+
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Competences_CV`
+-- 6) Table `prozzl_test`.`Competences_CV`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Competences_CV` ;
 
@@ -119,7 +195,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`CV`
+-- 7) Table `prozzl_test`.`CV`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`CV` ;
 
@@ -129,8 +205,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`CV` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`CV_Employe`
+-- 8) Table `prozzl_test`.`CV_Employe`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`CV_Employe` ;
 
@@ -162,8 +240,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`CV_Employe` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Criteres_Notation_Employe`
+-- 9) Table `prozzl_test`.`Criteres_Notation_Employe`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Employe` ;
 
@@ -177,38 +257,52 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Utilisateur`
+-- 10) Table `prozzl_test`.`Criteres_Notation_Entreprise`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prozzl_test`.`Utilisateur` ;
+DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` ;
 
-CREATE TABLE IF NOT EXISTS `prozzl_test`.`Utilisateur` (
-  `id_utilisateur` INT NOT NULL AUTO_INCREMENT,
-  `login` VARCHAR(50) NOT NULL,
-  `mot_de_passe` VARCHAR(100) NOT NULL,
-  `role` VARCHAR(45) NOT NULL,
-  `id_employe` INT NULL,
-  `id_entreprise` INT NULL,
-  `date_creation_utilisateur` DATETIME NOT NULL,
-  `date_derniere_connexion` DATETIME NOT NULL,
-  PRIMARY KEY (`id_utilisateur`),
-  UNIQUE INDEX `id_user_UNIQUE` (`id_utilisateur` ASC),
-  INDEX `fk_id_employe_utilisateur_employe` (`id_employe` ASC),
-  INDEX `fk_id_entreprise_utilisateur_entreprise` (`id_entreprise` ASC),
-  CONSTRAINT `fk_id_employe_utilisateur_employe`
+CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` (
+  `id_critere_entreprise` INT NOT NULL AUTO_INCREMENT,
+  `nom_critere_entreprise` VARCHAR(30) NOT NULL,
+  `critere_note` TINYINT(1) NOT NULL,
+  `description_critere` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id_critere_entreprise`))
+ENGINE = InnoDB;
+
+
+
+
+
+-- -----------------------------------------------------
+-- 11) Table `prozzl_test`.`Avis_Employe`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prozzl_test`.`Avis_Employe` ;
+
+CREATE TABLE IF NOT EXISTS `prozzl_test`.`Avis_Employe` (
+  `id_avis_employe` INT NOT NULL AUTO_INCREMENT,
+  `note_generale_avis` INT NOT NULL,
+  `date_creation` DATETIME NOT NULL,
+  `nb_signalements` INT NOT NULL,
+  `id_employe` INT NOT NULL,
+  `id_utilisateur` INT NOT NULL,
+  PRIMARY KEY (`id_avis_employe`),
+  INDEX `index_id_employe_avis_employe` (`id_employe` ASC),
+  INDEX `index_id_utilisateur_avis_employeutilisateur` (`id_utilisateur` ASC),
+  CONSTRAINT `fk_id_employe_avis_employe`
     FOREIGN KEY (`id_employe`)
     REFERENCES `prozzl_test`.`Employe` (`id_employe`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_id_entreprise_utilisateur_entreprise`
-    FOREIGN KEY (`id_entreprise`)
-    REFERENCES `prozzl_test`.`Entreprise` (`id_entreprise`)
+  CONSTRAINT `fk_id_utilisateur_avis_employe_utilisateur`
+    FOREIGN KEY (`id_utilisateur`)
+    REFERENCES `prozzl_test`.`Utilisateur` (`id_utilisateur`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Avis_Entreprise`
+-- 12) Table `prozzl_test`.`Avis_Entreprise`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Avis_Entreprise` ;
 
@@ -235,77 +329,12 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Avis_Entreprise` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `prozzl_test`.`Criteres_Notation_Entreprise`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` ;
 
-CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` (
-  `id_critere_entreprise` INT NOT NULL AUTO_INCREMENT,
-  `nom_critere_entreprise` VARCHAR(30) NOT NULL,
-  `critere_note` TINYINT(1) NOT NULL,
-  `description_critere` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`id_critere_entreprise`))
-ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Avis_Employe`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `prozzl_test`.`Avis_Employe` ;
-
-CREATE TABLE IF NOT EXISTS `prozzl_test`.`Avis_Employe` (
-  `id_avis_employe` INT NOT NULL AUTO_INCREMENT,
-  `note_generale` INT NOT NULL,
-  `date_creation` DATETIME NOT NULL,
-  `nb_signalements` INT NOT NULL,
-  `id_employe` INT NOT NULL,
-  `id_utilisateur` INT NOT NULL,
-  PRIMARY KEY (`id_avis_employe`),
-  INDEX `index_id_employe_avis_employe` (`id_employe` ASC),
-  INDEX `index_id_utilisateur_avis_employeutilisateur` (`id_utilisateur` ASC),
-  CONSTRAINT `fk_id_employe_avis_employe`
-    FOREIGN KEY (`id_employe`)
-    REFERENCES `prozzl_test`.`Employe` (`id_employe`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_id_utilisateur_avis_employe_utilisateur`
-    FOREIGN KEY (`id_utilisateur`)
-    REFERENCES `prozzl_test`.`Utilisateur` (`id_utilisateur`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `prozzl_test`.`Entreprise_Avis_Critere`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `prozzl_test`.`Entreprise_Avis_Critere` ;
-
-CREATE TABLE IF NOT EXISTS `prozzl_test`.`Entreprise_Avis_Critere` (
-  `id_entreprise_avis` INT NOT NULL AUTO_INCREMENT,
-  `note_entreprise_critere` INT NULL,
-  `id_critere_notation_entreprise` INT NOT NULL,
-  `id_avis_entreprise` INT NOT NULL,
-  `commentaire_evaluation_critere` VARCHAR(300) NULL,
-  PRIMARY KEY (`id_entreprise_avis`),
-  INDEX `index_id_critere_avis_critere_employe` (`id_critere_notation_entreprise` ASC),
-  INDEX `index_id_avis_entreprise_avis_critere_avis_entreprise` (`id_avis_entreprise` ASC),
-  CONSTRAINT `fk_id_critere_avis_critere_employe`
-    FOREIGN KEY (`id_critere_notation_entreprise`)
-    REFERENCES `prozzl_test`.`Criteres_Notation_Entreprise` (`id_critere_entreprise`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_id_avis_entreprise_avis_critere_avis_entreprise`
-    FOREIGN KEY (`id_avis_entreprise`)
-    REFERENCES `prozzl_test`.`Avis_Entreprise` (`id_avis_entreprise`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `prozzl_test`.`Employe_Avis_Critere`
+-- 13) Table `prozzl_test`.`Employe_Avis_Critere`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Employe_Avis_Critere` ;
 
@@ -332,7 +361,36 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Infos_Complementaires_Profil`
+-- 14) Table `prozzl_test`.`Entreprise_Avis_Critere`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prozzl_test`.`Entreprise_Avis_Critere` ;
+
+CREATE TABLE IF NOT EXISTS `prozzl_test`.`Entreprise_Avis_Critere` (
+  `id_entreprise_avis` INT NOT NULL AUTO_INCREMENT,
+  `note_entreprise_critere` INT NULL,
+  `id_critere_notation_entreprise` INT NOT NULL,
+  `id_avis_entreprise` INT NOT NULL,
+  `commentaire_evaluation_critere` VARCHAR(300) NULL,
+  PRIMARY KEY (`id_entreprise_avis`),
+  INDEX `index_id_critere_avis_critere_employe` (`id_critere_notation_entreprise` ASC),
+  INDEX `index_id_avis_entreprise_avis_critere_avis_entreprise` (`id_avis_entreprise` ASC),
+  CONSTRAINT `fk_id_critere_avis_critere_employe`
+    FOREIGN KEY (`id_critere_notation_entreprise`)
+    REFERENCES `prozzl_test`.`Criteres_Notation_Entreprise` (`id_critere_entreprise`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_avis_entreprise_avis_critere_avis_entreprise`
+    FOREIGN KEY (`id_avis_entreprise`)
+    REFERENCES `prozzl_test`.`Avis_Entreprise` (`id_avis_entreprise`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+
+
+-- -----------------------------------------------------
+-- 15) Table `prozzl_test`.`Infos_Complementaires_Profil`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Infos_Complementaires_Profil` ;
 
@@ -344,8 +402,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Infos_Complementaires_Profil` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Infos_Complementaires_Employe`
+-- 16) Table `prozzl_test`.`Infos_Complementaires_Employe`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Infos_Complementaires_Employe` ;
 
@@ -370,8 +430,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Infos_Complementaires_Employe` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Infos_Complementaires_Entreprise`
+-- 17) Table `prozzl_test`.`Infos_Complementaires_Entreprise`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Infos_Complementaires_Entreprise` ;
 
@@ -396,8 +458,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Infos_Complementaires_Entreprise` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
--- Table `prozzl_test`.`Notifications`
+-- 18) Table `prozzl_test`.`Notifications`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prozzl_test`.`Notifications` ;
 
