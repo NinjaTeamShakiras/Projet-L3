@@ -16381,3 +16381,21 @@ REQUEST_URI=/projet/index.php?r=entreprise/view&id=2
 ---
 >>>>>>> bbc754ff5fbbf03181083579e75f746f4564ffdd
 >>>>>>> fbc0d93ae4c67023b13dfa94cebbcccc4b5883d7
+2017/03/28 11:52:26 [error] [php] date_default_timezone_set(): Timezone ID 'France' is invalid (C:\wamp64\www\projet\protected\views\site\inscription.php:29)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#1 C:\wamp64\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#2 C:\wamp64\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#3 C:\wamp64\www\projet\protected\controllers\SiteController.php(132): SiteController->render()
+#4 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#5 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#7 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#9 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\views\site\inscription.php (29)
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (132)
+in C:\wamp64\www\projet\index.php (13)
