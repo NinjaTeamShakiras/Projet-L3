@@ -20,25 +20,18 @@ class UserIdentity extends CUserIdentity
 		//On fait appel au model Utilisateur pour trouver l'utilisateur en cours
 		//--> On le trouve grace à son login
 		$user = Utilisateur::model()->findByAttributes(array('login'=>$this->username));
+		var_dump($user);
 
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-			$user->login => $user->mot_de_passe
-		);
-
-		if(!isset($users[$this->username]))
+		if($user == null)
 		{
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-			// CHANGER CODE ERREUR UTILISATEUR
 		}
-		elseif($users[$this->username]!==$this->password)
+		else if($this->password != $user->mot_de_passe)
 		{
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-			// CHANGER CODE ERREUR PASSWORD
 		}
 		else
+		{
 			$this->errorCode=self::ERROR_NONE;
 
 			//Gestion des rôles
@@ -62,6 +55,7 @@ class UserIdentity extends CUserIdentity
 				$this->setState('type', 'admin');	
 				$this->setState('role', 'admin');
 			}
+		}	
 
 		return !$this->errorCode;
 	}

@@ -51,7 +51,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div>
-		<p>Login : CP (pour employe), GIT (pour entreprise)</p>
+		<p>Login : MF (pour employe), GIT (pour entreprise)</p>
 		<p>MDP : password (pour les 2)</p>
 	</div>
 
