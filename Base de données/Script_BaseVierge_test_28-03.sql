@@ -21,6 +21,7 @@
 -- 16) Infos_Complementaires_Employe
 -- 17) Infos_Complementaires_Entreprise
 -- 18) Notification
+-- 19) Offre_Emploi
 -- ---------------------------------
 
 
@@ -481,3 +482,51 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- 19) Table `prozzl_test`.`Offre_Emploi`
+-- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `prozzl_test`.`Offre_Emploi` ;
+
+-- CREATE TABLE IF NOT EXISTS `prozzl_test`.`Offre_Emploi` (
+--   `id_offre_emploi` INT NOT NULL AUTO_INCREMENT,
+--   `` INT NOT NULL,
+--   `date_creation_offre_emploi` DATETIME NOT NULL,
+--   `type_offre_emploi` VARCHAR(30) NULL,
+--   `salaire_offre_emploi` VARCHAR(30) NULL,
+--   `experience_offre_emploi` VARCHAR(500) NULL,
+--   `description_offre_emploi` VARCHAR(500) NULL,
+--   `id_entreprise` INT NOT NULL,
+
+--   PRIMARY KEY (`id_offre_emploi`),
+--   INDEX `index_id_entreprise_avis_entreprise` (`id_entreprise` ASC),
+--   INDEX `index_id_utilisateur_utilisateur` (`id_utilisateur` ASC),
+--   CONSTRAINT `fk_id_entreprise_avis_entreprise`
+--     FOREIGN KEY (`id_entreprise`)
+--     REFERENCES `prozzl_test`.`Entreprise` (`id_entreprise`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_id_utilisateur_utilisateur`
+--     FOREIGN KEY (`id_offre_emploi`)
+--     REFERENCES `prozzl_test`.`Offre_Emploi` (`id_offre_emploi`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
