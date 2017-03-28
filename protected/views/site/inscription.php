@@ -24,8 +24,7 @@
 		<?php echo $form->passwordfield($model,'mot_de_passe'); ?>
 		<?php echo $form->error($model,'mot_de_passe'); ?>
 	</div>
-	<?php setlocale(LC_TIME,'fr_FR.utf8','fra');
-	echo (strftime("%Y-%m-%d %X"));	?>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Inscription'); ?>
 	</div>
