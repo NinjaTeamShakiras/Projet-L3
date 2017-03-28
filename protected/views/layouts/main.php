@@ -70,7 +70,8 @@
 				// Visible hors connexion
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				// Visible que si connecté
-				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Inscription', 'url'=>array('/site/inscription'), 'visible'=>Yii::app()->user->isGuest),  
 				),
 			));
 		}
