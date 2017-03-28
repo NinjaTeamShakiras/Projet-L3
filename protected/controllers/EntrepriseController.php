@@ -178,4 +178,13 @@ class EntrepriseController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
+		Paramètres : L'identifiant de l'utilisateur 
+		Return : Un identifiant (Integer) 		*/
+	protected function get_id_utilisateur_connexion($login_str)
+	{
+		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
+	}
+
 }

@@ -34,8 +34,8 @@ class AvisEmploye extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale, date_creation, nb_signalements, id_employe, id_utilisateur', 'required'),
-			array('note_generale, nb_signalements, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
+			array('note_generale_avis, date_creation, nb_signalements, id_employe, id_utilisateur', 'required'),
+			array('note_generale_avis, nb_signalements, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_avis_employe, note_generale, date_creation, nb_signalements, id_employe, id_utilisateur', 'safe', 'on'=>'search'),
@@ -63,7 +63,7 @@ class AvisEmploye extends CActiveRecord
 	{
 		return array(
 			'id_avis_employe' => 'Id Avis Employe',
-			'note_generale' => 'Note Generale',
+			'note_generale_avis' => 'Note Generale',
 			'date_creation' => 'Date Creation',
 			'nb_signalements' => 'Nb Signalements',
 			'id_employe' => 'Id Employe',
@@ -90,7 +90,7 @@ class AvisEmploye extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_avis_employe',$this->id_avis_employe);
-		$criteria->compare('note_generale',$this->note_generale);
+		$criteria->compare('note_generale_avis',$this->note_generale);
 		$criteria->compare('date_creation',$this->date_creation,true);
 		$criteria->compare('nb_signalements',$this->nb_signalements);
 		$criteria->compare('id_employe',$this->id_employe);
@@ -111,4 +111,28 @@ class AvisEmploye extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+	public static function afficher_avis($objet)
+	{
+
+		$entreprise_obj = entreprise::get_entreprise_by_id_utilisateur($objet->id_utilisateur);
+
+		if( is_a( $objet, __CLASS__ ) && !is_null( $entreprise_obj ) )
+		{
+			print
+			(
+				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
+					<p>Note : ' . $objet->note_generale_avis  . '<p>
+					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
+				</div>'
+
+			);
+		}
+		else 
+		{
+			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
+		}
+	}
+
 }

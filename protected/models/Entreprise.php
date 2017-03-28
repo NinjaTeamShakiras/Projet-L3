@@ -56,7 +56,7 @@ class Entreprise extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'avisEntreprises' => array(self::HAS_MANY, 'AvisEntreprise', 'id_entreprise'),
-			'idAdresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
+			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
 			'infosComplementairesEntreprises' => array(self::HAS_MANY, 'InfosComplementairesEntreprise', 'id_entreprise'),
 			'travailles' => array(self::HAS_MANY, 'Travaille', 'id_entreprise'),
 			'utilisateurs' => array(self::HAS_MANY, 'Utilisateur', 'id_entreprise'),
@@ -117,5 +117,53 @@ class Entreprise extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+
+	public function AfficheTelephone($tel,$carEspacement=" ")
+	{
+		/**
+		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
+		* @tel : numéro de téléphone de l'entreprise
+		* @carEspacement : caractère à placer entre chaque 2 chiffres
+		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
+		* 			affiché
+		*/
+
+		$res ="";
+
+		for($i=0; $i<=10; $i++)
+		{
+			// On ajoute "carEspacement" tous les 2 chiffres.
+			if($i%2==0)
+			{
+				$res .= substr($tel, $i, 2);
+				$res .= $carEspacement;
+			}
+		}
+		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
+
+		return($res);
+	}
+
+
+	/*
+		Fonction qui retourne l'entreprise de l'entreprise
+		Paramètres : l'identifiant de l'utilisateur
+		Return : Une entreprise ou false si rien n'a été trouvé		*/
+
+	public static function get_entreprise_by_id_utilisateur($id_int)
+	{
+
+		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
+		
+		$tmp = Entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
+
+		if( is_null($utilisateur_obj) )
+			return null;
+		else 
+		{
+			return Entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
+		}
 	}
 }
