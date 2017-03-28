@@ -90,6 +90,9 @@ class SiteController extends Controller
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
+			$user = Utilisateur::model()->findbyattributes(array('login'=>$model->username));
+			$user->date_derniere_connexion = date("Y-m-d H:i:s");
+			
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$user = Utilisateur::model()->findByattributes(array('login'=>$model->username));

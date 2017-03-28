@@ -26,23 +26,31 @@ class EntrepriseController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+		if(Yii::app()->user->role == 'entreprise')
+		{
+			return array(
+					array('allow',
+						'actions'=>['index','view', 'update'],
+						),
+					array('deny',
+						'actions'=>['admin', 'delete'],
+						),
+					);
+		}
+
+		if(Yii::app()->user->role == 'employe')
+		{
+
+			return array(
+					array('allow',
+						'actions'=>['view'],
+						),
+					array('deny',
+						'actions'=>['index','update','admin'],
+						),
+					);
+		}
+
 	}
 
 	/**
@@ -170,4 +178,13 @@ class EntrepriseController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
+		Paramètres : L'identifiant de l'utilisateur 
+		Return : Un identifiant (Integer) 		*/
+	protected function get_id_utilisateur_connexion($login_str)
+	{
+		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
+	}
+
 }

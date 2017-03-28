@@ -60,7 +60,7 @@ class Employe extends CActiveRecord
 		return array(
 			'avisEmployes' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
 			'cvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
-			'idAdresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
+			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
 			'infosComplementairesEmployes' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
 			'travailles' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
 			'utilisateurs' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
@@ -126,4 +126,58 @@ class Employe extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+
+	public function AfficheTelephone($tel,$carEspacement=" ")
+	{
+		/**
+		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
+		* @tel : numéro de téléphone de l'entreprise
+		* @carEspacement : caractère à placer entre chaque 2 chiffres
+		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
+		* 			affiché
+		*/
+
+		$res ="";
+
+		for($i=0; $i<=10; $i++)
+		{
+			// On ajoute "carEspacement" tous les 2 chiffres.
+			if($i%2==0)
+			{
+				$res .= substr($tel, $i, 2);
+				$res .= $carEspacement;
+			}
+		}
+		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
+
+		return($res);
+	}
+
+
+	/*
+		Fonction qui retourne l'employe à partir de l'identifiant d'un utilisateur
+		Paramètres : l'identifiant de l'utilisateur
+		Return : Un employe(Objet Employe) ou false si rien n'a été trouvé		*/
+
+	public static function get_employe_by_id_utilisateur($id_int)
+	{
+
+		$utilisateur_obj = Utilisateur::model()->findByAttributes( array( "id_utilisateur" => $id_int ) );
+
+		if( is_null($utilisateur_obj) )
+			return null;
+		else 
+		{
+			return Employe::model()->findByAttributes( array("id_employe" => $utilisateur_obj->id_employe ) );
+		}
+	}
+
+
+
+
+
+
+
 }

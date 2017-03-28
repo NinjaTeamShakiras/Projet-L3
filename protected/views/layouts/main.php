@@ -41,8 +41,8 @@
 
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Menu', 'url'=>array('/site/index')),
-				array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
+				array('label'=>'Accueil', 'url'=>array('/site/index')),
+				array('label'=>'Liste des entreprises', 'url'=>array('/entreprise/index' )),
 				array('label'=>'Employe', 'url'=>array('/employe/view', 'id'=>$utilisateur->id_employe)),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
@@ -54,7 +54,7 @@
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Menu', 'url'=>array('/site/index')),
+				array('label'=>'Accueil', 'url'=>array('/site/index')),
 				array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Entreprise', 'url'=>array('/entreprise/view', 'id'=>$utilisateur->id_entreprise)),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
