@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'avis_employe':
  * @property integer $id_avis_employe
  * @property integer $note_generale
- * @property string $date_creation
+ * @property datetime $date_creation
  * @property integer $nb_signalements
  * @property integer $id_employe
  * @property integer $id_utilisateur

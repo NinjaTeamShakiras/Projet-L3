@@ -5,9 +5,9 @@
  *
  * The followings are the available columns in table 'criteres_notation_employe':
  * @property integer $id_critere_employe
- * @property string $nom_critere_employe
+ * @property string(100) $nom_critere_employe
  * @property integer $critere_note
- * @property string $description_critere
+ * @property string(300) $description_critere
  *
  * The followings are the available model relations:
  * @property EmployeAvisCritere[] $employeAvisCriteres
