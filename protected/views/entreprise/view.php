@@ -48,6 +48,17 @@ if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user
 	);
 ?>
 
+
+<?php if( Utilisateur::est_employe( Yii::app()->user->role ) ) : ?>
+
+<h2>Laissez votre avis à cette entreprise</h2>
+
+<?php 
+	$this->renderPartial('./../avisEntreprise/_form', array( 'model' => AvisEntreprise::model()) ); 
+	endif;
+?>
+
+
 <br/><br/>
 <h2>Voici la liste des avis :</h2>
 <?php 

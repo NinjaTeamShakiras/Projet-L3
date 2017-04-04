@@ -135,4 +135,40 @@ class AvisEmploye extends CActiveRecord
 		}
 	}
 
+
+	/*		Fonction pour afficher les critères de notation d'un employé
+			Paramètres : Aucun paramètre n'est requis
+			Return : Void
+	*/
+	public static function afficher_criteres_notation_employe()
+	{
+		/*		Affichage des critères de notations 		*/
+		foreach ( CriteresNotationEmploye::model()->findAll() as $key => $value )
+		{
+			print(	'<div class="row">
+						<div>' . $value->nom_critere_employe . '</div>' );
+			if( $value->critere_note )
+				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
+			else
+				AvisEmploye::afficher_textearea( $value->id_critere_employe .'_text' );
+			print(	'</div>' );
+		}
+	}
+
+	/*		Fonction pour afficher la barre de notation d'un avis employé 		*/
+	public static function afficher_barre_notation($nom_str)
+	{
+		print( '<div class="barre-notation-employe">' );
+		for( $i = 0; $i <= 10; $i++ ) {
+			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
+			print( '	<input type="radio" name="' . $nom_str . '" value="note_' . $i . '"> ' );
+		}
+		print( '</div>' );
+		
+	}
+
+	public  static function afficher_textearea( $nom_str )
+	{
+		print( '<textarea class="' . $nom_str . '" placeholder="Votre texte..."></textarea>' );
+	}
 }
