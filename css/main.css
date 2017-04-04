@@ -227,3 +227,20 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+ 
+div#compactRadioGroup label,
+div#compactRadioGroup input 
+{
+    display: inline;
+}
+
+div#compactRadioGroup input
+{
+	margin-left: 20px;
+}
+
+p 
+{
+	font-weight: bold;
+}

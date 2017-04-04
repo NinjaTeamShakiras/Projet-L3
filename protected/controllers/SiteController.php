@@ -1,4 +1,4 @@
-<?php
+<?php
 
 class SiteController extends Controller
 {
@@ -90,8 +90,17 @@ class SiteController extends Controller
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
+			$user = Utilisateur::model()->findbyattributes(array('login'=>$model->username));
+			$user->date_derniere_connexion = date("Y-m-d H:i:s");
+			
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
+				$user = Utilisateur::model()->findByattributes(array('login'=>$model->username));
+
+				date_default_timezone_set('Europe/Paris');
+				$date = (new \DateTime())->format('Y-m-d H:i:s');
+				$user->date_derniere_connexion = $date;
+				$user->save();
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
@@ -105,5 +114,27 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+
+	public function actionInscription()
+	{                        
+		$user=new Utilisateur;
+		if(isset($_POST['Utilisateur']))
+		{
+			$user->attributes = $_POST['Utilisateur'];
+			$user->role = "employe";
+			$user->id_employe = NULL;
+			$user->id_entreprise + NULL;
+
+			//Définition du fuseau horaire GMT+1
+			date_default_timezone_set('Europe/Paris');
+			$date = (new \DateTime())->format('Y-m-d H:i:s');
+			$user->date_creation_utilisateur = $date;
+			$user->date_derniere_connexion = $date;
+			
+			$user->save();
+		}
+
+		$this->render('inscription', array('model'=>$user));
 	}
 }

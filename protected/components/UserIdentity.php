@@ -20,7 +20,6 @@ class UserIdentity extends CUserIdentity
 		//On fait appel au model Utilisateur pour trouver l'utilisateur en cours
 		//--> On le trouve grace à son login
 		$user = Utilisateur::model()->findByAttributes(array('login'=>$this->username));
-		var_dump($user);
 
 		if($user == null)
 		{
