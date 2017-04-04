@@ -118,23 +118,44 @@ class SiteController extends Controller
 
 	public function actionInscription()
 	{                        
-		$user=new Utilisateur;
-		if(isset($_POST['Utilisateur']))
+		$model = new Employe;
+		$user = new Utilisateur;
+
+		if(isset($_POST['Utilisateur']) && isset($_POST['Employe']))
 		{
-			$user->attributes = $_POST['Utilisateur'];
-			$user->role = "employe";
-			$user->id_employe = NULL;
-			$user->id_entreprise + NULL;
+			/*$employe->nom_employe = $_POST["nom_employe"];
+			$employe->prenom_employe = $_POST["prenom_employe"];
+			$employe->date_naissance_employe = NULL;
+			$employe->employe_travaille = NULL;
+			$employe->mail_employe= $_POST["mail_employe"];
+			$employe->telephone_employe= NULL;
+			$employe->id_adresse = NULL;*/
+
+
+			$model->attributes = $_POST['Employe'];
+			$model->date_naissance_employe = NULL;
+			$model->employe_travaille = NULL;
+			$model->telephone_employe = NULL;
+			$model->id_adresse = NULL;
+			
+			$model->save();
 
 			//Définition du fuseau horaire GMT+1
 			date_default_timezone_set('Europe/Paris');
 			$date = (new \DateTime())->format('Y-m-d H:i:s');
 			$user->date_creation_utilisateur = $date;
 			$user->date_derniere_connexion = $date;
+			$user->attributes = $_POST['Utilisateur'];
+			$user->role = "employe";
+
+
+			$employe = Employe::model()->findByAttributes(array("id_employe"=>$model->id_employe));;
+			$user->id_employe = $employe->id_employe;
+
 			
 			$user->save();
 		}
 
-		$this->render('inscription', array('model'=>$user));
+		$this->render('inscription', array('model'=>$user, 'employe'=>$model));
 	}
 }

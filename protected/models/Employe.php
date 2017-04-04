@@ -39,7 +39,7 @@ class Employe extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nom_employe, prenom_employe, date_naissance_employe', 'required'),
+			array('nom_employe, prenom_employe', 'required'),
 			array('employe_travaille, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_employe, prenom_employe', 'length', 'max'=>45),
 			array('mail_employe', 'length', 'max'=>70),
