@@ -143,14 +143,14 @@ class AvisEmploye extends CActiveRecord
 	public static function afficher_criteres_notation_employe()
 	{
 		/*		Affichage des critères de notations 		*/
-		foreach ( CriteresNotationEmploye::model()->findAll() as $key => $value )
+		foreach ( CriteresNotationEntreprise::model()->findAll() as $key => $value )
 		{
 			print(	'<div class="row">
-						<div>' . $value->nom_critere_employe . '</div>' );
+						<div>' . $value->nom_critere_entreprise . '</div>' );
 			if( $value->critere_note )
-				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
+				AvisEmploye::afficher_barre_notation( $value->id_critere_entreprise . '_note' );
 			else
-				AvisEmploye::afficher_textearea( $value->id_critere_employe .'_text' );
+				AvisEmploye::afficher_textearea( $value->id_critere_entreprise .'_text' );
 			print(	'</div>' );
 		}
 	}
@@ -167,6 +167,7 @@ class AvisEmploye extends CActiveRecord
 		
 	}
 
+	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
 	public  static function afficher_textearea( $nom_str )
 	{
 		print( '<textarea class="' . $nom_str . '" placeholder="Votre texte..."></textarea>' );
