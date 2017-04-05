@@ -181,6 +181,6 @@ class SiteController extends Controller
 			$user ->save();
 
 		}
-		$this->render('inscription', array('model'=>$user, 'employe'=>$model,'entreprise'=>$entreprise));
+		$this->render('login');
 	}
 }
