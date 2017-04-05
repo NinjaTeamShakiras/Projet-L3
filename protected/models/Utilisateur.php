@@ -64,7 +64,7 @@ class Utilisateur extends CActiveRecord
 	{
 		return array(
 			'id_utilisateur' => 'Id Utilisateur',
-			'login' => 'Adresse Mail',
+			'login' => 'Pseudo',
 			'mot_de_passe' => 'Mot De Passe',
 			'role' => 'Role',
 			'id_employe' => 'Id Employe',

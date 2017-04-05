@@ -37,7 +37,7 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 			'label'=>'Recherche un emploi',
 			'value'=>$model->employe_travaille == 0 ? "Oui" : "Non",
 			),
-		'mail_employe',
+		/*'mail_employe',*/
 		array(
 			'label'=>'Télephone',
 			'value'=>$model->AfficheTelephone($model->telephone_employe," "),

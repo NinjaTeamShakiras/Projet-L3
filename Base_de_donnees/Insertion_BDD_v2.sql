@@ -3,11 +3,11 @@
 
 -- ORDRE D'IMPORTATION
 -- ---------------------------------
--- 1) adresse
--- 2) employe
--- 3) entreprise
--- 4) Utilisateur
--- 5) travaille
+-- 1) adresse 								*
+-- 2) employe 								*
+-- 3) entreprise 							*
+-- 4) Utilisateur 							*
+-- 5) travaille 							*
 -- 6) Competences_CV
 -- 7) CVa
 -- 8) CV_Employe
@@ -22,6 +22,7 @@
 -- 17) Infos_Complementaires_Entreprise
 -- 18) Notification
 -- 19) Offre_Emploi
+-- 20) Postuler
 -- ---------------------------------
 
 
@@ -362,3 +363,9 @@ INSERT INTO `prozzl_test`.`avis_entreprise`(`note_generale_avis`, `date_creation
 
 
 
+
+
+
+--
+-- 20) POSTULER 
+--

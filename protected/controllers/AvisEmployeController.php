@@ -81,6 +81,10 @@ class AvisEmployeController extends Controller
 		));
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 	/*		Fonction pour créer un avis à un employé avec tous les critères requis 		*/
 	public function actionCreerAvisEmploye()
 	{
@@ -95,17 +99,34 @@ class AvisEmployeController extends Controller
 			$date = (new \DateTime())->format('Y-m-d H:i:s');
 
 			/*		Affectation sur la table Avis_Employe 		*/
+<<<<<<< HEAD
 			$avisEmploye->date_creation = $date;
 			$avisEmploye->nb_signalements = 0;
+=======
+			$avisEmploye->date_creation_avis_employe = $date;
+			$avisEmploye->nb_signalements_avis_employe = 0;
+>>>>>>> master
 			$avisEmploye->id_employe = $_POST['AvisEmploye']['id_employe'];
 			$avisEmploye->id_utilisateur = Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() );
 			
 			/*		Affectation sur la table Employe_Avis_Criteres 		*/
+<<<<<<< HEAD
 			
+=======
+			var_dump($avisEmploye);
+>>>>>>> master
 		}
 	}
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> master
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

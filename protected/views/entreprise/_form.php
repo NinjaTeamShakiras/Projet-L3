@@ -31,11 +31,6 @@
 		<?php echo $form->error($model,'recherche_employes'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'mail_entreprise'); ?>
-		<?php echo $form->textField($model,'mail_entreprise',array('size'=>60,'maxlength'=>70)); ?>
-		<?php echo $form->error($model,'mail_entreprise'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telephone_entreprise'); ?>

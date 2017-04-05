@@ -123,7 +123,7 @@ class AvisEmploye extends CActiveRecord
 			print
 			(
 				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
-					<p>Note : ' . $objet->note_generale_avis  . '<p>
+					<p>Note : ' . $objet->note_generale_avis_employe  . '<p>
 					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
 				</div>'
 
@@ -146,9 +146,15 @@ class AvisEmploye extends CActiveRecord
 		foreach ( CriteresNotationEntreprise::model()->findAll() as $key => $value )
 		{
 			print(	'<div class="row">
+<<<<<<< HEAD
 						<div>' . $value->nom_critere_entreprise . '</div>' );
 			if( $value->critere_note )
 				AvisEmploye::afficher_barre_notation( $value->id_critere_entreprise . '_note' );
+=======
+						<div>' . $value->nom_critere_employe . '</div>' );
+			if( $value->critere_note_employe )
+				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
+>>>>>>> master
 			else
 				AvisEmploye::afficher_textearea( $value->id_critere_entreprise .'_text' );
 			print(	'</div>' );
