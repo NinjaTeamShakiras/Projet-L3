@@ -18898,3 +18898,59 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=site/inscription
 HTTP_REFERER=http://localhost/projet/
 ---
+2017/04/05 17:19:48 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('mail_entreprise', NULL)
+#1 C:\wamp\www\projet\protected\controllers\SiteController.php(168): CActiveRecord->__set('mail_entreprise', NULL)
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#8 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\wamp\www\projet\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---
+2017/04/05 17:22:10 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_entreprise')
+#1 C:\wamp\www\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('mail_entreprise')
+#2 C:\wamp\www\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Entreprise), 'mail_entreprise')
+#3 C:\wamp\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(Entreprise), NULL)
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\wamp\www\projet\protected\controllers\SiteController.php(171): CActiveRecord->save()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#12 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\projet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---
+2017/04/05 17:22:18 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_entreprise')
+#1 C:\wamp\www\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('mail_entreprise')
+#2 C:\wamp\www\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Entreprise), 'mail_entreprise')
+#3 C:\wamp\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(Entreprise), NULL)
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\wamp\www\projet\protected\controllers\SiteController.php(171): CActiveRecord->save()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#12 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\projet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---

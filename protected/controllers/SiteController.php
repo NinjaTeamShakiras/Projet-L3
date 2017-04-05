@@ -165,7 +165,6 @@ class SiteController extends Controller
 		{
 			$entreprise->attributes = $_POST['Entreprise'];
 			$entreprise->recherche_employes = NULL;
-			$entreprise->mail_entreprise = NULL;
 			$entreprise->telephone_entreprise = NULL;
 			$entreprise->id_adresse = NULL;
 

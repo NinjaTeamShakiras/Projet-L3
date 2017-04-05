@@ -36,10 +36,12 @@
 		<?php echo $form->textField($model,'employe_travaille'); ?>
 	</div>
 
+	<!--
 	<div class="row">
 		<?php echo $form->label($model,'mail_employe'); ?>
 		<?php echo $form->textField($model,'mail_employe',array('size'=>60,'maxlength'=>70)); ?>
 	</div>
+	-->
 
 	<div class="row">
 		<?php echo $form->label($model,'telephone_employe'); ?>

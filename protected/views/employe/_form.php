@@ -45,11 +45,13 @@ printf("formulaire"); ?>
 		<?php echo $form->error($model,'employe_travaille'); ?>
 	</div>
 
+	<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'mail_employe'); ?>
 		<?php echo $form->textField($model,'mail_employe',array('size'=>60,'maxlength'=>70)); ?>
 		<?php echo $form->error($model,'mail_employe'); ?>
 	</div>
+	-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telephone_employe'); ?>

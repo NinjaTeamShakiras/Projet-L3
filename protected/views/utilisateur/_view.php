@@ -28,11 +28,11 @@
 	<!--
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date_derniere_connexion')); ?>:</b>
 	<?php echo CHtml::encode($data->date_derniere_connexion); ?>
-	<br />
+	<br/>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('mail')); ?>:</b>
 	<?php echo CHtml::encode($data->mail); ?>
-	<br />
+	<br/>
 	-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id_employe')); ?>:</b>
