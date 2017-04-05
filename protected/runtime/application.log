@@ -18741,7 +18741,32 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=site/inscription
 in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
 in C:\wamp64\www\projet\index.php (13)
+<<<<<<< HEAD
+2017/04/05 16:22:36 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp\www\projet\index.php (13)
+2017/04/05 16:22:41 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp\www\projet\index.php (13)
+=======
 >>>>>>> ba487ea99a7c69b0e773c74f90377b0b05319722
+<<<<<<< HEAD
 2017/04/05 16:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "CreerAvisEmploye".' in C:\wamp\www\yii\framework\web\CController.php:483
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('CreerAvisEmploy...')
@@ -18795,3 +18820,6 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
 HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
 ---
+=======
+>>>>>>> 70247c0cf6350421018d15a5a208a989855cafdd
+>>>>>>> c833c75b59b2f5d578b73f73ea489dcaab6f951c
