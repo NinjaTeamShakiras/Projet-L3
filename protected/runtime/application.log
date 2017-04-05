@@ -18584,3 +18584,14 @@ REQUEST_URI=/projet/index.php?r=Entreprise%2FSearch&Entreprise%5Bnom_entreprise%
 HTTP_REFERER=http://localhost/projet/index.php
 ---
 >>>>>>> 471aef686ca8ae2a5b2225f51642673653c64d65
+2017/04/05 12:36:24 [error] [php] Undefined index: Employe (C:\wamp64\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp64\www\projet\index.php (13)
