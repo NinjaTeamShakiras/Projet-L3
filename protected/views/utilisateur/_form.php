@@ -38,18 +38,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_employe'); ?>
-		<?php echo $form->textField($model,'id_employe'); ?>
-		<?php echo $form->error($model,'id_employe'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_entreprise'); ?>
-		<?php echo $form->textField($model,'id_entreprise'); ?>
-		<?php echo $form->error($model,'id_entreprise'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'date_creation_utilisateur'); ?>
 		<?php echo $form->textField($model,'date_creation_utilisateur'); ?>
 		<?php echo $form->error($model,'date_creation_utilisateur'); ?>
@@ -59,6 +47,24 @@
 		<?php echo $form->labelEx($model,'date_derniere_connexion'); ?>
 		<?php echo $form->textField($model,'date_derniere_connexion'); ?>
 		<?php echo $form->error($model,'date_derniere_connexion'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'mail'); ?>
+		<?php echo $form->textField($model,'mail'); ?>
+		<?php echo $form->error($model,'mail'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_employe'); ?>
+		<?php echo $form->textField($model,'id_employe'); ?>
+		<?php echo $form->error($model,'id_employe'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'id_entreprise'); ?>
+		<?php echo $form->textField($model,'id_entreprise'); ?>
+		<?php echo $form->error($model,'id_entreprise'); ?>
 	</div>
 
 	<div class="row buttons">

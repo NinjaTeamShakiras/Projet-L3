@@ -25,9 +25,10 @@ $this->menu=array(
 		'login',
 		'mot_de_passe',
 		'role',
-		'id_employe',
-		'id_entreprise',
 		'date_creation_utilisateur',
 		'date_derniere_connexion',
+		'mail',
+		'id_employe',
+		'id_entreprise',
 	),
 )); ?>

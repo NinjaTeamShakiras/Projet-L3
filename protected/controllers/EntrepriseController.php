@@ -26,30 +26,41 @@ class EntrepriseController extends Controller
 	 */
 	public function accessRules()
 	{
-		if(Yii::app()->user->role == 'entreprise')
+		$user = Yii::app()->user;
+
+		if($user->getState('type') == 'entreprise')
+		{
+			return array(
+				array('allow',
+					  'actions'=>['index','view', 'update'],
+					),
+				array('deny',
+					  'actions'=>['admin', 'delete'],
+					),
+			);
+		}
+
+		if($user->getState('type') == 'employe')
+		{
+
+			return array(
+					array('allow',
+						  'actions'=>['view', 'index'],
+						),
+					array('deny',
+						  'actions'=>['update','admin'],
+						),
+			);
+		}	
+
+		if($user->getState('type') == NULL)
 		{
 			return array(
 					array('allow',
-						'actions'=>['index','view', 'update'],
-						),
-					array('deny',
-						'actions'=>['admin', 'delete'],
-						),
+						  'actions'=>['index', 'view'],
+						  ),
 					);
-		}
-
-		if(Yii::app()->user->role == 'employe')
-		{
-
-			return array(
-					array('allow',
-						'actions'=>['view'],
-						),
-					array('deny',
-						'actions'=>['index','update','admin'],
-						),
-					);
-		}
+		}	
 
 	}
 
@@ -185,6 +196,11 @@ class EntrepriseController extends Controller
 	protected function get_id_utilisateur_connexion($login_str)
 	{
 		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
+	}
+
+	protected function actionSearch()
+	{
+
 	}
 
 }
