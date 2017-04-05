@@ -4,6 +4,7 @@
 <?php
 
 	$employe = Employe::model();
+	$entreprise = Entreprise::model();
 	
 	$form=$this->beginWidget('CActiveForm',array(
 		'id'=>'inscription-form',
@@ -28,6 +29,8 @@
         <?php echo $form->error($model,'login'); ?>
     </div>
 
+    <p> Si vous êtes un employé completez ci-dessus</p>
+
 	<div class="row">
 		<?php echo $form->labelEx($employe,'nom_employe'); ?>
 		<?php echo $form->textfield($employe,'nom_employe'); ?>
@@ -45,7 +48,20 @@
 		<?php echo $form->textfield($employe,'mail_employe'); ?>
 		<?php echo $form->error($employe,'mail_employe'); ?>
 	</div>
+	</br>
+	</br>
 
+	<p> Si vous êtes une entreprise completez cela </p>
+
+	<div class="row">
+		<?php echo $form->labelEx($entreprise,'nom_entreprise'); ?>
+		<?php echo $form->textfield($entreprise,'nom_entreprise'); ?>
+		<?php echo $form->error($entreprise,'nom_entreprise'); ?>
+	</div>
+	</br>
+	</br>
+
+	<p> Ensuite completez  votre inscription ici </p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'login'); ?>
@@ -58,6 +74,8 @@
 		<?php echo $form->passwordfield($model,'mot_de_passe'); ?>
 		<?php echo $form->error($model,'mot_de_passe'); ?>
 	</div>
+
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Inscription'); ?>

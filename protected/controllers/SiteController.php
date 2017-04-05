@@ -119,18 +119,19 @@ class SiteController extends Controller
 	public function actionInscription()
 	{                        
 		$model = new Employe;
+		$entreprise = new Entreprise;
 		$user = new Utilisateur;
 
-		if(isset($_POST['Utilisateur']) && isset($_POST['Employe']))
-		{
-			/*$employe->nom_employe = $_POST["nom_employe"];
-			$employe->prenom_employe = $_POST["prenom_employe"];
-			$employe->date_naissance_employe = NULL;
-			$employe->employe_travaille = NULL;
-			$employe->mail_employe= $_POST["mail_employe"];
-			$employe->telephone_employe= NULL;
-			$employe->id_adresse = NULL;*/
+		$emp = 0;
 
+		foreach($_POST['Employe'] as $a){
+			if($a != ""){
+				$emp = 1;
+			}
+		}
+
+		if(isset($_POST['Utilisateur']) && $emp == 1)
+		{
 
 			$model->attributes = $_POST['Employe'];
 			$model->date_naissance_employe = NULL;
@@ -154,8 +155,32 @@ class SiteController extends Controller
 
 			
 			$user->save();
-		}
+		} 	
+		else if(isset($_POST['Utilisateur']) && isset($_POST['Entreprise']))
+		{
+			$entreprise->attributes = $_POST['Entreprise'];
+			$entreprise->recherche_employes = NULL;
+			$entreprise->mail_entreprise = NULL;
+			$entreprise->telephone_entreprise = NULL;
+			$entreprise->id_adresse = NULL;
 
-		$this->render('inscription', array('model'=>$user, 'employe'=>$model));
+			$entreprise->save();
+
+			//Définition du fuseau horaire GMT+1
+			date_default_timezone_set('Europe/Paris');
+			$date = (new \DateTime())->format('Y-m-d H:i:s');
+			$user->date_creation_utilisateur = $date;
+			$user->date_derniere_connexion = $date;
+			$user->attributes = $_POST['Utilisateur'];
+			$user->role = "entreprise";
+
+
+			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));;
+			$user->id_entreprise = $entreprise->id_entreprise;
+
+			$user ->save();
+
+		}
+		$this->render('inscription', array('model'=>$user, 'employe'=>$model,'entreprise'=>$entreprise));
 	}
 }
