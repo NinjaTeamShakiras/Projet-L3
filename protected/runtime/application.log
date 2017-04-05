@@ -18742,3 +18742,56 @@ REQUEST_URI=/projet/index.php?r=site/inscription
 in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
 in C:\wamp64\www\projet\index.php (13)
 >>>>>>> ba487ea99a7c69b0e773c74f90377b0b05319722
+2017/04/05 16:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "CreerAvisEmploye".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('CreerAvisEmploy...')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 16:36:50 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.date_creation" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('date_creation', '2017-04-05 16:3...')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(97): CActiveRecord->__set('date_creation', '2017-04-05 16:3...')
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 16:37:12 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.nb_signalements" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('nb_signalements', 0)
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(98): CActiveRecord->__set('nb_signalements', 0)
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
