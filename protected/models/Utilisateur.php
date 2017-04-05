@@ -120,4 +120,13 @@ class Utilisateur extends CActiveRecord
 	{
 		return $role_str == "employe" ? true : false ;
 	}
+
+	/*	Fonction pour retourner l'identifiant à partir du nom de login
+		de l'utilisateur
+		Paramètres : Le login (String), [ Ex : GIT ]	
+		Return : L'identifiant de l'utilisateur 	*/
+	public static function get_id_utilisateur_connexion($login_str)
+	{
+		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_utilisateur;
+	}
 }

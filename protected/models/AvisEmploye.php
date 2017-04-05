@@ -161,7 +161,7 @@ class AvisEmploye extends CActiveRecord
 		print( '<div class="barre-notation-employe">' );
 		for( $i = 0; $i <= 10; $i++ ) {
 			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
-			print( '	<input type="radio" name="' . $nom_str . '" value="note_' . $i . '"> ' );
+			print( '	<input type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
 		}
 		print( '</div>' );
 		
@@ -170,6 +170,6 @@ class AvisEmploye extends CActiveRecord
 	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
 	public  static function afficher_textearea( $nom_str )
 	{
-		print( '<textarea class="' . $nom_str . '" placeholder="Votre texte..."></textarea>' );
+		print( '<textarea name="' . $nom_str . '" class="textarea-' . $nom_str . '" placeholder="Votre texte..."></textarea>' );
 	}
 }
