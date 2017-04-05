@@ -18742,6 +18742,30 @@ REQUEST_URI=/projet/index.php?r=site/inscription
 in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
 in C:\wamp64\www\projet\index.php (13)
 <<<<<<< HEAD
+2017/04/05 14:24:13 [error] [php] Undefined index: Employe (C:\wamp64\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp64\www\projet\index.php (13)
+2017/04/05 14:24:17 [error] [php] Undefined index: Employe (C:\wamp64\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp64\www\projet\index.php (13)
+=======
+<<<<<<< HEAD
 2017/04/05 16:22:36 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
@@ -18898,6 +18922,7 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=site/inscription
 HTTP_REFERER=http://localhost/projet/
 ---
+<<<<<<< HEAD
 2017/04/05 17:19:48 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('mail_entreprise', NULL)
@@ -18954,3 +18979,6 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=site/inscription
 HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
 ---
+=======
+>>>>>>> 1c41a6cf301d88ee142a378b4c0b2a246d25bac9
+>>>>>>> 286c5bc049dadb54235ad6ff3e6d9ec508018d22
