@@ -123,7 +123,7 @@ class AvisEmploye extends CActiveRecord
 			print
 			(
 				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
-					<p>Note : ' . $objet->note_generale_avis  . '<p>
+					<p>Note : ' . $objet->note_generale_avis_employe  . '<p>
 					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
 				</div>'
 
@@ -147,7 +147,7 @@ class AvisEmploye extends CActiveRecord
 		{
 			print(	'<div class="row">
 						<div>' . $value->nom_critere_employe . '</div>' );
-			if( $value->critere_note )
+			if( $value->critere_note_employe )
 				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
 			else
 				AvisEmploye::afficher_textearea( $value->id_critere_employe .'_text' );
