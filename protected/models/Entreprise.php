@@ -36,7 +36,7 @@ class Entreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nom_entreprise', 'required'),
+			/*array('nom_entreprise', 'required'),*/
 			array('recherche_employes, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_entreprise', 'length', 'max'=>45),
 			array('mail_entreprise', 'length', 'max'=>70),
