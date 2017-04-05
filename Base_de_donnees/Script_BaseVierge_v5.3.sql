@@ -302,7 +302,7 @@ DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Employe` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Employe` (
-  `id_critere_employe` INT NOT NULL AUTO_INCREMENT,
+  `id_critere_notation_employe` INT NOT NULL AUTO_INCREMENT,
   `nom_critere_employe` VARCHAR(30) NOT NULL,
   `critere_note_employe` TINYINT(1) NOT NULL,
   `description_critere_employe` VARCHAR(200) NOT NULL,
@@ -324,7 +324,7 @@ DROP TABLE IF EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` (
-  `id_critere_entreprise` INT NOT NULL AUTO_INCREMENT,
+  `id_critere_notation_entreprise` INT NOT NULL AUTO_INCREMENT,
   `nom_critere_entreprise` VARCHAR(30) NOT NULL,
   `critere_note_entreprise` TINYINT(1) NOT NULL,
   `description_critere_entreprise` VARCHAR(200) NOT NULL,
@@ -418,7 +418,7 @@ DROP TABLE IF EXISTS `prozzl_test`.`Employe_Avis_Critere` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Employe_Avis_Critere` (
-  `id_employe_avis` INT NOT NULL AUTO_INCREMENT,
+  `id_employe_avis_critere` INT NOT NULL AUTO_INCREMENT,
   `note_employe_avis` INT NULL,
   `commentaire_evaluation_critere` VARCHAR(300) NULL,
   `id_critere_notation_employe` INT NOT NULL,
@@ -453,7 +453,7 @@ DROP TABLE IF EXISTS `prozzl_test`.`Entreprise_Avis_Critere` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `prozzl_test`.`Entreprise_Avis_Critere` (
-  `id_entreprise_avis` INT NOT NULL AUTO_INCREMENT,
+  `id_entreprise_avis_critere` INT NOT NULL AUTO_INCREMENT,
   `note_entreprise_avis` INT NULL,
   `commentaire_evaluation_critere` VARCHAR(300) NULL,
   `id_critere_notation_entreprise` INT NOT NULL,

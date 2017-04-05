@@ -32,7 +32,7 @@ class AvisEmployeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'CreerAvisEmploye'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -78,6 +78,37 @@ class AvisEmployeController extends Controller
 			'model'=>$model,
 		));
 	}
+
+
+	/*		Fonction pour créer un avis à un employé avec tous les critères requis 		*/
+	public function actionCreerAvisEmploye()
+	{
+		$avisEmploye = new AvisEmploye();
+		
+		if( isset( $_POST['AvisEmploye'] ) )
+		{
+			/*		Définition du fuseau horaire GMT+1		*/
+			date_default_timezone_set( 'Europe/Paris' );
+			
+			/*		Récupération de la date et l'heure actuelle 	*/
+			$date = (new \DateTime())->format('Y-m-d H:i:s');
+
+			/*		Affectation sur la table Avis_Employe 		*/
+			$avisEmploye->date_creation_avis_employe = $date;
+			$avisEmploye->nb_signalements_avis_employe = 0;
+			$avisEmploye->id_employe = $_POST['AvisEmploye']['id_employe'];
+			$avisEmploye->id_utilisateur = Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() );
+			
+			/*		Affectation sur la table Employe_Avis_Criteres 		*/
+			var_dump($avisEmploye);
+		}
+	}
+
+
+
+
+
+
 
 	/**
 	 * Updates a particular model.
