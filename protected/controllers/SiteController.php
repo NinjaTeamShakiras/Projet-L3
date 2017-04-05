@@ -124,11 +124,16 @@ class SiteController extends Controller
 
 		$emp = 0;
 
-		foreach($_POST['Employe'] as $a){
-			if($a != ""){
-				$emp = 1;
+
+		if(isset($_POST['Utilisateur']))
+		{
+			foreach($_POST['Employe'] as $a){
+				if($a != ""){
+					$emp = 1;
+				}
 			}
 		}
+
 
 		if(isset($_POST['Utilisateur']) && $emp == 1)
 		{
