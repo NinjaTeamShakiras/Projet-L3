@@ -84,7 +84,8 @@ class AvisEmployeController extends Controller
 	public function actionCreerAvisEmploye()
 	{
 		$avisEmploye = new AvisEmploye();
-		
+		$avisEmployeCriteres = new EmployeAvisCritere();
+
 		if( isset( $_POST['AvisEmploye'] ) )
 		{
 			/*		Définition du fuseau horaire GMT+1		*/
@@ -98,9 +99,30 @@ class AvisEmployeController extends Controller
 			$avisEmploye->nb_signalements_avis_employe = 0;
 			$avisEmploye->id_employe = $_POST['AvisEmploye']['id_employe'];
 			$avisEmploye->id_utilisateur = Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() );
-			
+			$avisEmploye->note_generale_avis_employe = 0;
+			$avisEmploye->save();
+			var_dump($avisEmploye->id_avis_employe);
+			//var_dump($_POST);
 			/*		Affectation sur la table Employe_Avis_Criteres 		*/
-			var_dump($avisEmploye);
+			foreach ( $_POST as $key => $value ) 
+			{
+				/*		On cherche que les paramètres POST qui sont notés ou avecc un commentaire 		*/
+				if( strpos( $key, "_text" ) )
+				{
+					$avisEmployeCriteres->note_employe_avis = $value;
+					$avisEmployeCriteres->id_critere_notation_employe = intval( str_replace( '_text', '', $key ) ); 
+					$avisEmployeCriteres->id_avis_employe = $avisEmploye->id_avis_employe;
+
+					$avisEmployeCriteres->save();
+				}
+				else if ( strpos( $key, "_note" ) )
+				{
+					$avisEmployeCriteres->commentaire_evaluation_critere = $value;
+					$avisEmployeCriteres->id_critere_notation_employe = intval( str_replace( '_note', '', $key ) );
+					$avisEmployeCriteres->id_avis_employe = $avisEmploye->id_avis_employe;
+					$avisEmployeCriteres->save();
+				}
+			}
 		}
 	}
 

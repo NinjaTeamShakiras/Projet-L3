@@ -175,7 +175,7 @@ class SiteController extends Controller
 			$user->role = "entreprise";
 
 
-			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));;
+			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));
 			$user->id_entreprise = $entreprise->id_entreprise;
 
 			$user ->save();
