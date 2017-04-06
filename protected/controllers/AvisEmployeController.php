@@ -70,7 +70,9 @@ class AvisEmployeController extends Controller
 		if(isset($_POST['AvisEmploye']))
 		{
 			$model->attributes=$_POST['AvisEmploye'];
-			if($model->save())
+
+			var_dump( $_POST );
+			//if($model->save())
 				$this->redirect(array('view','id'=>$model->id_avis_employe));
 		}
 
@@ -78,7 +80,6 @@ class AvisEmployeController extends Controller
 			'model'=>$model,
 		));
 	}
-
 
 	/*		Fonction pour créer un avis à un employé avec tous les critères requis 		*/
 	public function actionCreerAvisEmploye()
@@ -103,6 +104,7 @@ class AvisEmployeController extends Controller
 			$avisEmploye->save();
 			var_dump($avisEmploye->id_avis_employe);
 			//var_dump($_POST);
+
 			/*		Affectation sur la table Employe_Avis_Criteres 		*/
 			foreach ( $_POST as $key => $value ) 
 			{
@@ -123,15 +125,13 @@ class AvisEmployeController extends Controller
 					$avisEmployeCriteres->save();
 				}
 			}
-		}
-	}
 
 
 
 
 
 
-
+>>>>>>> master
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

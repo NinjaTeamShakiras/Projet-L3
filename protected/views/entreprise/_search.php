@@ -27,11 +27,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'mail_entreprise'); ?>
-		<?php echo $form->textField($model,'mail_entreprise',array('size'=>60,'maxlength'=>70)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'telephone_entreprise'); ?>
 		<?php echo $form->textField($model,'telephone_entreprise',array('size'=>12,'maxlength'=>12)); ?>
 	</div>

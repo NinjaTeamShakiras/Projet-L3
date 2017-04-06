@@ -18570,8 +18570,39 @@ in C:\wamp\www\projet\protected\views\avisEmploye\create.php (18)
 in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (79)
 2017/04/05 16:13:59 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEmploye.critere_note" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
 Stack trace:
+<<<<<<< HEAD
+#0 C:\wamp\www\yii\framework\web\CController.php(869): AvisEmployeController->renderFile()
+#1 C:\wamp\www\projet\protected\views\avisEmploye\create.php(18): AvisEmployeController->renderPartial()
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(95): AvisEmployeController->renderInternal()
+#4 C:\wamp\www\yii\framework\web\CController.php(869): AvisEmployeController->renderFile()
+#5 C:\wamp\www\yii\framework\web\CController.php(782): AvisEmployeController->renderPartial()
+#6 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(79): AvisEmployeController->render()
+#7 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreate()
+#8 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): AvisEmployeController->runAction()
+#10 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): AvisEmployeController->filterAccessControl()
+#13 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp\www\yii\framework\web\CController.php(265): AvisEmployeController->runActionWithFilters()
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(282): AvisEmployeController->run()
+#17 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=avisEmploye/create
+in C:\wamp\www\projet\protected\views\avisEmploye\_form.php (21)
+in C:\wamp\www\projet\protected\views\avisEmploye\create.php (18)
+in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (79)
+2017/04/04 11:35:07 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEntreprise.nom_critere_employe" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('nom_critere_emp...')
+#1 C:\wamp\www\projet\protected\models\AvisEmploye.php(149): CActiveRecord->__get('nom_critere_emp...')
+=======
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('critere_note')
 #1 C:\wamp\www\projet\protected\models\AvisEmploye.php(150): CActiveRecord->__get('critere_note')
+>>>>>>> master
 #2 C:\wamp\www\projet\protected\views\avisEmploye\_form.php(19): AvisEmploye::afficher_criteres_notation_employe()
 #3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
 #4 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
@@ -18600,10 +18631,17 @@ Stack trace:
 #27 {main}
 REQUEST_URI=/projet/index.php?r=employe/view&id=3
 ---
+<<<<<<< HEAD
+2017/04/04 11:35:27 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEntreprise.nom_critere_employe" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('nom_critere_emp...')
+#1 C:\wamp\www\projet\protected\models\AvisEmploye.php(149): CActiveRecord->__get('nom_critere_emp...')
+=======
 2017/04/05 16:14:00 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEmploye.critere_note" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('critere_note')
 #1 C:\wamp\www\projet\protected\models\AvisEmploye.php(150): CActiveRecord->__get('critere_note')
+>>>>>>> master
 #2 C:\wamp\www\projet\protected\views\avisEmploye\_form.php(19): AvisEmploye::afficher_criteres_notation_employe()
 #3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
 #4 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
@@ -18632,6 +18670,113 @@ Stack trace:
 #27 {main}
 REQUEST_URI=/projet/index.php?r=employe/view&id=3
 ---
+<<<<<<< HEAD
+2017/04/04 11:35:28 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEntreprise.nom_critere_employe" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('nom_critere_emp...')
+#1 C:\wamp\www\projet\protected\models\AvisEmploye.php(149): CActiveRecord->__get('nom_critere_emp...')
+#2 C:\wamp\www\projet\protected\views\avisEmploye\_form.php(19): AvisEmploye::afficher_criteres_notation_employe()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#5 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#6 C:\wamp\www\projet\protected\views\employe\view.php(58): CController->renderPartial('./../avisEmploy...', Array)
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#8 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#10 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#11 C:\wamp\www\projet\protected\controllers\EmployeController.php(56): CController->render('view', Array)
+#12 [internal function]: EmployeController->actionView('3')
+#13 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EmployeController), Array)
+#14 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EmployeController), Object(ReflectionMethod), Array)
+#15 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#16 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#18 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#24 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('employe/view')
+#25 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#26 C:\wamp\www\projet\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 09:34:54 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.note_generale" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('note_generale')
+#1 C:\wamp\www\projet\protected\views\avisEmploye\_view.php(13): CActiveRecord->__get('note_generale')
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(130): require('C:\\wamp\\www\\pro...')
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, false)
+#4 C:\wamp\www\yii\framework\zii\widgets\CListView.php(291): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array)
+#5 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(181): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#8 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#9 C:\wamp\www\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#10 C:\wamp\www\projet\protected\views\avisEmploye\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#12 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#13 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#14 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#15 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(130): CController->render('index', Array)
+#16 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionIndex()
+#17 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#26 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/ind...')
+#27 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#28 C:\wamp\www\projet\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/index
+HTTP_REFERER=http://localhost/projet/index.php?r=avisEmploye/create
+---
+2017/04/05 09:44:41 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp\www\projet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 09:44:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp\www\projet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 15:44:07 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(98): CActiveRecord->__get('3')
+=======
 2017/04/05 16:16:37 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.note_generale_avis" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('note_generale_a...')
@@ -18742,6 +18887,30 @@ REQUEST_URI=/projet/index.php?r=site/inscription
 in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
 in C:\wamp64\www\projet\index.php (13)
 <<<<<<< HEAD
+2017/04/05 14:24:13 [error] [php] Undefined index: Employe (C:\wamp64\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp64\www\projet\index.php (13)
+2017/04/05 14:24:17 [error] [php] Undefined index: Employe (C:\wamp64\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp64\www\projet\index.php (13)
+=======
+<<<<<<< HEAD
 2017/04/05 16:22:36 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
@@ -18782,6 +18951,7 @@ HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('date_creation', '2017-04-05 16:3...')
 #1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(97): CActiveRecord->__set('date_creation', '2017-04-05 16:3...')
+>>>>>>> master
 #2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
 #3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
 #4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -18799,10 +18969,17 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
 HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
 ---
+<<<<<<< HEAD
+2017/04/05 15:45:38 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(98): CActiveRecord->__get('3')
+=======
 2017/04/05 16:37:12 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.nb_signalements" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('nb_signalements', 0)
 #1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(98): CActiveRecord->__set('nb_signalements', 0)
+>>>>>>> master
 #2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
 #3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
 #4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -18820,9 +18997,156 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
 HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
 ---
+<<<<<<< HEAD
+2017/04/05 15:45:39 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(98): CActiveRecord->__get('3')
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 15:50:20 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(100): CActiveRecord->__get('3')
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 15:52:41 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(100): CActiveRecord->__get('3')
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 15:52:48 [error] [exception.CException] exception 'CException' with message 'Property "AvisEmploye.3" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('3')
+#1 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(100): CActiveRecord->__get('3')
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): AvisEmployeController->actionCreerAvisEmploye()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('CreerAvisEmploy...')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('avisEmploye/Cre...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\projet\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+HTTP_REFERER=http://localhost/projet/index.php?r=employe/view&id=3
+---
+2017/04/05 16:00:21 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\controllers\AvisEmployeController.php:101)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): AvisEmployeController->runAction()
+#1 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): AvisEmployeController->filterAccessControl()
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): AvisEmployeController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): AvisEmployeController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
+in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (101)
+in C:\wamp\www\projet\index.php (13)
+2017/04/05 16:33:11 [error] [exception.CException] exception 'CException' with message 'Property "CriteresNotationEntreprise.critere_note" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('critere_note')
+#1 C:\wamp\www\projet\protected\models\AvisEmploye.php(150): CActiveRecord->__get('critere_note')
+#2 C:\wamp\www\projet\protected\views\avisEmploye\_form.php(19): AvisEmploye::afficher_criteres_notation_employe()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#5 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#6 C:\wamp\www\projet\protected\views\employe\view.php(58): CController->renderPartial('./../avisEmploy...', Array)
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#8 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#10 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#11 C:\wamp\www\projet\protected\controllers\EmployeController.php(56): CController->render('view', Array)
+#12 [internal function]: EmployeController->actionView('3')
+#13 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EmployeController), Array)
+#14 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EmployeController), Object(ReflectionMethod), Array)
+#15 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#16 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#18 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#24 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('employe/view')
+#25 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#26 C:\wamp\www\projet\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/projet/index.php?r=employe/view&id=3
+=======
 =======
 >>>>>>> 70247c0cf6350421018d15a5a208a989855cafdd
+<<<<<<< HEAD
+2017/04/05 16:38:14 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp\www\projet\index.php (13)
+=======
 >>>>>>> c833c75b59b2f5d578b73f73ea489dcaab6f951c
+<<<<<<< HEAD
 2017/04/05 16:46:42 [error] [php] include(EmployeAvisCriteres.php): failed to open stream: No such file or directory (C:\wamp\www\yii\framework\YiiBase.php:432)
 Stack trace:
 #0 C:\wamp\www\projet\protected\controllers\AvisEmployeController.php(87): spl_autoload_call()
@@ -19237,3 +19561,148 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=avisEmploye/CreerAvisEmploye
 in C:\wamp\www\projet\protected\controllers\AvisEmployeController.php (122)
 in C:\wamp\www\projet\index.php (13)
+=======
+>>>>>>> 9f7f3feb88687acf02e1c72ce2c38205eb582a25
+2017/04/05 16:53:41 [error] [php] Undefined index: Employe (C:\wamp\www\projet\protected\controllers\SiteController.php:127)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/inscription
+in C:\wamp\www\projet\protected\controllers\SiteController.php (127)
+in C:\wamp\www\projet\index.php (13)
+2017/04/05 16:57:23 [error] [exception.CException] exception 'CException' with message 'Property "Employe.mail_employe" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_employe')
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2729): CActiveRecord->__get('mail_employe')
+#2 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2452): CHtml::resolveValue(Object(Employe), 'mail_employe')
+#3 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1534): CHtml::activeInputField('text', Object(Employe), 'mail_employe', Array)
+#4 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Employe), 'mail_employe', Array)
+#5 C:\wamp\www\projet\protected\views\site\inscription.php(48): CActiveForm->textField(Object(Employe), 'mail_employe')
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#8 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('inscription', Array, true)
+#10 C:\wamp\www\projet\protected\controllers\SiteController.php(189): CController->render('inscription', Array)
+#11 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#12 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#14 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/
+---
+2017/04/05 16:57:24 [error] [exception.CException] exception 'CException' with message 'Property "Employe.mail_employe" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_employe')
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2729): CActiveRecord->__get('mail_employe')
+#2 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2452): CHtml::resolveValue(Object(Employe), 'mail_employe')
+#3 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1534): CHtml::activeInputField('text', Object(Employe), 'mail_employe', Array)
+#4 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Employe), 'mail_employe', Array)
+#5 C:\wamp\www\projet\protected\views\site\inscription.php(48): CActiveForm->textField(Object(Employe), 'mail_employe')
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#8 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('inscription', Array, true)
+#10 C:\wamp\www\projet\protected\controllers\SiteController.php(189): CController->render('inscription', Array)
+#11 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#12 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#14 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#16 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#17 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp\www\projet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/
+---
+<<<<<<< HEAD
+2017/04/05 17:19:48 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('mail_entreprise', NULL)
+#1 C:\wamp\www\projet\protected\controllers\SiteController.php(168): CActiveRecord->__set('mail_entreprise', NULL)
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#8 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\wamp\www\projet\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---
+2017/04/05 17:22:10 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_entreprise')
+#1 C:\wamp\www\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('mail_entreprise')
+#2 C:\wamp\www\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Entreprise), 'mail_entreprise')
+#3 C:\wamp\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(Entreprise), NULL)
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\wamp\www\projet\protected\controllers\SiteController.php(171): CActiveRecord->save()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#12 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\projet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---
+2017/04/05 17:22:18 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_entreprise')
+#1 C:\wamp\www\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('mail_entreprise')
+#2 C:\wamp\www\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Entreprise), 'mail_entreprise')
+#3 C:\wamp\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(Entreprise), NULL)
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\wamp\www\projet\protected\controllers\SiteController.php(171): CActiveRecord->save()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#12 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\projet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+---
+=======
+>>>>>>> 1c41a6cf301d88ee142a378b4c0b2a246d25bac9
+>>>>>>> 286c5bc049dadb54235ad6ff3e6d9ec508018d22
+2017/04/05 18:13:09 [error] [exception.CException] exception 'CException' with message 'Property "Entreprise.mail_entreprise" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('mail_entreprise')
+#1 C:\wamp\www\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('mail_entreprise')
+#2 C:\wamp\www\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Entreprise), 'mail_entreprise')
+#3 C:\wamp\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(Entreprise), NULL)
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\wamp\www\projet\protected\controllers\SiteController.php(171): CActiveRecord->save()
+#6 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionInscription()
+#7 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('inscription')
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/inscriptio...')
+#12 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\projet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/projet/index.php?r=site/inscription
+HTTP_REFERER=http://localhost/projet/index.php?r=site/inscription
+>>>>>>> master
+---
+>>>>>>> 0887f425b3dad8e27db130f8cbbefd5f167d75f7

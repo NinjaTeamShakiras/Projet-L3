@@ -124,11 +124,16 @@ class SiteController extends Controller
 
 		$emp = 0;
 
-		foreach($_POST['Employe'] as $a){
-			if($a != ""){
-				$emp = 1;
+
+		if(isset($_POST['Utilisateur']))
+		{
+			foreach($_POST['Employe'] as $a){
+				if($a != ""){
+					$emp = 1;
+				}
 			}
 		}
+
 
 		if(isset($_POST['Utilisateur']) && $emp == 1)
 		{
@@ -160,7 +165,6 @@ class SiteController extends Controller
 		{
 			$entreprise->attributes = $_POST['Entreprise'];
 			$entreprise->recherche_employes = NULL;
-			$entreprise->mail_entreprise = NULL;
 			$entreprise->telephone_entreprise = NULL;
 			$entreprise->id_adresse = NULL;
 

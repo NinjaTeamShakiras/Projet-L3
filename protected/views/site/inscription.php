@@ -43,14 +43,6 @@
 		<?php echo $form->error($employe,'prenom_employe'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($employe,'mail_employe'); ?>
-		<?php echo $form->textfield($employe,'mail_employe'); ?>
-		<?php echo $form->error($employe,'mail_employe'); ?>
-	</div>
-	</br>
-	</br>
-
 	<p> Si vous êtes une entreprise completez cela </p>
 
 	<div class="row">

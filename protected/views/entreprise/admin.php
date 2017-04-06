@@ -48,7 +48,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id_entreprise',
 		'nom_entreprise',
 		'recherche_employes',
-		'mail_entreprise',
+		/*'mail_entreprise',*/
 		'telephone_entreprise',
 		'id_adresse',
 		array(
