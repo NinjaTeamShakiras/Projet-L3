@@ -131,8 +131,10 @@ class SiteController extends Controller
 					$emp = 1;
 				}
 			}	
+
 		}
 		
+
 
 		if(isset($_POST['Utilisateur']) && $emp == 1)
 		{
@@ -163,7 +165,6 @@ class SiteController extends Controller
 		{
 			$entreprise->attributes = $_POST['Entreprise'];
 			$entreprise->recherche_employes = NULL;
-			$entreprise->mail_entreprise = NULL;
 			$entreprise->telephone_entreprise = NULL;
 			$entreprise->id_adresse = NULL;
 
@@ -178,7 +179,7 @@ class SiteController extends Controller
 			$user->role = "entreprise";
 
 
-			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));;
+			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));
 			$user->id_entreprise = $entreprise->id_entreprise;
 
 			$user ->save();

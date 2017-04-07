@@ -34,11 +34,11 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale_avis, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'required'),
-			array('note_generale_avis, nb_signalements, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
+			array('note_generale_avis_entreprise, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'required'),
+			array('note_generale_avis_entreprise, nb_signalements, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_entreprise, note_generale_avis, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
+			array('id_avis_entreprise, note_generale_avis_entreprise, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +63,7 @@ class AvisEntreprise extends CActiveRecord
 	{
 		return array(
 			'id_avis_entreprise' => 'Id Avis Entreprise',
-			'note_generale_avis' => 'Note Generale Avis',
+			'note_generale_avis_entreprise' => 'Note Generale Avis',
 			'date_creation' => 'Date Creation',
 			'nb_signalements' => 'Nb Signalements',
 			'id_entreprise' => 'Id Entreprise',
@@ -90,7 +90,7 @@ class AvisEntreprise extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_avis_entreprise',$this->id_avis_entreprise);
-		$criteria->compare('note_generale_avis',$this->note_generale_avis);
+		$criteria->compare('note_generale_avis_entreprise',$this->note_generale_avis);
 		$criteria->compare('date_creation',$this->date_creation,true);
 		$criteria->compare('nb_signalements',$this->nb_signalements);
 		$criteria->compare('id_entreprise',$this->id_entreprise);
@@ -124,7 +124,7 @@ class AvisEntreprise extends CActiveRecord
 			print
 			(
 				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
-					<p>Note : ' . $objet->note_generale_avis  . '<p>
+					<p>Note : ' . $objet->note_generale_avis_entreprise  . '<p>
 					<p>Par : ' . $employe_obj->nom_employe . '</p>
 				</div>'
 
