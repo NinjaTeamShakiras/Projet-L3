@@ -124,19 +124,22 @@ class SiteController extends Controller
 
 		$emp = 0;
 
-		foreach($_POST['Employe'] as $a){
-			if($a != ""){
-				$emp = 1;
-			}
+		if(isset($_POST['Utilisateur']))
+		{
+			foreach($_POST['Employe'] as $a){
+				if($a != ""){
+					$emp = 1;
+				}
+			}	
 		}
+		
 
 		if(isset($_POST['Utilisateur']) && $emp == 1)
 		{
 
 			$model->attributes = $_POST['Employe'];
 			$model->date_naissance_employe = NULL;
-			$model->employe_travaille = NULL;
-			$model->telephone_employe = NULL;
+   			$model->telephone_employe = NULL;
 			$model->id_adresse = NULL;
 			
 			$model->save();
