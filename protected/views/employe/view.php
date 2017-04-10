@@ -2,11 +2,6 @@
 /* @var $this EmployeController */
 /* @var $model Employe */
 
-$this->breadcrumbs=array(
-	'Employes'=>array('index'),
-	$model->id_employe,
-);
-
 
 /* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
 
@@ -65,9 +60,14 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <?php if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
+
 <h2>Laissez votre avis à cet employé</h2>
 
 <?php 
+	/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
+	if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 ) 
+		echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+	
 	$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 
 	endif;
 ?>
@@ -75,10 +75,41 @@ $this->widget('zii.widgets.CDetailView', array(
 <br/><br/>
 <h2>Voici la liste de vos avis :</h2>
 <?php 
-	$avis_all = AvisEmploye::model()->findAll("id_employe = " . $model->id_employe);
+	/*		Récupérations des informations des autres tables 		*/
+	$avis_all = AvisEmploye::model()->findAll( "id_employe = " . $model->id_employe );
+?>
 	
-	foreach ($avis_all as $key => $value)
-	{
-		AvisEmploye::afficher_avis($value);
-	}
- ?>
+
+<div>
+<?php 
+			/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
+			foreach ( $avis_all as $key => $avis_obj ) :				?>
+
+				<p>Note générale : <b><?php echo round( $avis_obj->note_generale_avis_employe, 1 ); ?></b></p>
+
+<?php 			$criteresEmploye_array = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $avis_obj->id_avis_employe ); 		?>
+
+				<ul>
+
+<?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
+				foreach ( $criteresEmploye_array as $key => $critere_obj ):			?>
+<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
+
+<?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
+
+						<li><?php print( $critere_notation_obj->nom_critere_employe); ?> : <?php is_null($critere_obj->note_employe_avis) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_employe_avis ); ?> </li>
+
+<?php   			endif; 			?>
+<?php  				endforeach; 		?>
+
+<?php  			
+				/*		Récupération de la personne qui a créé l'avis  		*/
+				$auteur_avis_obj = Entreprise::get_entreprise_by_id_utilisateur( $avis_obj->id_utilisateur );  
+?>				
+				</ul>
+				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_entreprise ) :  print( "administrateur" );  ?></p>
+
+
+<?php  		endforeach; 	?>
+</div>
+

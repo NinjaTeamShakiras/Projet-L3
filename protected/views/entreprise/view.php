@@ -2,11 +2,6 @@
 /* @var $this EntrepriseController */
 /* @var $model Entreprise */
 
-$this->breadcrumbs=array(
-	'Entreprises'=>array('index'),
-	$model->id_entreprise,
-);
-
 
 
 if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()))

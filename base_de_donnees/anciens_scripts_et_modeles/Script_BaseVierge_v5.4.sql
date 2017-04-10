@@ -306,11 +306,10 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Employe` (
   `nom_critere_employe` VARCHAR(30) NOT NULL,
   `critere_note_employe` TINYINT(1) NOT NULL,
   `description_critere_employe` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`id_critere_employe`))
+  PRIMARY KEY (`id_critere_notation_employe`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
-
 
 
 
@@ -328,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Criteres_Notation_Entreprise` (
   `nom_critere_entreprise` VARCHAR(30) NOT NULL,
   `critere_note_entreprise` TINYINT(1) NOT NULL,
   `description_critere_entreprise` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`id_critere_entreprise`))
+  PRIMARY KEY (`id_critere_notation_entreprise`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -428,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Employe_Avis_Critere` (
   INDEX `index_id_avis_employe_avis_critere_avis` (`id_avis_employe` ASC),
   CONSTRAINT `fk_id_critere_avis_critere_entreprise`
     FOREIGN KEY (`id_critere_notation_employe`)
-    REFERENCES `prozzl_test`.`Criteres_Notation_Employe` (`id_critere_employe`)
+    REFERENCES `prozzl_test`.`Criteres_Notation_Employe` (`id_critere_notation_employe` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_avis_employe_avis_critere_avis`
@@ -463,7 +462,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Entreprise_Avis_Critere` (
   INDEX `index_id_avis_entreprise_avis_critere_avis_entreprise` (`id_avis_entreprise` ASC),
   CONSTRAINT `fk_id_critere_avis_critere_employe`
     FOREIGN KEY (`id_critere_notation_entreprise`)
-    REFERENCES `prozzl_test`.`Criteres_Notation_Entreprise` (`id_critere_entreprise`)
+    REFERENCES `prozzl_test`.`Criteres_Notation_Entreprise` (`id_critere_notation_entreprise`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_avis_entreprise_avis_critere_avis_entreprise`

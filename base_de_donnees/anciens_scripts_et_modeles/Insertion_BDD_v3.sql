@@ -213,9 +213,9 @@ INSERT INTO `prozzl_test`.`travaille`(`date_debut_contrat`, `date_fin_contrat`, 
 
 
 --
--- 9) CRITERES_NOTATION_EMPLOYE
+-- 9) CRITERES_NOTATION_ENTREPRISE
 --
-INSERT INTO `prozzl_test`.`criteres_notation_employe`(`nom_critere_employe`, `critere_note_employe`, `description_critere_employe`) 
+INSERT INTO `prozzl_test`.`criteres_notation_entreprise`(`nom_critere_entreprise`, `critere_note_entreprise`, `description_critere_entreprise`) 
 VALUES  (	"Type de contrat",				 										0, 		"Type de contrat que vous aviez au sein de l'entreprise"														),
 		(	"Relation avec les managers",											1, 		"Note de 1 à 10 correspondant à votre relation avec les managers"												),
 		(	"Relation avec les collègues",											1, 		"Note de 1 à 10 correspondant à votre relation avec vos collègues"												),
@@ -236,9 +236,9 @@ VALUES  (	"Type de contrat",				 										0, 		"Type de contrat que vous aviez 
 
 
 --
--- 10) CRITERES_NOTATION_ENTREPRISE
+-- 10) CRITERES_NOTATION_EMPLOYE
 --
-INSERT INTO `prozzl_test`.`criteres_notation_entreprise`(`nom_critere_entreprise`, `critere_note_entreprise`, `description_critere_entreprise`)
+INSERT INTO `prozzl_test`.`criteres_notation_employe`(`nom_critere_employe`, `critere_note_employe`, `description_critere_employe`)
 VALUES  (	"Type de contrat",								0, 		"Type de contrat de l'employé au sin de l'entreprise"																),
 		(	"Qualité globale du travail",					1, 		"Note de 1 à 10 correspondantà la qualité du travail de l'employé au sein de l'entreprise"							),
 		(	"Relation avec les autres collaborateurs",		1, 		"Note de 1 à 10 correspondant aux relations du salarié avec les autres collaborateurs"								),
