@@ -87,24 +87,32 @@ class EmployeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$adresse = Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
+		$utilisateur = Utilisateur::model()->findByAttributes(array('id_employe'=>$model->id_employe));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Employe']))
+		if(isset($_POST['Employe']) && isset($_POST['Adresse']) && isset($_POST['Utilisateur']))
 		{
 
 			//Transormation de la date puisque en Anglais dans la base en français dans le site
-			$model->date_naissance_employe = Yii::$app->formatter->asDate($_POST['Employe']['date_naissance_employe'], 'php:Y-m-d');
-			//On enregistre les nouvelles données dans le modèle
-			$model->attributes=$_POST['Employe'];
+			$model->date_naissance_employe = $this->changeDateBDD($_POST['Employe']['date_naissance_employe']);
+			//On enregistre les nouvelles données dans les modèles
+			$model->attributes = $_POST['Employe'];
+			$adresse->attributes = $_POST['Adresse'];
+			$utilisateur->attributes = $_POST['Utilisateur'];
+
 			//On enregistre le modèle et on redirige
-			if($model->save())
+			if($model->save() && $adresse->save() && $utilisateur->save())
 				$this->redirect(array('view','id'=>$model->id_employe));
+
+			var_dump($utilisateur->getErrors());
+
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'adresse'=>$adresse, 'utilisateur'=>$utilisateur,
 		));
 	}
 
@@ -201,6 +209,24 @@ class EmployeController extends Controller
 
 		return $result;
 
+	}
+
+	/* Fonction qui change la date au formatr Américain pour la BDD */
+	protected function changeDateBDD($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 6, 4);
+		$month = substr($date, 3, 2);
+		$day = substr($date, 0, 2);
+
+		$result = $year."-".$month."-".$day;
+
+		return $result;
 	}
 
 	protected function AfficheTelephone($tel,$carEspacement=" ")
