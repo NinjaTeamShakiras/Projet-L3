@@ -25,11 +25,6 @@
 	<?php echo CHtml::encode($data->employe_travaille); ?>
 	<br />
 
-	<!--
-	<b><?php echo CHtml::encode($data->getAttributeLabel('mail_employe')); ?>:</b>
-	<?php echo CHtml::encode($data->mail_employe); ?>
-	<br />
-	-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('telephone_employe')); ?>:</b>
 	<?php echo CHtml::encode($data->telephone_employe); ?>
