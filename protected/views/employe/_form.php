@@ -13,8 +13,11 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	)); 
 
-)); ?>
+	$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
+
+?>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -58,18 +61,34 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telephone_employe'); ?>
-		<?php echo $form->textField($model,'telephone_employe',array('size'=>12,'maxlength'=>12)); ?>
+		<?php echo $form->textField($model,'telephone_employe',
+			array('size'=>20,
+				  'maxlength'=>14,
+				  'placeholder'=>'06 05 04 03 02',
+				  'value'=>$this->AfficheTelephone($model->telephone_employe, " "))); ?>
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_adresse'); ?>
-		<?php echo $form->textField($model,'id_adresse'); ?>
-		<?php echo $form->error($model,'id_adresse'); ?>
+		<?php echo $form->labelEx($adresse,'rue'); ?>
+		<?php echo $form->textField($adresse, 'rue', array('placeholder'=>'10 rue du Général De Gaulles', 'size'=>45)); ?>
+		<?php echo $form->error($adresse,'rue'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($adresse,'code_postal'); ?>
+		<?php echo $form->textField($adresse, 'code_postal', array('placeholder'=>'75000')); ?>
+		<?php echo $form->error($adresse,'code_postal'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($adresse,'ville'); ?>
+		<?php echo $form->textField($adresse, 'ville', array('placeholder'=>'Paris')); ?>
+		<?php echo $form->error($adresse,'ville'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Sauvegarder'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

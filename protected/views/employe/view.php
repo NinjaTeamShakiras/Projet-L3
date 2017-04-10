@@ -48,7 +48,7 @@ $this->widget('zii.widgets.CDetailView', array(
 		/*'mail_employe',*/
 		array(
 			'label'=>'Télephone',
-			'value'=>$model->AfficheTelephone($model->telephone_employe," "),
+			'value'=>$this->AfficheTelephone($model->telephone_employe," "),
 		),
 		//On affiche l'adresse en passant par la clé étrangère
 		array(
