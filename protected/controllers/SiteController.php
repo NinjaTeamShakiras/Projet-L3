@@ -159,7 +159,8 @@ class SiteController extends Controller
 			$user->id_employe = $employe->id_employe;
 
 			
-			$user->save();
+			//$user->save();
+			$this->redirect( 'login' );
 		} 	
 		else if(isset($_POST['Utilisateur']) && isset($_POST['Entreprise']))
 		{
@@ -182,9 +183,10 @@ class SiteController extends Controller
 			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));
 			$user->id_entreprise = $entreprise->id_entreprise;
 
-			$user ->save();
+			//$user ->save();
+			$this->redirect( 'login' );
 
 		}
-		$this->render('login', array('model'=>$user));
+		$this->render('inscription', array('model'=>$user));
 	}
 }
