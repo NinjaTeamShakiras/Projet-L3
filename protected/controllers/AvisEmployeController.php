@@ -85,7 +85,7 @@ class AvisEmployeController extends Controller
 	public function actionCreerAvisEmploye()
 	{
 		$avisEmploye = new AvisEmploye();
-		$avisEmployeCriteres = new EmployeAvisCritere();
+		
 
 		if( isset( $_POST['AvisEmploye'] ) )
 		{
@@ -95,15 +95,27 @@ class AvisEmployeController extends Controller
 			/*		Récupération de la date et l'heure actuelle 	*/
 			$date = (new \DateTime())->format('Y-m-d H:i:s');
 
+			/*		Variable pour le nombre d'éléments et la note globale 		*/
+			$somme_double = 0;
+			$nb_elements_int = 0;
+
 			/*		Affectation sur la table Avis_Employe 		*/
 			$avisEmploye->date_creation_avis_employe = $date;
 			$avisEmploye->nb_signalements_avis_employe = 0;
 			$avisEmploye->id_employe = $_POST['AvisEmploye']['id_employe'];
 			$avisEmploye->id_utilisateur = Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() );
-			$avisEmploye->note_generale_avis_employe = 0;
+			/*		Boucle pour calculer la note moyenne 		*/
+			foreach ( $_POST as $key => $value ) 
+			{
+				/*		Si c'est un critère noté on fait la somme	*/
+				if ( strpos( $key, "_note" ) ) 
+				{
+					$somme_double += $value;
+					$nb_elements_int++;
+				}
+			}
+			$avisEmploye->note_generale_avis_employe = $somme_double / $nb_elements_int;
 			$avisEmploye->save();
-			var_dump($avisEmploye->id_avis_employe);
-			//var_dump($_POST);
 
 			/*		Affectation sur la table Employe_Avis_Criteres 		*/
 			foreach ( $_POST as $key => $value ) 
@@ -111,27 +123,31 @@ class AvisEmployeController extends Controller
 				/*		On cherche que les paramètres POST qui sont notés ou avecc un commentaire 		*/
 				if( strpos( $key, "_text" ) )
 				{
-					$avisEmployeCriteres->note_employe_avis = $value;
+					$avisEmployeCriteres = new EmployeAvisCritere();
+					$avisEmployeCriteres->commentaire_evaluation_critere = $value;
 					$avisEmployeCriteres->id_critere_notation_employe = intval( str_replace( '_text', '', $key ) ); 
 					$avisEmployeCriteres->id_avis_employe = $avisEmploye->id_avis_employe;
-
 					$avisEmployeCriteres->save();
 				}
 				else if ( strpos( $key, "_note" ) )
 				{
-					$avisEmployeCriteres->commentaire_evaluation_critere = $value;
-					$avisEmployeCriteres->id_critere_notation_employe = intval( str_replace( '_note', '', $key ) );
-					$avisEmployeCriteres->id_avis_employe = $avisEmploye->id_avis_employe;
-					$avisEmployeCriteres->save();
+					$avisEmployeCriteres_note = new EmployeAvisCritere();
+					$avisEmployeCriteres_note->note_employe_avis = $value;
+					$avisEmployeCriteres_note->id_critere_notation_employe = intval( str_replace( '_note', '', $key ) );
+					$avisEmployeCriteres_note->id_avis_employe = $avisEmploye->id_avis_employe;
+					$avisEmployeCriteres_note->save();
 				}
 			}
 
+			/*		On redirige vers l'employé concerné 		*/
+			$url =  $this->createUrl( 'employe/view', array( 	'id' => $avisEmploye->id_employe,
+																'error' => 0 ) );
+			$this->redirect( $url );
+		
+		}
+	}
 
 
-
-
-
->>>>>>> master
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

@@ -35,7 +35,7 @@ class AvisEmploye extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('note_generale_avis_employe, date_creation_avis_employe, nb_signalements_avis_employe, id_employe, id_utilisateur', 'required'),
-			array('note_generale_avis_employe, nb_signalements_avis_employe, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
+			array('nb_signalements_avis_employe, id_employe, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_avis_employe, note_generale_avis_employe, date_creation_avis_employe, nb_signalements_avis_employe, id_employe, id_utilisateur', 'safe', 'on'=>'search'),
@@ -113,29 +113,6 @@ class AvisEmploye extends CActiveRecord
 	}
 
 
-	public static function afficher_avis($objet)
-	{
-
-		$entreprise_obj = entreprise::get_entreprise_by_id_utilisateur($objet->id_utilisateur);
-
-		if( is_a( $objet, __CLASS__ ) && !is_null( $entreprise_obj ) )
-		{
-			print
-			(
-				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
-					<p>Note : ' . $objet->note_generale_avis_employe  . '<p>
-					<p>Par : ' . $entreprise_obj->nom_entreprise . '</p>
-				</div>'
-
-			);
-		}
-		else 
-		{
-			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
-		}
-	}
-
-
 	/*		Fonction pour afficher les critères de notation d'un employé
 			Paramètres : Aucun paramètre n'est requis
 			Return : Void
@@ -143,14 +120,14 @@ class AvisEmploye extends CActiveRecord
 	public static function afficher_criteres_notation_employe()
 	{
 		/*		Affichage des critères de notations 		*/
-		foreach ( CriteresNotationEntreprise::model()->findAll() as $key => $value )
+		foreach ( CriteresNotationEmploye::model()->findAll() as $key => $value )
 		{
 			print(	'<div class="row">
-						<div>' . $value->nom_critere_entreprise . '</div>' );
-			if( $value->critere_note )
-				AvisEmploye::afficher_barre_notation( $value->id_critere_entreprise . '_note' );
+						<div>' . $value->nom_critere_employe . '</div>' );
+			if( $value->critere_note_employe )
+				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
 			else
-				AvisEmploye::afficher_textearea( $value->id_critere_entreprise .'_text' );
+				AvisEmploye::afficher_textearea( $value->id_critere_employe .'_text' );
 			print(	'</div>' );
 		}
 	}
@@ -160,8 +137,8 @@ class AvisEmploye extends CActiveRecord
 	{
 		print( '<div class="barre-notation-employe">' );
 		for( $i = 0; $i <= 10; $i++ ) {
+			print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
 			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
-			print( '	<input type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
 		}
 		print( '</div>' );
 		
