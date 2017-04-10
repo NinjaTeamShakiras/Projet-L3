@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Employe` (
   `prenom_employe` VARCHAR(45) NOT NULL,
   `date_naissance_employe` DATE NULL,
   `employe_travaille` TINYINT(1) NULL,
-  `telephone_employe` VARCHAR(12) NULL,
+  `telephone_employe` VARCHAR(14) NULL,
   `id_adresse` INT NULL,
   PRIMARY KEY (`id_employe`),
   INDEX `index_id_adresse_employe_adresse` (`id_adresse` ASC),

@@ -25,6 +25,7 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 //On passe la date de naissance au format français via une fonction du controller
 $date_naissance = $this->changeDateNaissance($model->date_naissance_employe);
+$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
 
 $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -39,6 +40,10 @@ $this->widget('zii.widgets.CDetailView', array(
 		array(
 			'label'=>'Recherche un emploi',
 			'value'=>$model->employe_travaille == 0 ? "Oui" : "Non",
+			),
+		array(
+			'label'=>'Adresse mail',
+			'value'=>$utilisateur->mail,
 			),
 		/*'mail_employe',*/
 		array(

@@ -16,6 +16,8 @@
 	)); 
 
 	$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
+	$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
+
 
 ?>
 
@@ -51,21 +53,18 @@
 		<?php echo $form->error($model,'employe_travaille'); ?>
 	</div>
 
-	<!--
 	<div class="row">
-		<?php echo $form->labelEx($model,'mail_employe'); ?>
-		<?php echo $form->textField($model,'mail_employe',array('size'=>60,'maxlength'=>70)); ?>
-		<?php echo $form->error($model,'mail_employe'); ?>
+		<?php echo $form->labelEx($utilisateur,'mail'); ?>
+		<?php echo $form->textField($utilisateur,'mail',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($utilisateur,'mail'); ?>
 	</div>
-	-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telephone_employe'); ?>
 		<?php echo $form->textField($model,'telephone_employe',
-			array('size'=>20,
-				  'maxlength'=>14,
-				  'placeholder'=>'06 05 04 03 02',
-				  'value'=>$this->AfficheTelephone($model->telephone_employe, " "))); ?>
+			array('size'=>15,
+				  'maxlength'=>10,
+				  'placeholder'=>'0605040302')); ?>
 		<?php echo $form->error($model,'telephone_employe'); ?>
 	</div>
 

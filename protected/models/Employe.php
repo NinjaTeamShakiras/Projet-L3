@@ -9,7 +9,6 @@
  * @property string $prenom_employe
  * @property string $date_naissance_employe
  * @property integer $employe_travaille
- * @property string $mail_employe
  * @property string $telephone_employe
  * @property integer $id_adresse
  *
@@ -42,11 +41,10 @@ class Employe extends CActiveRecord
 			/*array('nom_employe, prenom_employe', 'required'),*/
 			array('employe_travaille, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_employe, prenom_employe', 'length', 'max'=>45),
-			array('mail_employe', 'length', 'max'=>70),
-			array('telephone_employe', 'length', 'max'=>12),
+			array('telephone_employe', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_employe, nom_employe, prenom_employe, date_naissance_employe, employe_travaille, mail_employe, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
+			array('id_employe, nom_employe, prenom_employe, date_naissance_employe, employe_travaille, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +61,7 @@ class Employe extends CActiveRecord
 			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
 			'InfosComplementairesEmploye' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
 			'Travaille' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
-			'Utilisateur' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
+			'Utilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_employe'),
 		);
 	}
 
@@ -78,7 +76,6 @@ class Employe extends CActiveRecord
 			'prenom_employe' => 'Prénom',
 			'date_naissance_employe' => 'Date de naissance',
 			'employe_travaille' => 'Recherche un travail',
-			'mail_employe' => 'Adresse mail',
 			'telephone_employe' => 'Numéro de téléphone',
 			'id_adresse' => 'Adresse',
 		);
@@ -107,7 +104,6 @@ class Employe extends CActiveRecord
 		$criteria->compare('prenom_employe',$this->prenom_employe,true);
 		$criteria->compare('date_naissance_employe',$this->date_naissance_employe,true);
 		$criteria->compare('employe_travaille',$this->employe_travaille);
-		$criteria->compare('mail_employe',$this->mail_employe,true);
 		$criteria->compare('telephone_employe',$this->telephone_employe,true);
 		$criteria->compare('id_adresse',$this->id_adresse);
 

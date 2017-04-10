@@ -31,7 +31,6 @@ class Adresse extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rue, ville, code_postal', 'required'),
 			array('rue', 'length', 'max'=>100),
 			array('ville', 'length', 'max'=>45),
 			array('code_postal', 'length', 'max'=>5),
