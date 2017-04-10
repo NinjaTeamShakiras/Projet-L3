@@ -2,11 +2,6 @@
 /* @var $this EmployeController */
 /* @var $model Employe */
 
-$this->breadcrumbs=array(
-	'Employes'=>array('index'),
-	$model->id_employe,
-);
-
 
 /* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
 
