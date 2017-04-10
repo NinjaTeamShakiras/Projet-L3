@@ -14,10 +14,7 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 
-));
-printf("formulaire"); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+)); ?>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -35,13 +32,19 @@ printf("formulaire"); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'date_naissance_employe'); ?>
-		<?php echo $form->textField($model,'date_naissance_employe'); ?>
+		<?php echo $form->textField($model,'date_naissance_employe',
+			array('maxlength'=>10, 
+				  'placeholder'=>'JJ/MM/AAAA', 
+				  'value'=>$this->changeDateNaissance($model->date_naissance_employe))); ?>
 		<?php echo $form->error($model,'date_naissance_employe'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'employe_travaille'); ?>
-		<?php echo $form->textField($model,'employe_travaille'); ?>
+		<?php 
+		//0 : Ne travailles donc OUI car recherche du travail
+		//Le contraire pour 1
+		echo $form->dropDownList($model, 'employe_travaille', array('0'=>'Oui', '1'=>'Non')); ?>
 		<?php echo $form->error($model,'employe_travaille'); ?>
 	</div>
 

@@ -26,12 +26,20 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 
 <h6>Données de mon profil</h6>
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php 
+
+//On passe la date de naissance au format français via une fonction du controller
+$date_naissance = $this->changeDateNaissance($model->date_naissance_employe);
+
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'nom_employe',
 		'prenom_employe',
-		'age_employe',
+		array(
+			'label'=>'Date de naissance',
+			'value'=> $model->date_naissance_employe != NULL ? $date_naissance : "Non renseignée",
+			),
 		//On modifie la valeur de employe_travaille
 		array(
 			'label'=>'Recherche un emploi',
@@ -60,7 +68,7 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 ?>
 
 <br/><br/>
-<h2>Voici la liste des avis :</h2>
+<h2>Voici la liste de vos avis :</h2>
 <?php 
 	$avis_all = AvisEmploye::model()->findAll("id_employe = " . $model->id_employe);
 	

@@ -58,12 +58,12 @@ class Employe extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'avisEmployes' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
-			'cvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
+			'AvisEmploye' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
+			'CVEmploye' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
 			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
-			'infosComplementairesEmployes' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
-			'travailles' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
-			'utilisateurs' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
+			'InfosComplementairesEmploye' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
+			'Travaille' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
+			'Utilisateur' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
 		);
 	}
 
@@ -74,13 +74,13 @@ class Employe extends CActiveRecord
 	{
 		return array(
 			'id_employe' => 'Id Employe',
-			'nom_employe' => 'Nom Employe',
-			'prenom_employe' => 'Prenom Employe',
-			'date_naissance_employe' => 'Date Naissance Employe',
-			'employe_travaille' => 'Employe Travaille',
-			'mail_employe' => 'Mail Employe',
-			'telephone_employe' => 'Telephone Employe',
-			'id_adresse' => 'Id Adresse',
+			'nom_employe' => 'Nom de famille',
+			'prenom_employe' => 'Prénom',
+			'date_naissance_employe' => 'Date de naissance',
+			'employe_travaille' => 'Recherche un travail',
+			'mail_employe' => 'Adresse mail',
+			'telephone_employe' => 'Numéro de téléphone',
+			'id_adresse' => 'Adresse',
 		);
 	}
 
