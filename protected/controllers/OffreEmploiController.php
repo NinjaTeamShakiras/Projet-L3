@@ -179,4 +179,50 @@ class OffreEmploiController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+	/* Fonction qui change la date au formatr Américain pour la BDD */
+	protected function changeDateBDD($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 6, 4);
+		$month = substr($date, 3, 2);
+		$day = substr($date, 0, 2);
+
+		$result = $year."-".$month."-".$day;
+
+		return $result;
+	}
+
+
+	/*	Fonction qui change la date au format français*/
+	protected function changeDateNaissance($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 0, 4);
+		$month = substr($date, 5, 2);
+		$day = substr($date, 8, 2);
+
+		$result = $day."/".$month."/".$year;
+
+		return $result;
+
+	}
+
+
+
+
+
+
 }
