@@ -50,8 +50,7 @@
 		<?php echo $form->textfield($entreprise,'nom_entreprise'); ?>
 		<?php echo $form->error($entreprise,'nom_entreprise'); ?>
 	</div>
-	</br>
-	</br>
+
 
 	<p> Ensuite completez  votre inscription ici </p>
 
