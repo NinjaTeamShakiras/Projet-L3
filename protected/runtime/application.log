@@ -18923,3 +18923,38 @@ REQUEST_URI=/projet/index.php?r=site/inscription
 HTTP_REFERER=http://localhost/projet/
 ---
 >>>>>>> 1c41a6cf301d88ee142a378b4c0b2a246d25bac9
+2017/04/05 15:12:15 [error] [php] Trying to get property of non-object (C:\wamp64\www\projet\protected\views\entreprise\view.php:44)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): EntrepriseController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): EntrepriseController->renderPartial()
+#2 C:\wamp64\www\projet\protected\controllers\EntrepriseController.php(75): EntrepriseController->render()
+#3 unknown(0): EntrepriseController->actionView()
+#4 C:\wamp64\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): EntrepriseController->runAction()
+#8 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): EntrepriseController->filterAccessControl()
+#11 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp64\www\yii\framework\web\CController.php(265): EntrepriseController->runActionWithFilters()
+#14 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): EntrepriseController->run()
+#15 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=entreprise/view&id=10
+in C:\wamp64\www\projet\protected\views\entreprise\view.php (44)
+in C:\wamp64\www\projet\protected\controllers\EntrepriseController.php (75)
+in C:\wamp64\www\projet\index.php (13)
+2017/04/11 06:40:07 [error] [php] Creating default object from empty value (C:\wamp64\www\projet\protected\controllers\SiteController.php:94)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp64\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp64\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=site/login
+in C:\wamp64\www\projet\protected\controllers\SiteController.php (94)
+in C:\wamp64\www\projet\index.php (13)
