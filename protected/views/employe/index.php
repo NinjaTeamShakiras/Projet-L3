@@ -2,9 +2,9 @@
 /* @var $this EmployeController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Employes',
-);
+//$this->breadcrumbs=array(
+//	'Employes',
+//);
 
 $this->menu=array(
 	array('label'=>'Create Employe', 'url'=>array('create')),

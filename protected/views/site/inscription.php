@@ -16,6 +16,7 @@
 ?>
 
     <div class="row">
+    	<!--<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>-->
         <p align='center'>Avant de vous inscrire, dites nous quel est votre statut</p>
         
         <!-- Boutons radios pour le statut -->

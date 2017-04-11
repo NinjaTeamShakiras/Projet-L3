@@ -19,6 +19,8 @@ if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user
 <br/>
 
 <?php 
+
+$utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$model->id_entreprise));
 	$this->widget('zii.widgets.CDetailView',
 		array(
 			'data'=>$model,
@@ -29,7 +31,10 @@ if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user
 					'label'=>'Cherche des nouveaux employés',
 					'value'=>$model->recherche_employes == 0 ? "Non" : "Oui",
 					),
-				'mail_entreprise',
+				array(
+					'label'=>'Adresse mail',
+					'value'=>$utilisateur->mail,
+					),
 				array(
 					'label'=>'Télephone',
 					'value'=>$model->AfficheTelephone($model->telephone_entreprise," "),

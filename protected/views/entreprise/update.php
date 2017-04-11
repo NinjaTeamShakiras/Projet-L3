@@ -2,11 +2,11 @@
 /* @var $this EntrepriseController */
 /* @var $model Entreprise */
 
-$this->breadcrumbs=array(
-	'Entreprises'=>array('index'),
-	$model->id_entreprise=>array('view','id'=>$model->id_entreprise),
-	'Update',
-);
+//$this->breadcrumbs=array(
+//	'Entreprises'=>array('index'),
+//	$model->id_entreprise=>array('view','id'=>$model->id_entreprise),
+//	'Update',
+//);
 
 $this->menu=array(
 	array('label'=>'List Entreprise', 'url'=>array('index')),

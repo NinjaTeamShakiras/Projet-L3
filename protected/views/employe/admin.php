@@ -2,10 +2,10 @@
 /* @var $this EmployeController */
 /* @var $model Employe */
 
-$this->breadcrumbs=array(
-	'Employes'=>array('index'),
-	'Manage',
-);
+//$this->breadcrumbs=array(
+//	'Employes'=>array('index'),
+//	'Manage',
+//);
 
 $this->menu=array(
 	array('label'=>'List Employe', 'url'=>array('index')),
