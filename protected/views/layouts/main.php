@@ -44,7 +44,7 @@
 				array('label'=>'Accueil', 'url'=>array('/site/index')),
 				array('label'=>'Liste des entreprises', 'url'=>array('/entreprise/index' )),
 				array('label'=>'Mon compte', 'url'=>array('/employe/view', 'id'=>$utilisateur->id_employe)),
-				array('label'=>'Postuler à un emploi', 'url'=>array('/offreEmploi/index')),
+				array('label'=>'Offre d\'emploi', 'url'=>array('/offreEmploi/index')),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 				),
