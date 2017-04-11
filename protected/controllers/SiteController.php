@@ -90,18 +90,13 @@ class SiteController extends Controller
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
-			$user = Utilisateur::model()->findbyattributes(array('login'=>$model->username));
-			$user->date_derniere_connexion = date("Y-m-d H:i:s");
 			
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$user = Utilisateur::model()->findByattributes(array('login'=>$model->username));
-
-				date_default_timezone_set('Europe/Paris');
-				$date = (new \DateTime())->format('Y-m-d H:i:s');
-				$user->date_derniere_connexion = $date;
-				$user->save();
+			{
 				$this->redirect(Yii::app()->user->returnUrl);
+			}
+				
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -115,6 +110,25 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function verif_mdp($mdp)
+	{
+		$res = 0;
+
+		if(isset($_POST['confirm_mdp']))
+		{
+			if($mdp != $_POST['confirm_mdp'])
+			{
+				echo "Les mots de passes ne correspondent pas !";
+				$this->render('inscription', array('model'=>$user));
+				$res = 1;
+			}
+		}
+
+		return $res;
+	}
+
+
 
 	public function actionInscription()
 	{                        
@@ -135,35 +149,38 @@ class SiteController extends Controller
 		}
 		
 
-
 		if(isset($_POST['Utilisateur']) && $emp == 1)
 		{
 
-			$model->attributes = $_POST['Employe'];
-			$model->date_naissance_employe = NULL;
-   			$model->telephone_employe = NULL;
-			$model->id_adresse = NULL;
-			
-			$model->save();
+			if ($this->	verif_mdp($_POST['Utilisateur']['mot_de_passe'] == 1))
+			{
+				$model->attributes = $_POST['Employe'];
+				$model->date_naissance_employe = NULL;
+	   			$model->telephone_employe = NULL;
+				$model->id_adresse = NULL;
+				
+				$model->save();
 
-			//Définition du fuseau horaire GMT+1
-			date_default_timezone_set('Europe/Paris');
-			$date = (new \DateTime())->format('Y-m-d H:i:s');
-			$user->date_creation_utilisateur = $date;
-			$user->date_derniere_connexion = $date;
-			$user->attributes = $_POST['Utilisateur'];
-			$user->role = "employe";
+				//Définition du fuseau horaire GMT+1
+				date_default_timezone_set('Europe/Paris');
+				$date = (new \DateTime())->format('Y-m-d H:i:s');
+				$user->date_creation_utilisateur = $date;
+				$user->date_derniere_connexion = $date;
+				$user->attributes = $_POST['Utilisateur'];
+				$user->role = "employe";
 
+				$employe = Employe::model()->findByAttributes(array("id_employe"=>$model->id_employe));;
+				$user->id_employe = $employe->id_employe;
 
-			$employe = Employe::model()->findByAttributes(array("id_employe"=>$model->id_employe));;
-			$user->id_employe = $employe->id_employe;
-
-			
-			//$user->save();
-			$this->redirect( 'login' );
+				
+				//$user->save();
+				$this->redirect(array('site/login'));
+			}
 		} 	
 		else if(isset($_POST['Utilisateur']) && isset($_POST['Entreprise']))
 		{
+			
+
 			$entreprise->attributes = $_POST['Entreprise'];
 			$entreprise->recherche_employes = NULL;
 			$entreprise->telephone_entreprise = NULL;
@@ -184,9 +201,11 @@ class SiteController extends Controller
 			$user->id_entreprise = $entreprise->id_entreprise;
 
 			//$user ->save();
-			$this->redirect( 'login' );
+			$this->redirect(array('site/login'));
 
-		}
+		}	
+				
 		$this->render('inscription', array('model'=>$user));
 	}
+
 }

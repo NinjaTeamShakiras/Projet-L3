@@ -54,6 +54,11 @@ class UserIdentity extends CUserIdentity
 				$this->setState('type', 'admin');	
 				$this->setState('role', 'admin');
 			}
+
+			date_default_timezone_set('Europe/Paris');
+			$date = (new \DateTime())->format('Y-m-d H:i:s');
+			$user->date_derniere_connexion = $date;
+			$user->save();
 		}	
 
 		return !$this->errorCode;
