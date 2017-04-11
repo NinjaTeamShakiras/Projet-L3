@@ -40,7 +40,7 @@ class Utilisateur extends CActiveRecord
 			array('role', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_utilisateur, login, mot_de_passe, role, id_employe, id_entreprise', 'safe', 'on'=>'search'),
+			array('id_utilisateur, login, mot_de_passe, role, mail, id_employe, id_entreprise', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +66,7 @@ class Utilisateur extends CActiveRecord
 			'id_utilisateur' => 'Id Utilisateur',
 			'login' => 'Pseudo',
 			'mot_de_passe' => 'Mot De Passe',
+			'mail' => 'Adresse Mail',
 			'role' => 'Role',
 			'id_employe' => 'Id Employe',
 			'id_entreprise' => 'Id Entreprise',
@@ -94,6 +95,7 @@ class Utilisateur extends CActiveRecord
 		$criteria->compare('login',$this->login,true);
 		$criteria->compare('mot_de_passe',$this->mot_de_passe,true);
 		$criteria->compare('role',$this->role,true);
+		$criteria->compare('mail', $this->mail, true);
 		$criteria->compare('id_employe',$this->id_employe);
 		$criteria->compare('id_entreprise',$this->id_entreprise);
 

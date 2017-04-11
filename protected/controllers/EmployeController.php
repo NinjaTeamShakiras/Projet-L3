@@ -87,19 +87,32 @@ class EmployeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$adresse = Adresse::model()->findByAttributes(array('id_adresse'=>$model->id_adresse));
+		$utilisateur = Utilisateur::model()->findByAttributes(array('id_employe'=>$model->id_employe));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Employe']))
+		if(isset($_POST['Employe']) && isset($_POST['Adresse']) && isset($_POST['Utilisateur']))
 		{
-			$model->attributes=$_POST['Employe'];
-			if($model->save())
+
+			//Transormation de la date puisque en Anglais dans la base en français dans le site
+			$model->date_naissance_employe = $this->changeDateBDD($_POST['Employe']['date_naissance_employe']);
+			//On enregistre les nouvelles données dans les modèles
+			$model->attributes = $_POST['Employe'];
+			$adresse->attributes = $_POST['Adresse'];
+			$utilisateur->attributes = $_POST['Utilisateur'];
+
+			//On enregistre le modèle et on redirige
+			if($model->save() && $adresse->save() && $utilisateur->save())
 				$this->redirect(array('view','id'=>$model->id_employe));
+
+			var_dump($utilisateur->getErrors());
+
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'adresse'=>$adresse, 'utilisateur'=>$utilisateur,
 		));
 	}
 
@@ -177,6 +190,69 @@ class EmployeController extends Controller
 	protected function get_id_utilisateur_connexion($login_str)
 	{
 		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_employe;
+	}
+
+	/*	Fonction qui change la date au format français*/
+	protected function changeDateNaissance($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 0, 4);
+		$month = substr($date, 5, 2);
+		$day = substr($date, 8, 2);
+
+		$result = $day."/".$month."/".$year;
+
+		return $result;
+
+	}
+
+	/* Fonction qui change la date au formatr Américain pour la BDD */
+	protected function changeDateBDD($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 6, 4);
+		$month = substr($date, 3, 2);
+		$day = substr($date, 0, 2);
+
+		$result = $year."-".$month."-".$day;
+
+		return $result;
+	}
+
+	protected function AfficheTelephone($tel,$carEspacement=" ")
+	{
+		/**
+		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
+		* @tel : numéro de téléphone de l'entreprise
+		* @carEspacement : caractère à placer entre chaque 2 chiffres
+		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
+		* 			affiché
+		*/
+
+		$res ="";
+
+		for($i=0; $i<=10; $i++)
+		{
+			// On ajoute "carEspacement" tous les 2 chiffres.
+			if($i%2==0)
+			{
+				$res .= substr($tel, $i, 2);
+				$res .= $carEspacement;
+			}
+		}
+		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
+
+		return($res);
 	}
 	
 }

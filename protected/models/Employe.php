@@ -9,7 +9,6 @@
  * @property string $prenom_employe
  * @property string $date_naissance_employe
  * @property integer $employe_travaille
- * @property string $mail_employe
  * @property string $telephone_employe
  * @property integer $id_adresse
  *
@@ -42,11 +41,10 @@ class Employe extends CActiveRecord
 			/*array('nom_employe, prenom_employe', 'required'),*/
 			array('employe_travaille, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_employe, prenom_employe', 'length', 'max'=>45),
-			array('mail_employe', 'length', 'max'=>70),
-			array('telephone_employe', 'length', 'max'=>12),
+			array('telephone_employe', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_employe, nom_employe, prenom_employe, date_naissance_employe, employe_travaille, mail_employe, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
+			array('id_employe, nom_employe, prenom_employe, date_naissance_employe, employe_travaille, telephone_employe, id_adresse', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,12 +56,12 @@ class Employe extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'avisEmployes' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
-			'cvEmployes' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
+			'AvisEmploye' => array(self::HAS_MANY, 'AvisEmploye', 'id_employe'),
+			'CVEmploye' => array(self::HAS_MANY, 'CvEmploye', 'id_employe'),
 			'Adresse' => array(self::BELONGS_TO, 'Adresse', 'id_adresse'),
-			'infosComplementairesEmployes' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
-			'travailles' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
-			'utilisateurs' => array(self::HAS_MANY, 'Utilisateur', 'id_employe'),
+			'InfosComplementairesEmploye' => array(self::HAS_MANY, 'InfosComplementairesEmploye', 'id_employe'),
+			'Travaille' => array(self::HAS_MANY, 'Travaille', 'id_employe'),
+			'Utilisateur' => array(self::BELONGS_TO, 'Utilisateur', 'id_employe'),
 		);
 	}
 
@@ -74,13 +72,12 @@ class Employe extends CActiveRecord
 	{
 		return array(
 			'id_employe' => 'Id Employe',
-			'nom_employe' => 'Nom Employe',
-			'prenom_employe' => 'Prenom Employe',
-			'date_naissance_employe' => 'Date Naissance Employe',
-			'employe_travaille' => 'Employe Travaille',
-			'mail_employe' => 'Mail Employe',
-			'telephone_employe' => 'Telephone Employe',
-			'id_adresse' => 'Id Adresse',
+			'nom_employe' => 'Nom de famille',
+			'prenom_employe' => 'Prénom',
+			'date_naissance_employe' => 'Date de naissance',
+			'employe_travaille' => 'Recherche un travail',
+			'telephone_employe' => 'Numéro de téléphone',
+			'id_adresse' => 'Adresse',
 		);
 	}
 
@@ -107,7 +104,6 @@ class Employe extends CActiveRecord
 		$criteria->compare('prenom_employe',$this->prenom_employe,true);
 		$criteria->compare('date_naissance_employe',$this->date_naissance_employe,true);
 		$criteria->compare('employe_travaille',$this->employe_travaille);
-		$criteria->compare('mail_employe',$this->mail_employe,true);
 		$criteria->compare('telephone_employe',$this->telephone_employe,true);
 		$criteria->compare('id_adresse',$this->id_adresse);
 
@@ -125,34 +121,6 @@ class Employe extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-
-
-	public function AfficheTelephone($tel,$carEspacement=" ")
-	{
-		/**
-		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
-		* @tel : numéro de téléphone de l'entreprise
-		* @carEspacement : caractère à placer entre chaque 2 chiffres
-		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
-		* 			affiché
-		*/
-
-		$res ="";
-
-		for($i=0; $i<=10; $i++)
-		{
-			// On ajoute "carEspacement" tous les 2 chiffres.
-			if($i%2==0)
-			{
-				$res .= substr($tel, $i, 2);
-				$res .= $carEspacement;
-			}
-		}
-		$res = substr($res, 0, -2); // Suppression de l'espace ajouté à la fin de la boucle
-
-		return($res);
 	}
 
 

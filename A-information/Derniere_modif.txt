@@ -6,3 +6,6 @@
 			- views/utilisateur 	: Fait
 			- views/travaille	: Fait
 			- views/site		: A voir
+			- views/entreprise	: Fait
+			- views/employe		: Fait
+			- views/xxxx		: Fait

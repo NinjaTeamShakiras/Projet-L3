@@ -17,8 +17,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'note_generale'); ?>
-		<?php echo $form->textField($model,'note_generale'); ?>
+		<?php echo $form->label($model,'note_generale_avis_employe'); ?>
+		<?php echo $form->textField($model,'note_generale_avis_employe'); ?>
 	</div>
 
 	<div class="row">

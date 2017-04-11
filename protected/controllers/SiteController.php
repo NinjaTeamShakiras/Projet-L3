@@ -124,15 +124,16 @@ class SiteController extends Controller
 
 		$emp = 0;
 
-
 		if(isset($_POST['Utilisateur']))
 		{
 			foreach($_POST['Employe'] as $a){
 				if($a != ""){
 					$emp = 1;
 				}
-			}
+			}	
+
 		}
+		
 
 
 		if(isset($_POST['Utilisateur']) && $emp == 1)
@@ -140,8 +141,7 @@ class SiteController extends Controller
 
 			$model->attributes = $_POST['Employe'];
 			$model->date_naissance_employe = NULL;
-			$model->employe_travaille = NULL;
-			$model->telephone_employe = NULL;
+   			$model->telephone_employe = NULL;
 			$model->id_adresse = NULL;
 			
 			$model->save();
@@ -159,13 +159,13 @@ class SiteController extends Controller
 			$user->id_employe = $employe->id_employe;
 
 			
-			$user->save();
+			//$user->save();
+			$this->redirect( 'login' );
 		} 	
 		else if(isset($_POST['Utilisateur']) && isset($_POST['Entreprise']))
 		{
 			$entreprise->attributes = $_POST['Entreprise'];
 			$entreprise->recherche_employes = NULL;
-			$entreprise->mail_entreprise = NULL;
 			$entreprise->telephone_entreprise = NULL;
 			$entreprise->id_adresse = NULL;
 
@@ -180,12 +180,13 @@ class SiteController extends Controller
 			$user->role = "entreprise";
 
 
-			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));;
+			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));
 			$user->id_entreprise = $entreprise->id_entreprise;
 
-			$user ->save();
+			//$user ->save();
+			$this->redirect( 'login' );
 
 		}
-		$this->render('inscription', array('model'=>$user, 'employe'=>$model,'entreprise'=>$entreprise));
+		$this->render('inscription', array('model'=>$user));
 	}
 }
