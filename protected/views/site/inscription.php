@@ -67,7 +67,13 @@
 	</div>
 
 
+	<div class="row">
+		<p>Confirmer le mot de passe</p>
+		<p><input type="password" name="confirm_mdp" required/></p>
+		<?php echo $form->error($model,'mot_de_passe'); ?>
+	</div>
 
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Inscription'); ?>
 	</div>
