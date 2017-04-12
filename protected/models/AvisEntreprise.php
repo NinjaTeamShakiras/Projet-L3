@@ -159,7 +159,7 @@ class AvisEntreprise extends CActiveRecord
 		{
 			/*		On récupère le critère concerné à partir de l'identifiant  		*/
 			$critereConcerne_obj = CriteresNotationEntreprise::model()->findByAttributes( array( 	
-									"id_critere_entreprise" => $value_obj->id_critere_notation_entreprise
+									"id_critere_notation_entreprise" => $value_obj->id_critere_notation_entreprise
 									)
 			);
 
