@@ -12,8 +12,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Les champs avec <span class="required">*</span> sont obligatoires.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 	<?php 
 		AvisEmploye::afficher_criteres_notation_employe();

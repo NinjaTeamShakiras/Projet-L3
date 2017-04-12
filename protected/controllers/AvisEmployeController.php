@@ -32,7 +32,7 @@ class AvisEmployeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'CreerAvisEmploye'),
+				'actions'=>array( 'create','update', 'CreerAvisEmploye', 'UpdateAvisEmploye' ),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -120,7 +120,7 @@ class AvisEmployeController extends Controller
 			/*		Affectation sur la table Employe_Avis_Criteres 		*/
 			foreach ( $_POST as $key => $value ) 
 			{
-				/*		On cherche que les paramètres POST qui sont notés ou avecc un commentaire 		*/
+				/*		On cherche que les paramètres POST qui sont notés ou avec un commentaire 		*/
 				if( strpos( $key, "_text" ) )
 				{
 					$avisEmployeCriteres = new EmployeAvisCritere();
@@ -170,6 +170,82 @@ class AvisEmployeController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+
+
+	/*		Action update pour modifier son avis 		*/
+	public function actionUpdateAvisEmploye() 
+	{
+		if( isset( $_POST['AvisEmploye'] ) )
+		{
+			/*		Booléen pour déterminer si tout a bien été réalisé 	 	*/
+			$succes_bool = true;
+			/*		On récupère l'entrée avec l'identifiant 		*/
+			$model=$this->loadModel( intval( $_POST['AvisEmploye']['id_avis_employe'] ) );
+			/*		Somme pour calculer la note moyenne		*/
+			$somme_double = 0;
+			$nb_elements_int = 0;
+
+			/*		On boucle sur chaque critère de notation 		*/
+			foreach ( $_POST as $key_str => $value_str ) 
+			{
+				/*		On cherche que les paramètres POST qui sont notés ou avec un commentaire 		*/
+				if( strpos( $key_str, "_text" ) )
+				{
+					$id_critere = intval( str_replace( '_text', '', $key_str ) );
+					//var_dump( $id_critere );
+					$critereModel_obj = EmployeAvisCritere::model()->findByAttributes( 
+																		array( 
+																				"id_critere_notation_employe" => $id_critere,
+																				"id_avis_employe" => $model->id_avis_employe 
+																		)
+					);
+					
+					$critereModel_obj->commentaire_evaluation_critere = trim( $value_str );
+
+					$succes_bool = $critereModel_obj->save() && $succes_bool;
+
+				}
+				/*		Les paramètres qui sont notés 		*/
+				else if ( strpos( $key_str, "_note" ) )
+				{
+					$id_critere = intval( str_replace( '_note', '', $key_str ) );
+					$critereModel_obj = EmployeAvisCritere::model()->findByAttributes( 
+																		array( 
+																				"id_critere_notation_employe" => $id_critere,
+																				"id_avis_employe" => $model->id_avis_employe 
+																		)
+					);
+					
+					$critereModel_obj->note_employe_avis = trim( $value_str );
+
+					$succes_bool = $critereModel_obj->save() && $succes_bool;
+					
+					if ( $succes_bool )
+					{
+						$somme_double += $value_str;
+						$nb_elements_int++;
+					}
+
+				}
+	
+			}
+
+			if ( $succes_bool )
+			{
+				$model->note_generale_avis_employe = $somme_double / $nb_elements_int;
+				if ( $model->save() ) 
+				{
+					/*		On redirige vers l'employé concerné 		*/
+					$url =  $this->createUrl( 'employe/view', array( 	'id' => $model->id_employe ,
+																		'error' => 0 ,
+																		'update' => true ) );
+					$this->redirect( $url );
+				}			
+			}
+		}
+		
 	}
 
 	/**
