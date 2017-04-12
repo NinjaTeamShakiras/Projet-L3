@@ -2,9 +2,9 @@
 /* @var $this EntrepriseController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Entreprises',
-);
+//$this->breadcrumbs=array(
+//	'Entreprises',
+//);
 
 $this->menu=array(
 	array('label'=>'Create Entreprise', 'url'=>array('create')),

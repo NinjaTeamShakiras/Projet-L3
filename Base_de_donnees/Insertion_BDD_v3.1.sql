@@ -360,15 +360,15 @@ INSERT INTO `prozzl_test`.`avis_entreprise`(`note_generale_avis_entreprise`, `da
 -- 19) OFFRE EMPLOI 
 --
 INSERT INTO `prozzl_test`.`Offre_Emploi`(`date_creation_offre_emploi`, `type_offre_emploi`, `salaire_offre_emploi`, `experience_offre_emploi`,`description_offre_emploi`, `id_entreprise`)
-	VALUES  (	now(),			'Commercial', 		1200, 	'BAC STMG',		'Achat,vente en tout genre', 		1	),
-			(	now(),			'Assistant', 		1500, 	'BAC L',		'Gestion de plannig',		 		2	),
-			(	now(),			'Developpeur', 		3200, 	'BAC S',		'Maintenance de site web',	 		3	),
-			(	now(),	'Ingénieur systeme', 		2200, 	'BAC S',		'Maintenance serveur',		 		4	),
-			(	now(),			'Commercial', 		1450, 	'BAC S',		'Vente dans l\'immobilier',	 		1	),
-			(	now(),			'Stagiaire', 		900, 	'BREVET',		'Sous-fifre qui apporte le café', 	2	),
-			(	now(),			'Commercial', 		1700, 	'BAC S',		'Achat de materiels ménagé', 		3	),
-			(	now(),			'Commercial', 		1800, 	'BAC STMG',		'Achat,vente ordinateur portable',	4	);
-		--	  	date 				type 		salaire 	experience 				description 		entreprise
+	VALUES  (	now(),		'CDI : Commercial', 		1200, 	'BAC STMG',		'Achat,vente en tout genre', 		1	),
+			(	now(),		'CDD : Assistant', 			1500, 	'BAC L',		'Gestion de plannig',		 		2	),
+			(	now(),		'CDD : Developpeur', 		3200, 	'BAC S',		'Maintenance de site web',	 		3	),
+			(	now(),		'CDI : Ingénieur systeme',	2200, 	'BAC S',		'Maintenance serveur',		 		4	),
+			(	now(),		'CDD : Commercial', 		1450, 	'BAC S',		'Vente dans l\'immobilier',	 		1	),
+			(	now(),		'Stage : Commercial', 		400, 	'BREVET',		'Sous-fifre qui apporte le café', 	2	),
+			(	now(),		'CDD : Commercial', 		1700, 	'BAC S',		'Achat de materiels ménagé', 		3	),
+			(	now(),		'CDI : Commercial', 		1800, 	'BAC STMG',		'Achat,vente ordinateur portable',	4	);
+		--	  	date 			type 				salaire 	experience 				description 		entreprise
 
 
 

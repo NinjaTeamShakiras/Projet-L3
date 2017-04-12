@@ -2,9 +2,9 @@
 /* @var $this EmployeController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Employes',
-);
+//$this->breadcrumbs=array(
+//	'Employes',
+//);
 
 $this->menu=array(
 	array('label'=>'Create Employe', 'url'=>array('create')),
@@ -14,7 +14,9 @@ $this->menu=array(
 
 <h1>Employes</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<?php 
+	$this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$dataProvider,
+		'itemView'=>'_view',
+	));
+?>
