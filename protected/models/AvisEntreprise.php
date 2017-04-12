@@ -125,9 +125,9 @@ class AvisEntreprise extends CActiveRecord
 			print(	'<div class="row">
 						<div>' . $value->nom_critere_entreprise . '</div>' );
 			if( $value->critere_note_entreprise )
-				AvisEntreprise::afficher_barre_notation( $value->id_critere_entreprise . '_note' );
+				AvisEntreprise::afficher_barre_notation( $value->id_critere_notation_entreprise . '_note' );
 			else
-				AvisEntreprise::afficher_textearea( $value->id_critere_entreprise .'_text' );
+				AvisEntreprise::afficher_textearea( $value->id_critere_notation_entreprise .'_text' );
 			print(	'</div>' );
 		}
 	}
@@ -170,10 +170,10 @@ class AvisEntreprise extends CActiveRecord
 			{
 					print(	'<div>' . $critereConcerne_obj->nom_critere_entreprise . '</div>' );
 					if( $critereConcerne_obj->critere_note_entreprise )
-						AvisEntreprise::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_entreprise . '_note', $value_obj->note_entreprise_avis );
+						AvisEntreprise::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_notation_entreprise . '_note', $value_obj->note_entreprise_avis );
 					
 					else
-						AvisEntreprise::afficher_textearea_with_param( $critereConcerne_obj->id_critere_entreprise .'_text', $value_obj->commentaire_evaluation_critere );
+						AvisEntreprise::afficher_textearea_with_param( $critereConcerne_obj->id_critere_notation_entreprise .'_text', $value_obj->commentaire_evaluation_critere );
 			}
 			
 			print(	'</div>' );

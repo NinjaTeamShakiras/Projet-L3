@@ -112,7 +112,7 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
 				foreach ( $criteresEmploye_array as $key => $critere_obj ) :			?>
-<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
+<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
 
 <?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
 
@@ -143,7 +143,7 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <?php  		endforeach; 	?>
 <?php  	else : ?>
-	<p>Il n'y a pas encore d'avis sur cet employé.</p>
+	<p>Il n'y a pas encore d'avis.</p>
 <?php  	endif; ?>
 
 

@@ -125,9 +125,9 @@ class AvisEmploye extends CActiveRecord
 			print(	'<div class="row">
 						<div>' . $value->nom_critere_employe . '</div>' );
 			if( $value->critere_note_employe )
-				AvisEmploye::afficher_barre_notation( $value->id_critere_employe . '_note' );
+				AvisEmploye::afficher_barre_notation( $value->id_critere_notation_employe . '_note' );
 			else
-				AvisEmploye::afficher_textearea( $value->id_critere_employe .'_text' );
+				AvisEmploye::afficher_textearea( $value->id_critere_notation_employe .'_text' );
 			print(	'</div>' );
 		}
 	}
@@ -159,7 +159,7 @@ class AvisEmploye extends CActiveRecord
 		{
 			/*		On récupère le critère concerné à partir de l'identifiant  		*/
 			$critereConcerne_obj = CriteresNotationEmploye::model()->findByAttributes( array( 	
-									"id_critere_employe" => $value_obj->id_critere_notation_employe
+									"id_critere_notation_employe" => $value_obj->id_critere_notation_employe
 									)
 			);
 
@@ -170,10 +170,10 @@ class AvisEmploye extends CActiveRecord
 			{
 					print(	'<div>' . $critereConcerne_obj->nom_critere_employe . '</div>' );
 					if( $critereConcerne_obj->critere_note_employe )
-						AvisEmploye::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_employe . '_note', $value_obj->note_employe_avis );
+						AvisEmploye::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_notation_employe . '_note', $value_obj->note_employe_avis );
 					
 					else
-						AvisEmploye::afficher_textearea_with_param( $critereConcerne_obj->id_critere_employe .'_text', $value_obj->commentaire_evaluation_critere );
+						AvisEmploye::afficher_textearea_with_param( $critereConcerne_obj->id_critere_notation_employe .'_text', $value_obj->commentaire_evaluation_critere );
 			}
 			
 			print(	'</div>' );
