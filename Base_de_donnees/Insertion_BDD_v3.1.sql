@@ -259,43 +259,11 @@ VALUES  (	"Type de contrat",				 										0, 		"Type de contrat que vous aviez 
 --
 -- 11) AVIS_EMPLOYE
 --
-INSERT INTO `prozzl_test`.`avis_employe`(`note_generale_avis_employe`, `date_creation_avis_employe`, `nb_signalements_avis_employe`, `id_employe`, `id_utilisateur`)
-	VALUES  (	0,		'2017-01-01',		12,		1,		6	),
-			(	1,		'2017-02-01',		16,		2,		7	),
-			(	2,		'2017-03-01',		15,		3,		8	),
-			(	3,		'2017-04-01',		12,		4,		9	),
-			(	4,		'2017-05-01',		22,		5,		6	),
-			(	5,		'2017-06-01',		5,		1,		7	),
-			(	5,		'2017-07-01',		7,		2,		8	),
-			(	6,		'2017-08-01',		84,		3,		9	),
-			(	7,		'2017-09-01',		45,		4,		6	),
-			(	8,		'2017-10-01',		32,		5,		7	),
-			(	9,		'2017-11-01',		65,		1,		8	),
-			(	10,		'2017-12-01',		32,		2,		9	);
-		--	  note 			date      	  signale   idEnt   idUtil
-
-
-
-
 
 
 --
 -- 12) AVIS_ENTREPRISE
 --
-INSERT INTO `prozzl_test`.`avis_entreprise`(`note_generale_avis_entreprise`, `date_creation_avis_entreprise`, `nb_signalements_avis_entreprise`, `id_entreprise`, `id_utilisateur`)
-	VALUES  (	0,		'2016-01-01',		12,		1,		1	),
-			(	1,		'2016-02-01',		16,		2,		2	),
-			(	2,		'2016-03-01',		15,		3,		3	),
-			(	3,		'2016-04-01',		12,		4,		4	),
-			(	4,		'2016-05-01',		22,		1,		5	),
-			(	5,		'2016-06-01',		5,		2,		1	),
-			(	5,		'2016-07-01',		7,		3,		2	),
-			(	6,		'2016-08-01',		84,		4,		3	),
-			(	7,		'2016-09-01',		45,		1,		4	),
-			(	8,		'2016-10-01',		32,		2,		5	),
-			(	9,		'2016-11-01',		65,		3,		1	),
-			(	10,		'2016-12-01',		32,		4,		2	);
-		--	  note 			date      	  signale   idEnt   idUtil
 
 
 

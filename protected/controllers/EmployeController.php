@@ -121,13 +121,11 @@ class EmployeController extends Controller
 			//On enregistre les nouvelles données dans les modèles
 			$model->attributes = $_POST['Employe'];
 			$adresse->attributes = $_POST['Adresse'];
-			$utilisateur->attributes = $_POST['Utilisateur'];
+			$utilisateur->mail = $_POST['Utilisateur']['mail'];
 
 			//On enregistre le modèle et on redirige
 			if($model->save() && $adresse->save() && $utilisateur->save())
 				$this->redirect(array('view','id'=>$model->id_employe));
-
-			var_dump($utilisateur->getErrors());
 
 		}
 
@@ -166,7 +164,7 @@ class EmployeController extends Controller
 			}
 		}
 
-		$travaille = Travaille::model()->FindAll();
+		/*$travaille = Travaille::model()->FindAll();
 
 		foreach ($travaille as $ab)
 		{
@@ -188,7 +186,7 @@ class EmployeController extends Controller
 		{
 			if($a->id_employe == $utilisateur->id_employe)
 			$post->delete();
-		}
+		}*/
 
 		$utilisateur->delete();
 		
@@ -300,15 +298,16 @@ class EmployeController extends Controller
 		return $result;
 	}
 
-	protected function AfficheTelephone($tel,$carEspacement=" ")
-	{
-		/**
+	
+	/**
 		* AfficheTelephone : Place un caractère (carEspacement) tout les 2 chiffres.
 		* @tel : numéro de téléphone de l'entreprise
 		* @carEspacement : caractère à placer entre chaque 2 chiffres
 		* return : une chaine de caractère (res) contenant le numéro de téléphone près à être
 		* 			affiché
-		*/
+	*/
+	protected function AfficheTelephone($tel,$carEspacement=" ")
+	{
 
 		$res ="";
 

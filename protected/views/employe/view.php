@@ -2,12 +2,16 @@
 /* @var $this EmployeController */
 /* @var $model Employe */
 
+$this->breadcrumbs=array(
+	'Employes'=>array('index'),
+	$model->id_employe,
+);
 
 		/* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
 		if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId())) :
 			$this->menu=array(
 				array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
-				array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir supprimer votre profil?')),
+				array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir surpprimer votre profil?')),
 			);
 ?>
 <div>
