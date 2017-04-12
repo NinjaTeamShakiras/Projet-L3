@@ -25,7 +25,28 @@ if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->g
 
 //On passe la date de naissance au format français via une fonction du controller
 $date_naissance = $this->changeDateNaissance($model->date_naissance_employe);
+
+$telephone = $this->AfficheTelephone($model->telephone_employe," ");
+
+$emploi = "Non renseigné";
+if($model->employe_travaille == 0)
+{
+	$emploi = "Oui";
+}
+else if ($model->employe_travaille)
+{
+	$emploi = "Non";
+}
+
+$adresse = "Non renseignée";
+
+if ($model->Adresse->rue != NULL && $model->Adresse->code_postal != NULL && $model->Adresse->ville != NULL)
+{
+	 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
+}
+
 $utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
+
 
 $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -39,21 +60,20 @@ $this->widget('zii.widgets.CDetailView', array(
 		//On modifie la valeur de employe_travaille
 		array(
 			'label'=>'Recherche un emploi',
-			'value'=>$model->employe_travaille == 0 ? "Oui" : "Non",
+			'value'=>$emploi,
 			),
 		array(
 			'label'=>'Adresse mail',
-			'value'=>$utilisateur->mail,
+			'value'=>$utilisateur->mail != NULL ? $utilisateur->mail : "Non renseignée",
 			),
-		/*'mail_employe',*/
 		array(
 			'label'=>'Télephone',
-			'value'=>$this->AfficheTelephone($model->telephone_employe," "),
+			'value'=>$model->telephone_employe != NULL ? $telephone : "Non renseigné",
 		),
 		//On affiche l'adresse en passant par la clé étrangère
 		array(
 			'label'=>'Adresse',
-			'value'=>$model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville,
+			'value'=>$adresse,
 			),
 	),
 )); ?>

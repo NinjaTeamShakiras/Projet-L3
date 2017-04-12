@@ -198,9 +198,17 @@ class EntrepriseController extends Controller
 		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
 	}
 
-	protected function actionSearch()
+	
+	/*	Fonction qui recherche une ou plusieurs entreprises dans la base en fonction 
+			des infos entrées par l'utilisateur 
+	*/		
+	public function actionSearch()
 	{
+		//On récupère la liste des entreprises par rapport au nom entré
+		$nom_entreprise = $_POST['Entreprise']['nom_entreprise'];
+		$entreprises = Entreprise::model()->FindAll("nom_entreprise = '$nom_entreprise'");
 
+		$this->render('index_search', array('data'=>$entreprises));
 	}
 
 }
