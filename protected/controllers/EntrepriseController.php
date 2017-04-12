@@ -206,7 +206,7 @@ class EntrepriseController extends Controller
 	{
 		//On récupère la liste des entreprises par rapport au nom entré
 		$nom_entreprise = $_POST['Entreprise']['nom_entreprise'];
-		$entreprises = Entreprise::model()->FindAll("nom_entreprise = '$nom_entreprise'");
+		$entreprises = Entreprise::model()->FindAll("nom_entreprise LIKE '%$nom_entreprise%'");
 
 		$this->render('index_search', array('data'=>$entreprises));
 	}

@@ -34,11 +34,11 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale_avis_entreprise, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'required'),
-			array('note_generale_avis_entreprise, nb_signalements, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
+			array('note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'required'),
+			array('note_generale_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_entreprise, note_generale_avis_entreprise, date_creation, nb_signalements, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
+			array('id_avis_entreprise, note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,8 +64,8 @@ class AvisEntreprise extends CActiveRecord
 		return array(
 			'id_avis_entreprise' => 'Id Avis Entreprise',
 			'note_generale_avis_entreprise' => 'Note Generale Avis',
-			'date_creation' => 'Date Creation',
-			'nb_signalements' => 'Nb Signalements',
+			'date_creation_avis_entreprise' => 'Date Creation',
+			'nb_signalements_avis_entreprise' => 'Nb Signalements',
 			'id_entreprise' => 'Id Entreprise',
 			'id_utilisateur' => 'Id Utilisateur',
 		);
@@ -91,8 +91,8 @@ class AvisEntreprise extends CActiveRecord
 
 		$criteria->compare('id_avis_entreprise',$this->id_avis_entreprise);
 		$criteria->compare('note_generale_avis_entreprise',$this->note_generale_avis);
-		$criteria->compare('date_creation',$this->date_creation,true);
-		$criteria->compare('nb_signalements',$this->nb_signalements);
+		$criteria->compare('date_creation_avis_entreprise',$this->date_creation,true);
+		$criteria->compare('nb_signalements_avis_entreprise',$this->nb_signalements);
 		$criteria->compare('id_entreprise',$this->id_entreprise);
 		$criteria->compare('id_utilisateur',$this->id_utilisateur);
 

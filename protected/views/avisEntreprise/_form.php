@@ -22,9 +22,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'note_generale_avis'); ?>
-		<?php echo $form->textField($model,'note_generale_avis'); ?>
-		<?php echo $form->error($model,'note_generale_avis'); ?>
+		<?php echo $form->labelEx($model,'note_generale_avis_entreprise'); ?>
+		<?php echo $form->textField($model,'note_generale_avis_entreprise'); ?>
+		<?php echo $form->error($model,'note_generale_avis_entreprise'); ?>
 	</div>
 
 	<div class="row">
