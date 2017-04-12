@@ -170,6 +170,7 @@ class EmployeController extends Controller
 
 		foreach ($travaille as $ab)
 		{
+			if($ab->id_employe == $utilisateur->id_employe)
 			$ab->delete();
 		}
 
@@ -177,12 +178,15 @@ class EmployeController extends Controller
 
 		foreach ($cvemploye as $cve)
 		{
+			if($cve->id_employe == $utilisateur->id_employe)
 			$cve->delete();
 		}
 
 		$postule = Postule::model()->FindAll();
 
-		foreach ($postule as $post) {
+		foreach ($postule as $post)
+		{
+			if($a->id_employe == $utilisateur->id_employe)
 			$post->delete();
 		}
 
