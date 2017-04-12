@@ -26,24 +26,44 @@ class EmployeController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+		$user = Yii::app()->user;
+
+		if($user->getState('type') == 'employe')
+		{
+			return array(
+				array('allow',
+					  'actions'=>['index','view', 'update', 'delete'],
+					),
+				array('deny',
+					  'actions'=>['admin'],
+					),
+			);
+		}
+
+		if($user->getState('type') == 'entreprise')
+		{
+
+			return array(
+					array('allow',
+						  'actions'=>['view', 'index'],
+						),
+					array('deny',
+						  'actions'=>['update','admin'],
+						),
+			);
+		}	
+
+		if($user->getState('type') == NULL)
+		{
+			return array(
+					array('allow',
+						  'actions'=>['index', 'view'],
+						  ),
+					);
+		}	
+
 	}
+
 
 	/**
 	 * Displays a particular model.
@@ -123,7 +143,54 @@ class EmployeController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$id));
+
+		$avis = AvisEmploye::model()->FindAll();
+
+		foreach ($avis as $a)
+		{
+			if($a->id_employe == $utilisateur->id_employe)
+			{
+				$a->delete();
+			}
+		}
+
+		$avisentreprise = AvisEntreprise::model()->FindAll();
+
+		foreach ($avisentreprise as $ae)
+		{
+			if($ae->id_utilisateur == $utilisateur->id_utilisateur)
+			{
+				$ae->id_utilisateur = NULL;
+				$ae->save();
+			}
+		}
+
+		$travaille = Travaille::model()->FindAll();
+
+		foreach ($travaille as $ab)
+		{
+			$ab->delete();
+		}
+
+		$cvemploye = CvEmploye::model()->FindAll();
+
+		foreach ($cvemploye as $cve)
+		{
+			$cve->delete();
+		}
+
+		$postule = Postule::model()->FindAll();
+
+		foreach ($postule as $post) {
+			$post->delete();
+		}
+
+		$utilisateur->delete();
+		
+
+		$model=$this->loadModel($id);
+		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
