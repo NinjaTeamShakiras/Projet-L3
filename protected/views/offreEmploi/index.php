@@ -78,7 +78,7 @@
 				print("<p> Sallaire proposé : ".$value->salaire_offre_emploi." €</p>");
 				print("<p> Expérience nécéssaire : ".$value->experience_offre_emploi."</p>");
 				print("<p> Description de l'offre : ".$value->description_offre_emploi."</p>");
-				print("-----------------------------------------------------------");
+				echo "<hr/>";
 			}
 
 		}
@@ -97,7 +97,8 @@
 			print("<p> Sallaire proposé : ".$value->salaire_offre_emploi." €</p>");
 			print("<p> Expérience nécéssaire : ".$value->experience_offre_emploi."</p>");
 			print("<p> Description de l'offre : ".$value->description_offre_emploi."</p>");
-			print("-----------------------------------------------------------");
+			?><p><button type="button" href=" /view&id= $value->id_offre_emploi)"> Voir cette offre</button></p><?php
+			echo "<hr/>";
 
 		}
 
