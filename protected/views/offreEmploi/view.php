@@ -38,4 +38,30 @@ if($model->id_entreprise == $utilisateur->id_entreprise)
 		'id_entreprise',
 		),
 	));
+
+
+
+
+
+	if (!Utilisateur::est_employe(Yii::app()->user->role) )
+	{ // Si entreprise on affiche la possibilité de maj/suppr l'offre en question
+		$this->menu=array(
+			array('label'=>'Liste des offre d\'emploi', 'url'=>array('index')),
+			array('label'=>'Créer une offre d\'emploi', 'url'=>array('create')),
+			array('label'=>'Modifier l\'offre d\'emploi', 'url'=>array('update', 'id'=>$model->id_offre_emploi)),
+	);
+		
+	}
+	else if( Utilisateur::est_employe(Yii::app()->user->role))  
+	{  // Si employé on affiche la possibilité de postuler à l'offre en question
+
+	}
+
+	else 
+	{ // Si autre on affiche toutes les possibilité
+
+	}
 ?>
+
+
+
