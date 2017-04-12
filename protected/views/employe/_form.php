@@ -18,9 +18,10 @@
 	$adresse = Adresse::model()->FindByAttributes(array('id_adresse'=>$model->id_adresse));
 	$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
 
-
 ?>
 
+	<!--<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>-->
+	
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">

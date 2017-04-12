@@ -16,6 +16,7 @@
 ?>
 
     <div class="row">
+    	<!--<p class="note"><span class="required">*</span> Champs à remplir obligatoirement.</p>-->
         <p align='center'>Avant de vous inscrire, dites nous quel est votre statut</p>
         
         <!-- Boutons radios pour le statut -->
@@ -67,7 +68,13 @@
 	</div>
 
 
+	<div class="row">
+		<p>Confirmer le mot de passe</p>
+		<p><input type="password" name="confirm_mdp" required/></p>
+		<?php echo $form->error($model,'mot_de_passe'); ?>
+	</div>
 
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Inscription'); ?>
 	</div>
