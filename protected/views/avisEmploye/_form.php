@@ -22,7 +22,7 @@
 		<?php 
 		/*		On assigne une valeur à l'input 		*/
 		$model->id_employe = intval( $_GET['id'] );
-		echo $form->textField( $model,'id_employe', [ 'readonly' => true ); ?>
+		echo $form->textField( $model,'id_employe', [ 'readonly' => true ] ); ?>
 		<?php echo $form->error( $model,'id_employe' ); ?>
 	</div>
 
