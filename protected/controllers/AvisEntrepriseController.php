@@ -119,7 +119,7 @@ class AvisEntrepriseController extends Controller
 
 			/*		On redirige vers l'employé concerné 		*/
 			$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $avisEntreprise->id_entreprise,
-																'error' => 0 ) );
+																	'error' => 0 ) );
 			$this->redirect( $url );
 		
 		}
@@ -130,7 +130,7 @@ class AvisEntrepriseController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
 		if( isset( $_POST['AvisEntreprise'] ) )
 		{

@@ -85,6 +85,16 @@ $this->widget('zii.widgets.CDetailView', array(
 
 
 
+<?php 
+		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
+			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+		
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
+			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
+?>
+
+
 <?php  	if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId())) : 	?>
 			<h2>Vos derniers avis :</h2>
 <?php  	else :  	?>
@@ -112,7 +122,7 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
 				foreach ( $criteresEmploye_array as $key => $critere_obj ) :			?>
-<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
+<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
 
 <?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
 
@@ -143,7 +153,7 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <?php  		endforeach; 	?>
 <?php  	else : ?>
-	<p>Il n'y a pas encore d'avis sur cet employé.</p>
+	<p>Il n'y a pas encore d'avis.</p>
 <?php  	endif; ?>
 
 
@@ -156,14 +166,8 @@ $this->widget('zii.widgets.CDetailView', array(
 ?>
 
 	<h2>Laissez votre avis à cet employé</h2>
-<?php 
-		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
-		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
-			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
-		
-		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
-			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
 
+<?php
 		/**
 		 * Affichage du formulaire pour ajouter un avis
 		 */

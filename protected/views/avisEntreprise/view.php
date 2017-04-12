@@ -2,10 +2,10 @@
 /* @var $this AvisEntrepriseController */
 /* @var $model AvisEntreprise */
 
-$this->breadcrumbs=array(
+/*$this->breadcrumbs=array(
 	'Avis Entreprises'=>array('index'),
 	$model->id_avis_entreprise,
-);
+);*/
 
 $this->menu=array(
 	array('label'=>'List AvisEntreprise', 'url'=>array('index')),

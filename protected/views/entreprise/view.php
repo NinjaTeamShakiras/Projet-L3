@@ -3,7 +3,6 @@
 /* @var $model Entreprise */
 
 
-
 if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()) )
 {
 	$this->menu=array(
@@ -53,6 +52,15 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 
 
+<?php 
+		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
+			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+		
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
+			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
+?>
+
 <?php  	/*		Modification du message en fonction de qui voit le profil	*/
 		if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId() ) ) : 	?>
 			<h2>Les derniers avis de votre entreprise :</h2>
@@ -80,11 +88,11 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 <?php 			$criteresEntreprise_arr = EntrepriseAvisCritere::model()->findAll( "id_avis_entreprise = " . $avis_obj->id_avis_entreprise ); 		?>
 
-				<ul class="ul-single-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>">
+				<ul class="ul-entre-single-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>">
 
 <?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
 				foreach ( $criteresEntreprise_arr as $key => $critere_obj ) :			?>
-<?php 				$critere_notation_obj = CriteresNotationEntreprise::model()->findByAttributes( array( "id_critere_entreprise"=>$critere_obj->id_critere_notation_entreprise ) );		?>
+<?php 				$critere_notation_obj = CriteresNotationEntreprise::model()->findByAttributes( array( "id_critere_notation_entreprise"=>$critere_obj->id_critere_notation_entreprise ) );		?>
 
 <?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_entreprise_avis ) ) : ?>
 
@@ -95,15 +103,15 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 <?php  			
 				/*		Récupération de la personne qui a créé l'avis  		*/
-				$auteur_avis_obj = Entreprise::get_entreprise_by_id_utilisateur( $avis_obj->id_utilisateur );  
+				$auteur_avis_obj = Employe::get_employe_by_id_utilisateur( $avis_obj->id_utilisateur );  
 ?>				
 				</ul>
-				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_entreprise ) :  print( "administrateur" );  ?></p>
+				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_employe ) :  print( "administrateur" );  ?></p>
 
 <?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
 					
-					<p><button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button></p>
-					<div class="update-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
+					<p><button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button></p>
+					<div class="update-entrep-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
 <?php  					$this->renderPartial('./../avisEntreprise/update', array 	( 
 																				'model' => AvisEntreprise::model(),
 																				'avisEntreprise_layout' => $avis_obj,
@@ -116,7 +124,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 <?php  		endforeach; 	?>
 
 <?php  	else : ?>
-	<p>Il n'y a pas encore d'avis sur cette entreprise.</p>
+	<p>Il n'y a pas encore d'avis.</p>
 <?php  	endif; ?>
 
 
@@ -132,3 +140,16 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 	endif;
 ?>
 
+
+
+
+<!-- A supprimer pour remmetre dans un vrai fichier .js -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).on( 'click', ".entreprise-update-avis", function() {
+		$(this).hide();
+		$( '.ul-entre-single-avis-' + $(this).attr("id_avis") ).hide();
+		$( '.update-entrep-form-avis-' + $(this).attr("id_avis") ).fadeIn();
+	});
+	
+</script>
