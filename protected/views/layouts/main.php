@@ -69,6 +69,7 @@
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				// Visible hors connexion
+				array('label'=>'Accueil', 'url'=>array('/site/index')),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				// Visible que si connecté
 				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),

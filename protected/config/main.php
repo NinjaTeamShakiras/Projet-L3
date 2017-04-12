@@ -53,6 +53,13 @@ return array(
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
 
+		'clientScript' => array(
+						'scriptMap' => array(
+							'jquery.js' => true,
+							'jquery-min.js' => true,
+							),
+						),
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>YII_DEBUG ? null : 'site/error',
