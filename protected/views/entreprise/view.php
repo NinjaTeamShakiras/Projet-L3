@@ -106,7 +106,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 				$auteur_avis_obj = Employe::get_employe_by_id_utilisateur( $avis_obj->id_utilisateur );  
 ?>				
 				</ul>
-				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_employe ) :  print( "administrateur" );  ?></p>
+				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->prenom_employe ) :  print( "administrateur" );  ?></p>
 
 <?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
 					
