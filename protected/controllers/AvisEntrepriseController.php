@@ -135,7 +135,7 @@ class AvisEntrepriseController extends Controller
 		if( isset( $_POST['AvisEntreprise'] ) )
 		{
 			/*		Booléen pour déterminer si tout a bien été réalisé 	 	*/
-			$succes_bool = true;
+			$succes_bool = false;
 			/*		On récupère l'entrée avec l'identifiant 		*/
 			$model=$this->loadModel( intval( $_POST['AvisEntreprise']['id_avis_entreprise'] ) );
 			/*		Somme pour calculer la note moyenne		*/
@@ -159,7 +159,7 @@ class AvisEntrepriseController extends Controller
 					
 					$critereModel_obj->commentaire_evaluation_critere = trim( $value_str );
 
-					$succes_bool = $critereModel_obj->save() && $succes_bool;
+					$succes_bool = $critereModel_obj->save();
 
 				}
 				/*		Les paramètres qui sont notés 		*/
@@ -175,7 +175,7 @@ class AvisEntrepriseController extends Controller
 					
 					$critereModel_obj->note_entreprise_avis = trim( $value_str );
 
-					$succes_bool = $critereModel_obj->save() && $succes_bool;
+					$succes_bool = $critereModel_obj->save();
 					
 					if ( $succes_bool )
 					{
