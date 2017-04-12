@@ -131,4 +131,14 @@ class Utilisateur extends CActiveRecord
 	{
 		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_utilisateur;
 	}
+
+	/*	Fonction pour récupérer l'utilisateur connecté à partir d'un login
+		Paramètres : L'identifiant de l'entreprise 
+		Return : Un objet Utilisateur (Objet) 		*/
+	public static function get_utilisateur_connexion($login_str)
+	{
+		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ));
+	}
+
+	
 }

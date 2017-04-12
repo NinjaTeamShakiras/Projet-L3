@@ -35,35 +35,36 @@
 
 		$utilisateur = Utilisateur::model()->FindByAttributes(array('login'=>$user->id));
 		
-		//Si c'est un employé, on lui affiche certains onglets
-		if($user->getState('type') == "employe")
-		{
+		
 
+		if($user->getState('type') == "employe") // Si c'est un employé, on lui affiche certains onglets
+		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Accueil', 'url'=>array('/site/index')),
 				array('label'=>'Liste des entreprises', 'url'=>array('/entreprise/index' )),
 				array('label'=>'Mon compte', 'url'=>array('/employe/view', 'id'=>$utilisateur->id_employe)),
+				array('label'=>'Offre d\'emploi', 'url'=>array('/offreEmploi/index')),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 				),
 			));
+
 		}
-		//Si c'est une entreprise, on lui affiche certains autres onglets
-		else if($user->getState('type') == "entreprise")
+		else if($user->getState('type') == "entreprise") // Si c'est une entreprise, on lui affiche certains autres onglets
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Accueil', 'url'=>array('/site/index')),
 				array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Mon entreprise', 'url'=>array('/entreprise/view', 'id'=>$utilisateur->id_entreprise)),
+				array('label'=>'Mes offres d\'emploi', 'url'=>array('/offreEmploi/index')),
 				array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 				),
 			));
 		}
-		//Si c'est un invité, il n'a que la connexion
-		else
+		else //Si c'est un invité, il n'a que la connexion
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -76,9 +77,8 @@
 			));
 		}
 
-		 
-		
 		?>
+
 
 
 	</div><!-- mainmenu -->

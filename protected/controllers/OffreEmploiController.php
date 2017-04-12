@@ -1,6 +1,6 @@
 <?php
 
-class EntrepriseController extends Controller
+class OffreEmploiController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -26,42 +26,23 @@ class EntrepriseController extends Controller
 	 */
 	public function accessRules()
 	{
-		$user = Yii::app()->user;
-
-		if($user->getState('type') == 'entreprise')
-		{
-			return array(
-				array('allow',
-					  'actions'=>['index','view', 'update'],
-					),
-				array('deny',
-					  'actions'=>['admin', 'delete'],
-					),
-			);
-		}
-
-		if($user->getState('type') == 'employe')
-		{
-
-			return array(
-					array('allow',
-						  'actions'=>['view', 'index'],
-						),
-					array('deny',
-						  'actions'=>['update','admin'],
-						),
-			);
-		}	
-
-		if($user->getState('type') == NULL)
-		{
-			return array(
-					array('allow',
-						  'actions'=>['index', 'view'],
-						  ),
-					);
-		}	
-
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
 	}
 
 	/**
@@ -81,16 +62,25 @@ class EntrepriseController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Entreprise;
+		$model=new OffreEmploi;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Entreprise']))
+		if(isset($_POST['OffreEmploi']))
 		{
-			$model->attributes=$_POST['Entreprise'];
+			
+			$utilisateur = Utilisateur::model()->FindByAttributes(array('login' => Yii::app()->user->getId())); 
+			$model->attributes=$_POST['OffreEmploi'];
+			$model->id_entreprise = $utilisateur->id_entreprise;
+
+			// On fournis la date de créationde l'offre
+			date_default_timezone_set('Europe/Paris');
+			$model->date_creation_offre_emploi = (new \DateTime())->format('Y-m-d H:i:s');
+
+
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_entreprise));
+				$this->redirect(array('view','id'=>$model->id_offre_emploi));
 		}
 
 		$this->render('create',array(
@@ -110,11 +100,11 @@ class EntrepriseController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Entreprise']))
+		if(isset($_POST['OffreEmploi']))
 		{
-			$model->attributes=$_POST['Entreprise'];
+			$model->attributes=$_POST['OffreEmploi'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_entreprise));
+				$this->redirect(array('view','id'=>$model->id_offre_emploi));
 		}
 
 		$this->render('update',array(
@@ -141,7 +131,7 @@ class EntrepriseController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Entreprise');
+		$dataProvider=new CActiveDataProvider('OffreEmploi');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -152,10 +142,10 @@ class EntrepriseController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Entreprise('search');
+		$model=new OffreEmploi('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Entreprise']))
-			$model->attributes=$_GET['Entreprise'];
+		if(isset($_GET['OffreEmploi']))
+			$model->attributes=$_GET['OffreEmploi'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -166,12 +156,12 @@ class EntrepriseController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Entreprise the loaded model
+	 * @return OffreEmploi the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Entreprise::model()->findByPk($id);
+		$model=OffreEmploi::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -179,36 +169,60 @@ class EntrepriseController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Entreprise $model the model to be validated
+	 * @param OffreEmploi $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='entreprise-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='offre-emploi-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
 
-	/*	Fonction pour récupérer l'identifiant de l'employé après la connexion
-		Paramètres : L'identifiant de l'utilisateur 
-		Return : Un identifiant (Integer) 		*/
-	protected function get_id_utilisateur_connexion($login_str)
+
+
+	/* Fonction qui change la date au formatr Américain pour la BDD */
+	protected function changeDateBDD($date)
 	{
-		return Utilisateur::model()->findByAttributes(array( "login" => $login_str ))->id_entreprise;
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 6, 4);
+		$month = substr($date, 3, 2);
+		$day = substr($date, 0, 2);
+
+		$result = $year."-".$month."-".$day;
+
+		return $result;
 	}
 
-	
-	/*	Fonction qui recherche une ou plusieurs entreprises dans la base en fonction 
-			des infos entrées par l'utilisateur 
-	*/		
-	public function actionSearch()
-	{
-		//On récupère la liste des entreprises par rapport au nom entré
-		$nom_entreprise = $_POST['Entreprise']['nom_entreprise'];
-		$entreprises = Entreprise::model()->FindAll("nom_entreprise = '$nom_entreprise'");
 
-		$this->render('index_search', array('data'=>$entreprises));
+	/*	Fonction qui change la date au format français*/
+	protected function changeDateNaissance($date)
+	{
+		$result = NULL;
+		$day = 0;
+		$month = 0;
+		$year = 0;
+
+		//On récupère chaque valeur grâce a substr
+		$year = substr($date, 0, 4);
+		$month = substr($date, 5, 2);
+		$day = substr($date, 8, 2);
+
+		$result = $day."/".$month."/".$year;
+
+		return $result;
+
 	}
+
+
+
+
+
 
 }

@@ -12,7 +12,6 @@ $adresse = Adresse::model()->findAll();
 
 $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl('Entreprise/Search'),
-	'method'=>'get',
 )); ?>
 
 	<div class="row" align='center'>

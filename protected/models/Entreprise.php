@@ -39,11 +39,10 @@ class Entreprise extends CActiveRecord
 			/*array('nom_entreprise', 'required'),*/
 			array('recherche_employes, id_adresse', 'numerical', 'integerOnly'=>true),
 			array('nom_entreprise', 'length', 'max'=>45),
-			array('mail_entreprise', 'length', 'max'=>70),
 			array('telephone_entreprise', 'length', 'max'=>12),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_entreprise, nom_entreprise, recherche_employes, mail_entreprise, telephone_entreprise, id_adresse', 'safe', 'on'=>'search'),
+			array('id_entreprise, nom_entreprise, recherche_employes, telephone_entreprise, id_adresse', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,7 +71,6 @@ class Entreprise extends CActiveRecord
 			'id_entreprise' => 'Id Entreprise',
 			'nom_entreprise' => 'Nom Entreprise',
 			'recherche_employes' => 'Recherche Employes',
-			'mail_entreprise' => 'Mail Entreprise',
 			'telephone_entreprise' => 'Telephone Entreprise',
 			'id_adresse' => 'Id Adresse',
 		);
@@ -99,7 +97,6 @@ class Entreprise extends CActiveRecord
 		$criteria->compare('id_entreprise',$this->id_entreprise);
 		$criteria->compare('nom_entreprise',$this->nom_entreprise,true);
 		$criteria->compare('recherche_employes',$this->recherche_employes);
-		$criteria->compare('mail_entreprise',$this->mail_entreprise,true);
 		$criteria->compare('telephone_entreprise',$this->telephone_entreprise,true);
 		$criteria->compare('id_adresse',$this->id_adresse);
 
@@ -166,4 +163,8 @@ class Entreprise extends CActiveRecord
 			return Entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
 		}
 	}
+
+
+	
+
 }

@@ -2,10 +2,10 @@
 /* @var $this EntrepriseController */
 /* @var $model Entreprise */
 
-$this->breadcrumbs=array(
-	'Entreprises'=>array('index'),
-	'Create',
-);
+//$this->breadcrumbs=array(
+//	'Entreprises'=>array('index'),
+//	'Create',
+//);
 
 $this->menu=array(
 	array('label'=>'List Entreprise', 'url'=>array('index')),
