@@ -145,8 +145,65 @@ class AvisEmploye extends CActiveRecord
 	}
 
 	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
-	public  static function afficher_textearea( $nom_str )
+	public static function afficher_textearea( $nom_str )
 	{
 		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte..."></textarea>' );
 	}
+
+
+	/*		Fonction pour afficher les criteres de notation avec des paramètres pour l'update 	 	*/
+	public static function afficher_criteres_notation_with_parameters( $contentCriteres_arr )
+	{
+		/*		Affichage des critères de notations 		*/
+		foreach ( $contentCriteres_arr as $key => $value_obj )
+		{
+			/*		On récupère le critère concerné à partir de l'identifiant  		*/
+			$critereConcerne_obj = CriteresNotationEmploye::model()->findByAttributes( array( 	
+									"id_critere_employe" => $value_obj->id_critere_notation_employe
+									)
+			);
+
+			print(	'<div class="row">' );
+
+			/*		Si le résultat est correcte 		*/
+			if( $critereConcerne_obj )
+			{
+					print(	'<div>' . $critereConcerne_obj->nom_critere_employe . '</div>' );
+					if( $critereConcerne_obj->critere_note_employe )
+						AvisEmploye::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_employe . '_note', $value_obj->note_employe_avis );
+					
+					else
+						AvisEmploye::afficher_textearea_with_param( $critereConcerne_obj->id_critere_employe .'_text', $value_obj->commentaire_evaluation_critere );
+			}
+			
+			print(	'</div>' );
+		
+		}
+	
+	}
+
+
+	/*		Fonction pour afficher la barre de notation d'un avis employé 		*/
+	public static function afficher_barre_notation_with_param( $nom_str, $note_int )
+	{
+		print( '<div class="barre-notation-employe">' );
+		for( $i = 0; $i <= 10; $i++ ) {
+
+			if( $note_int == $i )
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" checked="true" >' );
+			else
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
+			
+			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
+		}
+		print( '</div>' );
+		
+	}
+
+	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
+	public static function afficher_textearea_with_param( $nom_str, $value )
+	{
+		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte...">' . $value . '</textarea>' );
+	}
+
 }

@@ -166,4 +166,8 @@ class Entreprise extends CActiveRecord
 			return Entreprise::model()->findByAttributes( array("id_entreprise" => $utilisateur_obj->id_entreprise ) );
 		}
 	}
+
+
+	
+
 }
