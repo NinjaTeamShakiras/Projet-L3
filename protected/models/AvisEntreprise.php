@@ -7,7 +7,7 @@
  * @property integer $id_avis_entreprise
  * @property integer $note_generale_avis
  * @property datetime $date_creation
- * @property integer $nb_signalements
+ * @property integer $nb_signalements_avis_entreprise
  * @property integer $id_entreprise
  * @property integer $id_utilisateur
  *
@@ -34,7 +34,6 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-
 			array('note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'required'),
 			array('note_generale_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
@@ -92,8 +91,8 @@ class AvisEntreprise extends CActiveRecord
 
 		$criteria->compare('id_avis_entreprise',$this->id_avis_entreprise);
 		$criteria->compare('note_generale_avis_entreprise',$this->note_generale_avis);
-		$criteria->compare('date_creation_avis_entreprise',$this->date_creation,true);
-		$criteria->compare('nb_signalements_avis_entreprise',$this->nb_signalements);
+		$criteria->compare('date_creation_avis_entreprise',$this->date_creation_avis_entreprise,true);
+		$criteria->compare('nb_signalements_avis_entreprise',$this->nb_signalements_avis_entreprise);
 		$criteria->compare('id_entreprise',$this->id_entreprise);
 		$criteria->compare('id_utilisateur',$this->id_utilisateur);
 
@@ -114,27 +113,97 @@ class AvisEntreprise extends CActiveRecord
 	}
 
 
-	/* 		Affiche un avis d'une entreprise 		*/
-	public static function afficher_avis( $objet )
+	/*		Fonction pour afficher les critères de notation d'une entreprise
+			Paramètres : Aucun paramètre n'est requis
+			Return : Void
+	*/
+	public static function afficher_criteres_notation_entreprise()
 	{
-
-		$employe_obj = employe::get_employe_by_id_utilisateur($objet->id_utilisateur);
-
-		if( is_a( $objet, __CLASS__ ) && !is_null( $employe_obj ) )
+		/*		Affichage des critères de notations 		*/
+		foreach ( CriteresNotationEntreprise::model()->findAll() as $key => $value )
 		{
-			print
-			(
-				'<div style="border: solid 1px #298dcd; margin: 2% 0%; padding: 1%;" >
-					<p>Note : ' . $objet->note_generale_avis_entreprise  . '<p>
-					<p>Par : ' . $employe_obj->nom_employe . '</p>
-				</div>'
+			print(	'<div class="row">
+						<div>' . $value->nom_critere_entreprise . '</div>' );
+			if( $value->critere_note_entreprise )
+				AvisEntreprise::afficher_barre_notation( $value->id_critere_notation_entreprise . '_note' );
+			else
+				AvisEntreprise::afficher_textearea( $value->id_critere_notation_entreprise .'_text' );
+			print(	'</div>' );
+		}
+	}
 
+	/*		Fonction pour afficher la barre de notation d'un avis entreprise 		*/
+	public static function afficher_barre_notation( $nom_str )
+	{
+		print( '<div class="barre-notation-entreprise">' );
+		for( $i = 0; $i <= 10; $i++ ) {
+			print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
+			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
+		}
+		print( '</div>' );
+		
+	}
+
+	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
+	public static function afficher_textearea( $nom_str )
+	{
+		print( '<textarea name="' . $nom_str . '" class="textarea-avis-entreprise" placeholder="Votre texte..."></textarea>' );
+	}
+
+
+	/*		Fonction pour afficher les criteres de notation avec des paramètres pour l'update 	 	*/
+	public static function afficher_criteres_notation_with_parameters( $contentCriteres_arr )
+	{
+		/*		Affichage des critères de notations 		*/
+		foreach ( $contentCriteres_arr as $key => $value_obj )
+		{
+			/*		On récupère le critère concerné à partir de l'identifiant  		*/
+			$critereConcerne_obj = CriteresNotationEntreprise::model()->findByAttributes( array( 	
+									"id_critere_notation_entreprise" => $value_obj->id_critere_notation_entreprise
+									)
 			);
+
+			print(	'<div class="row">' );
+
+			/*		Si le résultat est correcte 		*/
+			if( $critereConcerne_obj )
+			{
+					print(	'<div>' . $critereConcerne_obj->nom_critere_entreprise . '</div>' );
+					if( $critereConcerne_obj->critere_note_entreprise )
+						AvisEntreprise::afficher_barre_notation_with_param( $critereConcerne_obj->id_critere_notation_entreprise . '_note', $value_obj->note_entreprise_avis );
+					
+					else
+						AvisEntreprise::afficher_textearea_with_param( $critereConcerne_obj->id_critere_notation_entreprise .'_text', $value_obj->commentaire_evaluation_critere );
+			}
+			
+			print(	'</div>' );
+		
 		}
-		else 
-		{
-			throw new InvalidArgumentException("Le paramètre de la fonction ''afficher_avis()'' n'est pas du type '" . __CLASS__ . "'");
+	
+	}
+
+
+	/*		Fonction pour afficher la barre de notation d'un avis entreprise 		*/
+	public static function afficher_barre_notation_with_param( $nom_str, $note_int )
+	{
+		print( '<div class="barre-notation-entreprise">' );
+		for( $i = 0; $i <= 10; $i++ ) {
+
+			if( $note_int == $i )
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" checked="true" >' );
+			else
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
+			
+			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
 		}
+		print( '</div>' );
+		
+	}
+
+	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
+	public static function afficher_textearea_with_param( $nom_str, $value )
+	{
+		print( '<textarea name="' . $nom_str . '" class="textarea-avis-entreprise" placeholder="Votre texte...">' . $value . '</textarea>' );
 	}
 
 

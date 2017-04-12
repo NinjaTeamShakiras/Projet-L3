@@ -17,30 +17,23 @@
 	'enableAjaxValidation' => true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'note_generale_avis_entreprise'); ?>
-		<?php echo $form->textField($model,'note_generale_avis_entreprise'); ?>
-		<?php echo $form->error($model,'note_generale_avis_entreprise'); ?>
-	</div>
+	<?php 
+		AvisEntreprise::afficher_criteres_notation_entreprise();
+	?>
 
-	<div class="row">
+	<div class="row hide">
 		<?php echo $form->labelEx($model,'id_entreprise'); ?>
-		<?php echo $form->textField($model,'id_entreprise'); ?>
-		<?php echo $form->error($model,'id_entreprise'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_utilisateur'); ?>
-		<?php echo $form->textField($model,'id_utilisateur'); ?>
-		<?php echo $form->error($model,'id_utilisateur'); ?>
+		<?php 
+		/*		On assigne une valeur à l'input 		*/
+		$model->id_entreprise = intval( $_GET['id'] );
+		echo $form->textField( $model,'id_entreprise', [ 'readonly' => true ] ); ?>
+		<?php echo $form->error( $model,'id_entreprise' ); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton( 'Envoyer mon avis' ); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

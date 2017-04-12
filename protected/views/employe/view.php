@@ -19,11 +19,15 @@ $this->breadcrumbs=array(
 	<h2>Bienvenue sur votre profil</h2>
 </div> 
 
-<?php  endif; ?>
-
+<?php else :  ?>
 <div>
 	<h1><?php echo $model->nom_employe . " " .$model->prenom_employe;?></h1>
 </div>
+
+
+<?php  endif; ?>
+
+
 
 <?php 
 
@@ -82,28 +86,26 @@ $this->widget('zii.widgets.CDetailView', array(
 	),
 )); ?>
 
-<?php 
-/*			Si l'utilisateur n'est pas un employé 		*/
-if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
 
-<h2>Laissez votre avis à cet employé</h2>
 
 <?php 
-	/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
-	if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
-		echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
-	
-	if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
-		echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
-
-
-	$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 
-	endif;
+		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
+			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+		
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
+			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
 ?>
 
-<br/><br/>
-<h2>Voici la liste de vos avis :</h2>
+
+<?php  	if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId())) : 	?>
+			<h2>Vos derniers avis :</h2>
+<?php  	else :  	?>
+			<h2>Avis de cet employé :</h2>
+
+<?php   endif; ?>
+
 <?php 
 	/*		Récupérations des informations des autres tables 		*/
 	$avis_all = AvisEmploye::model()->findAll( "id_employe = " . $model->id_employe );
@@ -112,6 +114,7 @@ if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
 <div>
 <?php 
+		if( sizeof( $avis_all ) > 0 ) :
 			/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
 			foreach ( $avis_all as $key => $avis_obj ) :				?>
 
@@ -123,7 +126,7 @@ if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
 <?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
 				foreach ( $criteresEmploye_array as $key => $critere_obj ) :			?>
-<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
+<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
 
 <?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
 
@@ -141,7 +144,7 @@ if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
 <?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
 					
-					<p><button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier cette avis</button></p>
+					<p><button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button></p>
 					<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
 <?php  					$this->renderPartial('./../avisEmploye/update', array 	( 
 																				'model' => AvisEmploye::model(),
@@ -152,9 +155,30 @@ if(!Utilisateur::est_employe(Yii::app()->user->role)) : ?>
 
 <?php  			endif; ?>
 
-
 <?php  		endforeach; 	?>
+<?php  	else : ?>
+	<p>Il n'y a pas encore d'avis.</p>
+<?php  	endif; ?>
+
+
 </div>
+
+
+<?php 
+	/*			Si l'utilisateur n'est pas un employé 		*/
+	if( !Utilisateur::est_employe(Yii::app()->user->role ) ) : 
+?>
+
+	<h2>Laissez votre avis à cet employé</h2>
+
+<?php
+		/**
+		 * Affichage du formulaire pour ajouter un avis
+		 */
+		$this->renderPartial('./../avisEmploye/_form', array( 'model' => AvisEmploye::model()) ); 
+	endif;
+?>
+
 
 <!-- A supprimer pour remmetre dans un vrai fichier .js -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

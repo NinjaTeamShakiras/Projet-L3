@@ -25,9 +25,10 @@
 	}
 	else if( Utilisateur::est_employe(Yii::app()->user->role))  
 	{  // Si employé
-		$this->menu=array(
+		/*$this->menu=array(
 			array('label'=>'Postuler', 'url'=>array('postuler/index')) // On peut postuler à une offre d'emploie
 		);
+		*/
 
 		$titre = "Liste des offres d'emplois";
 
@@ -36,24 +37,17 @@
 	{ // Si autre
 		$this->menu=array(
 			array('label'=>'Créer une offre d\'emploi', 'url'=>array('create')), // On peut créer et postuler à une offre d'emploie
-			array('label'=>'Postuler', 'url'=>array('postuler/index')),
 		);
 
 		$titre = "Liste des offres d'emplois";
 
 	}
 
-
 ?>
 
 
 
 <h1><?php echo $titre?></h1> <!-- Titre page -->
-
-<?php
-
-
-?>
 
 
 <?php
@@ -78,6 +72,7 @@
 				print("<p> Sallaire proposé : ".$value->salaire_offre_emploi." €</p>");
 				print("<p> Expérience nécéssaire : ".$value->experience_offre_emploi."</p>");
 				print("<p> Description de l'offre : ".$value->description_offre_emploi."</p>");
+				echo CHtml::link('Voir cette offre' ,array('offreEmploi/view', 'id'=>$value->id_offre_emploi));
 				echo "<hr/>";
 			}
 
@@ -97,7 +92,7 @@
 			print("<p> Sallaire proposé : ".$value->salaire_offre_emploi." €</p>");
 			print("<p> Expérience nécéssaire : ".$value->experience_offre_emploi."</p>");
 			print("<p> Description de l'offre : ".$value->description_offre_emploi."</p>");
-			?><p><button type="button" href=" /view&id= $value->id_offre_emploi)"> Voir cette offre</button></p><?php
+			echo CHtml::link('Voir cette offre' ,array('offreEmploi/view', 'id'=>$value->id_offre_emploi));
 			echo "<hr/>";
 
 		}

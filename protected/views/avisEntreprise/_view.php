@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('note_generale_avis_entreprise')); ?>:</b>
-	<?php echo CHtml::encode($data->note_generale_avis); ?>
+	<?php echo CHtml::encode($data->note_generale_avis_entreprise); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('commentaire_avis_entreprise')); ?>:</b>

@@ -3,8 +3,7 @@
 /* @var $model Entreprise */
 
 
-
-if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()))
+if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()) )
 {
 	$this->menu=array(
 		array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_entreprise)),
@@ -12,14 +11,15 @@ if($model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user
 }
 ?>
 
+<?php 	/*		On affiche un message en fonction si c'est le profil de l'utilisteur qui est connecté ou pas 	*/
+		if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId()) ) : ?>
+			<h1>Votre espace personnel :</h1>
+<?php  	else : 		?>
+			<h1>Profil entreprise <?php echo $model->nom_entreprise ?></h1>
+<?php  	endif; 		?>
 
-<!-- AFFICHAGE ESPACE PERSO -->
-
-<h1>Votre espace personnel :</h1>
-<br/>
 
 <?php 
-
 $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$model->id_entreprise));
 	$this->widget('zii.widgets.CDetailView',
 		array(
@@ -49,25 +49,107 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 ?>
 
 
+
+
+
+<?php 
+		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
+			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+		
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
+			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
+?>
+
+<?php  	/*		Modification du message en fonction de qui voit le profil	*/
+		if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->user->getId() ) ) : 	?>
+			<h2>Les derniers avis de votre entreprise :</h2>
+<?php  	else :  	?>
+			<h2>Avis de cet employé :</h2>
+
+<?php   endif; ?>
+
+
+
+<?php 
+	/*		Récupérations de tous les avis de l'entreprise 		*/
+	$avis_all = AvisEntreprise::model()->findAll( "id_entreprise = " . $model->id_entreprise );
+?>
+
+
+<div>
+<?php 
+		/*		S'il y a des avis on les affiche 	 */
+		if( sizeof( $avis_all ) > 0 ) :
+			/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
+			foreach ( $avis_all as $key => $avis_obj ) :				?>
+
+				<p>Note générale : <b><?php echo round( $avis_obj->note_generale_avis_entreprise, 1 ); ?></b></p>
+
+<?php 			$criteresEntreprise_arr = EntrepriseAvisCritere::model()->findAll( "id_avis_entreprise = " . $avis_obj->id_avis_entreprise ); 		?>
+
+				<ul class="ul-entre-single-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>">
+
+<?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
+				foreach ( $criteresEntreprise_arr as $key => $critere_obj ) :			?>
+<?php 				$critere_notation_obj = CriteresNotationEntreprise::model()->findByAttributes( array( "id_critere_notation_entreprise"=>$critere_obj->id_critere_notation_entreprise ) );		?>
+
+<?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_entreprise_avis ) ) : ?>
+
+						<li><?php print( $critere_notation_obj->nom_critere_entreprise ); ?> : <?php is_null( $critere_obj->note_entreprise_avis ) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_entreprise_avis ); ?> </li>
+
+<?php   			endif; 			?>
+<?php  			endforeach; 		?>
+
+<?php  			
+				/*		Récupération de la personne qui a créé l'avis  		*/
+				$auteur_avis_obj = Employe::get_employe_by_id_utilisateur( $avis_obj->id_utilisateur );  
+?>				
+				</ul>
+				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_employe ) :  print( "administrateur" );  ?></p>
+
+<?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
+					
+					<p><button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button></p>
+					<div class="update-entrep-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
+<?php  					$this->renderPartial('./../avisEntreprise/update', array 	( 
+																				'model' => AvisEntreprise::model(),
+																				'avisEntreprise_layout' => $avis_obj,
+																				'criteresAvis_layout' => $criteresEntreprise_arr
+																			) ); 		?>
+					</div>
+
+<?php  			endif; ?>
+
+<?php  		endforeach; 	?>
+
+<?php  	else : ?>
+	<p>Il n'y a pas encore d'avis.</p>
+<?php  	endif; ?>
+
+
+</div>
+
+
 <?php if( Utilisateur::est_employe( Yii::app()->user->role ) ) : ?>
 
 <h2>Laissez votre avis à cette entreprise</h2>
 
 <?php 
-	$this->renderPartial('./../avisEntreprise/_form', array( 'model' => AvisEntreprise::model()) ); 
+	$this->renderPartial('./../avisEntreprise/_form', array( 'model' => AvisEntreprise::model() ) ); 
 	endif;
 ?>
 
 
-<br/><br/>
-<h2>Voici la liste des avis :</h2>
-<?php 
-	$avis_all = AvisEntreprise::model()->findAll("id_entreprise = " . $model->id_entreprise);
-
-	foreach ($avis_all as $key => $value)
-	{
-		AvisEntreprise::afficher_avis($value);
-	}
- ?>
 
 
+<!-- A supprimer pour remmetre dans un vrai fichier .js -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).on( 'click', ".entreprise-update-avis", function() {
+		$(this).hide();
+		$( '.ul-entre-single-avis-' + $(this).attr("id_avis") ).hide();
+		$( '.update-entrep-form-avis-' + $(this).attr("id_avis") ).fadeIn();
+	});
+	
+</script>

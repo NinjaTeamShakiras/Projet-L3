@@ -62,22 +62,67 @@ class AvisEntrepriseController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new AvisEntreprise;
+		$avisEntreprise = new AvisEntreprise();
+		
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['AvisEntreprise']))
+		if( isset( $_POST['AvisEntreprise'] ) )
 		{
-			$model->attributes=$_POST['AvisEntreprise'];
-			if($model->save())
-				$this->redirect( 'index.php?r=entreprise/view&id=' . $model->id_entreprise );
+			/*		Définition du fuseau horaire GMT+1		*/
+			date_default_timezone_set( 'Europe/Paris' );
+			
+			/*		Récupération de la date et l'heure actuelle 	*/
+			$date = (new \DateTime())->format('Y-m-d H:i:s');
 
+			/*		Variable pour le nombre d'éléments et la note globale 		*/
+			$somme_double = 0;
+			$nb_elements_int = 0;
+
+			/*		Affectation sur la table Avis_Entreprise 		*/
+			$avisEntreprise->date_creation_avis_entreprise = $date;
+			$avisEntreprise->nb_signalements_avis_entreprise = 0;
+			$avisEntreprise->id_entreprise = $_POST['AvisEntreprise']['id_entreprise'];
+			$avisEntreprise->id_utilisateur = Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() );
+			/*		Boucle pour calculer la note moyenne 		*/
+			foreach ( $_POST as $key => $value ) 
+			{
+				/*		Si c'est un critère noté on fait la somme	*/
+				if ( strpos( $key, "_note" ) ) 
+				{
+					$somme_double += $value;
+					$nb_elements_int++;
+				}
+			}
+			$avisEntreprise->note_generale_avis_entreprise = $somme_double / $nb_elements_int;
+			$avisEntreprise->save();
+
+			/*		Affectation sur la table Entreprise_Avis_Criteres 		*/
+			foreach ( $_POST as $key => $value ) 
+			{
+				/*		On cherche que les paramètres POST qui sont notés ou avec un commentaire 		*/
+				if( strpos( $key, "_text" ) )
+				{
+					$avisEntrepriseCriteres = new EntrepriseAvisCritere();
+					$avisEntrepriseCriteres->commentaire_evaluation_critere = $value;
+					$avisEntrepriseCriteres->id_critere_notation_entreprise = intval( str_replace( '_text', '', $key ) ); 
+					$avisEntrepriseCriteres->id_avis_entreprise = $avisEntreprise->id_avis_entreprise;
+					$avisEntrepriseCriteres->save();
+				}
+				else if ( strpos( $key, "_note" ) )
+				{
+					$avisEntrepriseCriteres_note = new EntrepriseAvisCritere();
+					$avisEntrepriseCriteres_note->note_entreprise_avis = $value;
+					$avisEntrepriseCriteres_note->id_critere_notation_entreprise = intval( str_replace( '_note', '', $key ) );
+					$avisEntrepriseCriteres_note->id_avis_entreprise = $avisEntreprise->id_avis_entreprise;
+					$avisEntrepriseCriteres_note->save();
+				}
+			}
+
+			/*		On redirige vers l'employé concerné 		*/
+			$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $avisEntreprise->id_entreprise,
+																	'error' => 0 ) );
+			$this->redirect( $url );
+		
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
@@ -85,23 +130,76 @@ class AvisEntrepriseController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['AvisEntreprise']))
+		if( isset( $_POST['AvisEntreprise'] ) )
 		{
-			$model->attributes=$_POST['AvisEntreprise'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_avis_entreprise));
-		}
+			/*		Booléen pour déterminer si tout a bien été réalisé 	 	*/
+			$succes_bool = true;
+			/*		On récupère l'entrée avec l'identifiant 		*/
+			$model=$this->loadModel( intval( $_POST['AvisEntreprise']['id_avis_entreprise'] ) );
+			/*		Somme pour calculer la note moyenne		*/
+			$somme_double = 0;
+			$nb_elements_int = 0;
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+			/*		On boucle sur chaque critère de notation 		*/
+			foreach ( $_POST as $key_str => $value_str ) 
+			{
+				/*		On cherche que les paramètres POST qui sont notés ou avec un commentaire 		*/
+				if( strpos( $key_str, "_text" ) )
+				{
+					$id_critere = intval( str_replace( '_text', '', $key_str ) );
+					//var_dump( $id_critere );
+					$critereModel_obj = EntrepriseAvisCritere::model()->findByAttributes( 
+																		array( 
+																				"id_critere_notation_entreprise" => $id_critere,
+																				"id_avis_entreprise" => $model->id_avis_entreprise 
+																		)
+					);
+					
+					$critereModel_obj->commentaire_evaluation_critere = trim( $value_str );
+
+					$succes_bool = $critereModel_obj->save() && $succes_bool;
+
+				}
+				/*		Les paramètres qui sont notés 		*/
+				else if ( strpos( $key_str, "_note" ) )
+				{
+					$id_critere = intval( str_replace( '_note', '', $key_str ) );
+					$critereModel_obj = EntrepriseAvisCritere::model()->findByAttributes( 
+																		array( 
+																				"id_critere_notation_entreprise" => $id_critere,
+																				"id_avis_entreprise" => $model->id_avis_entreprise 
+																		)
+					);
+					
+					$critereModel_obj->note_entreprise_avis = trim( $value_str );
+
+					$succes_bool = $critereModel_obj->save() && $succes_bool;
+					
+					if ( $succes_bool )
+					{
+						$somme_double += $value_str;
+						$nb_elements_int++;
+					}
+
+				}
+	
+			}
+
+			if ( $succes_bool )
+			{
+				$model->note_generale_avis_entreprise = $somme_double / $nb_elements_int;
+				if ( $model->save() ) 
+				{
+					/*		On redirige vers l'employé concerné 		*/
+					$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $model->id_entreprise ,
+																		'error' => 0 ,
+																		'update' => true ) );
+					$this->redirect( $url );
+				}			
+			}
+		}
 	}
 
 	/**

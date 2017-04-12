@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'entreprise_avis_critere':
  * @property integer $id_entreprise_avis
- * @property integer $note_entreprise_critere
+ * @property integer $note_entreprise_avis
  * @property integer $id_critere_notation_entreprise
  * @property integer $id_avis_entreprise
  * @property string $commentaire_evaluation_critere
@@ -33,11 +33,11 @@ class EntrepriseAvisCritere extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_critere_notation_entreprise, id_avis_entreprise', 'required'),
-			array('note_entreprise_critere, id_critere_notation_entreprise, id_avis_entreprise', 'numerical', 'integerOnly'=>true),
+			array('note_entreprise_avis, id_critere_notation_entreprise, id_avis_entreprise', 'numerical', 'integerOnly'=>true),
 			array('commentaire_evaluation_critere', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_entreprise_avis, note_entreprise_critere, id_critere_notation_entreprise, id_avis_entreprise, commentaire_evaluation_critere', 'safe', 'on'=>'search'),
+			array('id_entreprise_avis, note_entreprise_avis, id_critere_notation_entreprise, id_avis_entreprise, commentaire_evaluation_critere', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +61,7 @@ class EntrepriseAvisCritere extends CActiveRecord
 	{
 		return array(
 			'id_entreprise_avis' => 'Id Entreprise Avis',
-			'note_entreprise_critere' => 'Note Entreprise Critere',
+			'note_entreprise_avis' => 'Note Entreprise Critere',
 			'id_critere_notation_entreprise' => 'Id Critere Notation Entreprise',
 			'id_avis_entreprise' => 'Id Avis Entreprise',
 			'commentaire_evaluation_critere' => 'Commentaire Evaluation Critere',
@@ -87,7 +87,7 @@ class EntrepriseAvisCritere extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_entreprise_avis',$this->id_entreprise_avis);
-		$criteria->compare('note_entreprise_critere',$this->note_entreprise_critere);
+		$criteria->compare('note_entreprise_avis',$this->note_entreprise_avis);
 		$criteria->compare('id_critere_notation_entreprise',$this->id_critere_notation_entreprise);
 		$criteria->compare('id_avis_entreprise',$this->id_avis_entreprise);
 		$criteria->compare('commentaire_evaluation_critere',$this->commentaire_evaluation_critere,true);
