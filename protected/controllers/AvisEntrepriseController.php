@@ -15,7 +15,6 @@ class AvisEntrepriseController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -32,7 +31,7 @@ class AvisEntrepriseController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -233,13 +232,34 @@ class AvisEntrepriseController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		$this->loadModel($id)->delete();
+		$avisEntreprise_obj = $this->loadModel( intval( $_GET['id'] ) );
+		$id_entreprise = intval( $_GET['id_entreprise'] );
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		/*		Vérification pour savoir si la personne qui supprime est vraiment la proprietaire de l'avis 		*/
+		if( $avisEntreprise_obj->id_utilisateur == Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() ) )
+		{
+			//var_dump( $avisEntreprise );
+			$criteresNotation_arr = EntrepriseAvisCritere::model()->findAll( "id_avis_entreprise = " . $avisEntreprise_obj->id_avis_entreprise );
+			
+			/*		Si le tableau qu'on récupère n'est pas vide 	*/
+			if( sizeof( $criteresNotation_arr ) > 0 )
+			{
+				/*		On boucle sur chaque critere de notation de l'avis pour le supprimer 	*/
+				foreach ( $criteresNotation_arr as $key => $value_obj )
+				{
+					/*		On supprime chaque critere 		*/
+					$value_obj->delete();
+				}
+			}
+			/*		On supprime l'avis 		*/
+			$avisEntreprise_obj->delete();
+			/*		Rédirection vers la page d'accueil 		*/
+			$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $id_entreprise ,
+																		'delete' => 'true' ) );
+			$this->redirect( $url );
+		}
 	}
 
 	/**

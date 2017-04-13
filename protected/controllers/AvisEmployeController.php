@@ -15,7 +15,6 @@ class AvisEmployeController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -32,7 +31,7 @@ class AvisEmployeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array( 'create','update', 'CreerAvisEmploye', 'UpdateAvisEmploye' ),
+				'actions'=>array( 'create','update', 'delete', 'CreerAvisEmploye', 'UpdateAvisEmploye' ),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -278,13 +277,35 @@ class AvisEmployeController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		$this->loadModel($id)->delete();
+		$avisEmploye_obj = $this->loadModel( intval( $_GET['id'] ) );
+		$id_employe = intval( $_GET['id_employe'] );
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		/*		Vérification pour savoir si la personne qui supprime est vraiment la proprietaire de l'avis 		*/
+		if( $avisEmploye_obj->id_utilisateur == Utilisateur::get_id_utilisateur_connexion( Yii::app()->user->getId() ) )
+		{
+			//var_dump( $avisEmploye );
+			$criteresNotation_arr = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $avisEmploye_obj->id_avis_employe );
+			
+			/*		Si le tableau qu'on récupère n'est pas vide 	*/
+			if( sizeof( $criteresNotation_arr ) > 0 )
+			{
+				/*		On boucle sur chaque critere de notation de l'avis pour le supprimer 	*/
+				foreach ( $criteresNotation_arr as $key => $value_obj )
+				{
+					/*		On supprime chaque critere 		*/
+					$value_obj->delete();
+				}
+			}
+			/*		On supprime l'avis 		*/
+			$avisEmploye_obj->delete();
+			/*		Rédirection vers la page d'accueil 		*/
+			$url =  $this->createUrl( 'employe/view', array( 	'id' => $id_employe ,
+																		'delete' => 'true' ) );
+			$this->redirect( $url );
+		}
+		
 	}
 
 	/**
