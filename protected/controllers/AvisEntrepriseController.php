@@ -63,7 +63,7 @@ class AvisEntrepriseController extends Controller
 	public function actionCreate()
 	{
 		$avisEntreprise = new AvisEntreprise();
-		
+		$erreurCounter_int = 0;
 
 		if( isset( $_POST['AvisEntreprise'] ) )
 		{
@@ -93,7 +93,9 @@ class AvisEntrepriseController extends Controller
 				}
 			}
 			$avisEntreprise->note_generale_avis_entreprise = $somme_double / $nb_elements_int;
-			$avisEntreprise->save();
+			
+			if( !$avisEntreprise->save() )
+				$erreurCounter_int++;
 
 			/*		Affectation sur la table Entreprise_Avis_Criteres 		*/
 			foreach ( $_POST as $key => $value ) 
@@ -105,7 +107,11 @@ class AvisEntrepriseController extends Controller
 					$avisEntrepriseCriteres->commentaire_evaluation_critere = $value;
 					$avisEntrepriseCriteres->id_critere_notation_entreprise = intval( str_replace( '_text', '', $key ) ); 
 					$avisEntrepriseCriteres->id_avis_entreprise = $avisEntreprise->id_avis_entreprise;
-					$avisEntrepriseCriteres->save();
+					$result_bool_1 = $avisEntrepriseCriteres->save();
+					//var_dump( $avisEntreprise );
+					if ( !$result_bool_1 )
+						$erreurCounter_int++;
+				
 				}
 				else if ( strpos( $key, "_note" ) )
 				{
@@ -113,13 +119,18 @@ class AvisEntrepriseController extends Controller
 					$avisEntrepriseCriteres_note->note_entreprise_avis = $value;
 					$avisEntrepriseCriteres_note->id_critere_notation_entreprise = intval( str_replace( '_note', '', $key ) );
 					$avisEntrepriseCriteres_note->id_avis_entreprise = $avisEntreprise->id_avis_entreprise;
-					$avisEntrepriseCriteres_note->save();
+					$result_bool_2 = $avisEntrepriseCriteres_note->save();
+					//var_dump( $avisEntrepriseCriteres_note );
+					
+					if ( !$result_bool_2 )
+						$erreurCounter_int++;
+
 				}
 			}
 
 			/*		On redirige vers l'employé concerné 		*/
 			$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $avisEntreprise->id_entreprise,
-																	'error' => 0 ) );
+																	'error' => $erreurCounter_int ) );
 			$this->redirect( $url );
 		
 		}
@@ -134,13 +145,13 @@ class AvisEntrepriseController extends Controller
 	{
 		if( isset( $_POST['AvisEntreprise'] ) )
 		{
-			/*		Booléen pour déterminer si tout a bien été réalisé 	 	*/
-			$succes_bool = false;
 			/*		On récupère l'entrée avec l'identifiant 		*/
 			$model=$this->loadModel( intval( $_POST['AvisEntreprise']['id_avis_entreprise'] ) );
 			/*		Somme pour calculer la note moyenne		*/
 			$somme_double = 0;
 			$nb_elements_int = 0;
+			/*		Variable utilisée pour regarder s'il y a des erreurs lors de l'insértion 		*/
+			$erreurCounter_int = 0;
 
 			/*		On boucle sur chaque critère de notation 		*/
 			foreach ( $_POST as $key_str => $value_str ) 
@@ -159,7 +170,9 @@ class AvisEntrepriseController extends Controller
 					
 					$critereModel_obj->commentaire_evaluation_critere = trim( $value_str );
 
-					$succes_bool = $critereModel_obj->save();
+					$succes_bool_1 = $critereModel_obj->save();
+					if( !$succes_bool_1 )
+						$erreurCounter_int++;
 
 				}
 				/*		Les paramètres qui sont notés 		*/
@@ -175,29 +188,42 @@ class AvisEntrepriseController extends Controller
 					
 					$critereModel_obj->note_entreprise_avis = trim( $value_str );
 
-					$succes_bool = $critereModel_obj->save();
-					
-					if ( $succes_bool )
+					$succes_bool_2 = $critereModel_obj->save();
+
+					if ( $succes_bool_2 )
 					{
 						$somme_double += $value_str;
 						$nb_elements_int++;
+					}
+					else 
+					{
+						$erreurCounter_int++;
 					}
 
 				}
 	
 			}
 
-			if ( $succes_bool )
+			$model->note_generale_avis_entreprise = $somme_double / $nb_elements_int;
+			$resultBool_bool = $model->save();
+
+			var_dump( $model );
+			
+			if ( $resultBool_bool && $erreurCounter_int == 0 ) 
 			{
-				$model->note_generale_avis_entreprise = $somme_double / $nb_elements_int;
-				if ( $model->save() ) 
-				{
-					/*		On redirige vers l'employé concerné 		*/
-					$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $model->id_entreprise ,
-																		'error' => 0 ,
-																		'update' => true ) );
-					$this->redirect( $url );
-				}			
+				/*		On redirige vers l'employé concerné 		*/
+				$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $model->id_entreprise ,
+																		'error' => $erreurCounter_int ,
+																		'update' => 'true' ) );
+				$this->redirect( $url );			
+			}
+			else
+			{
+				$erreurCounter_int++;
+				$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $model->id_entreprise ,
+																		'error' => $erreurCounter_int ,
+																		'update' => 'true' ) );
+				$this->redirect( $url );
 			}
 		}
 	}
