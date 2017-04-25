@@ -29366,3 +29366,593 @@ Stack trace:
 REQUEST_URI=/projet/index.php?r=AvisEntreprise/delete&id=29&id_entreprise=1
 in C:\wamp\www\projet\protected\controllers\AvisEntrepriseController.php (237)
 in C:\wamp\www\projet\index.php (13)
+2017/04/25 08:37:30 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:1118
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/del...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/delete&id=3
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=3
+---
+2017/04/25 08:39:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:1118
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/del...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/delete&id=3
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=3
+---
+2017/04/25 08:42:07 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:1118
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/del...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/delete&id=3
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=3
+---
+2017/04/25 08:52:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('employePostule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/emp...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/employePostule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:53:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('employePostule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/emp...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/employePostule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:56:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('employePostule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/emp...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/employePostule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:57:19 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('employePostule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/emp...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/employePostule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:58:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "employePostule".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('employePostule')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('employePostule')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/emp...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/employePostule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:58:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('Postule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/Pos...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/Postule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 08:59:38 [error] [php] Undefined variable: id_offre (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:247)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#1 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/Postule
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (247)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:01:31 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('Postule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/Pos...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/Postule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 09:02:03 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('postule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/pos...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 09:02:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('postule')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/pos...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 09:03:16 [error] [php] Undefined variable: id_offre (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:247)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id=1
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (247)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:03:45 [error] [exception.CException] exception 'CException' with message 'Property "Postuler.type_offre_emploi" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('type_offre_empl...')
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2729): CActiveRecord->__get('type_offre_empl...')
+#2 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2452): CHtml::resolveValue(Object(Postuler), 'type_offre_empl...')
+#3 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1534): CHtml::activeInputField('text', Object(Postuler), 'type_offre_empl...', Array)
+#4 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Postuler), 'type_offre_empl...', Array)
+#5 C:\wamp\www\projet\protected\views\offreEmploi\_form.php(36): CActiveForm->textField(Object(Postuler), 'type_offre_empl...', Array)
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#8 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\projet\protected\views\offreEmploi\create.php(17): CController->renderPartial('_form', Array)
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#12 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#13 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#14 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(265): CController->render('create', Array)
+#15 [internal function]: OffreEmploiController->actionPostule('1')
+#16 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(OffreEmploiController), Array)
+#17 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(OffreEmploiController), Object(ReflectionMethod), Array)
+#18 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('postule')
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/pos...')
+#28 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\wamp\www\projet\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 09:14:04 [error] [exception.CException] exception 'CException' with message 'Property "Postuler.type_offre_emploi" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('type_offre_empl...')
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2729): CActiveRecord->__get('type_offre_empl...')
+#2 C:\wamp\www\yii\framework\web\helpers\CHtml.php(2452): CHtml::resolveValue(Object(Postuler), 'type_offre_empl...')
+#3 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1534): CHtml::activeInputField('text', Object(Postuler), 'type_offre_empl...', Array)
+#4 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Postuler), 'type_offre_empl...', Array)
+#5 C:\wamp\www\projet\protected\views\offreEmploi\_form.php(36): CActiveForm->textField(Object(Postuler), 'type_offre_empl...', Array)
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#8 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#9 C:\wamp\www\projet\protected\views\offreEmploi\create.php(17): CController->renderPartial('_form', Array)
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\pro...')
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\pro...', Array, true)
+#12 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\pro...', Array, true)
+#13 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#14 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(259): CController->render('create', Array)
+#15 [internal function]: OffreEmploiController->actionPostule('1')
+#16 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(OffreEmploiController), Array)
+#17 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(OffreEmploiController), Object(ReflectionMethod), Array)
+#18 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('postule')
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/pos...')
+#28 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\wamp\www\projet\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=1
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/view&id=1
+---
+2017/04/25 09:36:34 [error] [php] Undefined variable: model (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=2
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:36:40 [error] [php] Undefined variable: model (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=2
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:37:43 [error] [php] Undefined variable: model (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=2
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:38:01 [error] [php] Undefined variable: model (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=2
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 09:38:17 [error] [php] Undefined variable: model (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=2
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 10:24:22 [error] [php] Undefined variable: employeAPostuler (C:\wamp\www\projet\protected\controllers\OffreEmploiController.php:256)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/postule&id_offre=1
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (256)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 10:58:38 [error] [php] Use of undefined constant value - assumed 'value' (C:\wamp\www\projet\protected\views\offreEmploi\index.php:79)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): OffreEmploiController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): OffreEmploiController->renderPartial()
+#2 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(156): OffreEmploiController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): OffreEmploiController->actionIndex()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/index
+in C:\wamp\www\projet\protected\views\offreEmploi\index.php (79)
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (156)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 11:01:05 [error] [php] Undefined variable: valeurx (C:\wamp\www\projet\protected\views\offreEmploi\index.php:79)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): OffreEmploiController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): OffreEmploiController->renderPartial()
+#2 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(156): OffreEmploiController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): OffreEmploiController->actionIndex()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/index
+in C:\wamp\www\projet\protected\views\offreEmploi\index.php (79)
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (156)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 11:01:20 [error] [php] Undefined variable: valeurx (C:\wamp\www\projet\protected\views\offreEmploi\index.php:79)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): OffreEmploiController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): OffreEmploiController->renderPartial()
+#2 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(156): OffreEmploiController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): OffreEmploiController->actionIndex()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/index
+in C:\wamp\www\projet\protected\views\offreEmploi\index.php (79)
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (156)
+in C:\wamp\www\projet\index.php (13)
+2017/04/25 11:10:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mesOffres".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('mesOffres')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/index
+---
+2017/04/25 11:12:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mesOffres".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('mesOffres')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/index
+---
+2017/04/25 11:12:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mesOffres.php".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('mesOffres.php')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres.php')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres.php
+---
+2017/04/25 11:13:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mesOffres".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('mesOffres')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp\www\projet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/index
+---
+2017/04/25 11:14:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/index
+---
+2017/04/25 11:15:10 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('mesOffres')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('offreEmploi/mes...')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\projet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+HTTP_REFERER=http://localhost/projet/index.php?r=offreEmploi/index
+---
+2017/04/25 11:21:09 [error] [php] Trying to get property of non-object (C:\wamp\www\projet\protected\views\offreEmploi\mesOffres.php:35)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): OffreEmploiController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): OffreEmploiController->renderPartial()
+#2 C:\wamp\www\projet\protected\controllers\OffreEmploiController.php(291): OffreEmploiController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): OffreEmploiController->actionMesOffres()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): OffreEmploiController->runAction()
+#6 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): OffreEmploiController->filterAccessControl()
+#9 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(265): OffreEmploiController->runActionWithFilters()
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(282): OffreEmploiController->run()
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\projet\index.php(13): CWebApplication->run()
+REQUEST_URI=/projet/index.php?r=offreEmploi/mesOffres
+in C:\wamp\www\projet\protected\views\offreEmploi\mesOffres.php (35)
+in C:\wamp\www\projet\protected\controllers\OffreEmploiController.php (291)
+in C:\wamp\www\projet\index.php (13)
