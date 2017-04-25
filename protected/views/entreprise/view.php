@@ -19,29 +19,47 @@ if ( $model->id_entreprise == $this->get_id_utilisateur_connexion(Yii::app()->us
 <?php  	endif; 		?>
 
 
-<?php 
+<?php
+
+$recherche = "Non renseigné";
+if($model->recherche_employes == 0){
+	$recherche = "Non";
+}
+else if ($model->recherche_employes == 1){
+	$recherche = "Oui";
+}
+
+$adresse = "Non renseignée";
+if ($model->Adresse->rue != NULL && $model->Adresse->code_postal != NULL && $model->Adresse->ville != NULL)
+{
+	 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
+}
+
 $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$model->id_entreprise));
 	$this->widget('zii.widgets.CDetailView',
 		array(
 			'data'=>$model,
 			'attributes'=>array(
 				'nom_entreprise',
-				'nombre_employes',
+				array(
+					'label'=>'Nombre d\'employés',
+					'value'=>$model->nombre_employes != NULL ? 'nombre_employes' : "Non renseigné",
+					),
 				array(
 					'label'=>'Cherche des nouveaux employés',
-					'value'=>$model->recherche_employes == 0 ? "Non" : "Oui",
+					'value'=>$recherche,
 					),
 				array(
 					'label'=>'Adresse mail',
-					'value'=>$utilisateur->mail,
+					'value'=>$utilisateur->mail != NULL ? $utilisateur->mail : "Non renseignée",
 					),
 				array(
 					'label'=>'Télephone',
-					'value'=>$model->AfficheTelephone($model->telephone_entreprise," "),
+					'value'=>$model->telephone_entreprise != NULL ? $model->AfficheTelephone($model->telephone_entreprise," ") : "Non renseigné",
 					),
 				array(
 					'label'=>'Adresse',
-					'value'=>$model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville,
+					'value'=>$adresse ,
 					),
 			),
 		)

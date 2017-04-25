@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 			$this->menu=array(
 				//array('label'=>'Paramètres du compte', 'url'=>array('parametres', 'model'=>$model)),
 				array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
-				//array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('Delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir surpprimer votre profil?')),
 			);
+
 ?>
 <div>
 	<h1>Bonjour <?php echo $model->prenom_employe;?> ,</h1>
@@ -48,11 +48,18 @@ else if ($model->employe_travaille)
 }
 
 $adresse = "Non renseignée";
-
-if ($model->Adresse->rue != NULL && $model->Adresse->code_postal != NULL && $model->Adresse->ville != NULL)
+if($model->id_adresse != NULL)
 {
-	 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
+	$modelAdresse = Adresse::model()->FindByAttributes(array("id_adresse" => $model->id_adresse));
+
+	if ($modelAdresse->rue != NULL && $modelAdresse->code_postal != NULL && $modelAdresse->ville != NULL)
+	{
+		 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
+	}
+
+
 }
+
 
 $utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
 
@@ -85,7 +92,10 @@ $this->widget('zii.widgets.CDetailView', array(
 			'value'=>$adresse,
 			),
 	),
-)); 
+));
+
+echo CHtml::link(CHtml::encode('Supprimer mon profil'), array('employe/delete', 'id'=>$model->id_employe), array('confirm'=>'Etes-vous sur de vouloir supprimer votre profil ?'));
+ 
 
 ?>
 
