@@ -15,7 +15,7 @@ class EmployeController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -139,64 +139,83 @@ class EmployeController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$id));
 
-		$avis = AvisEmploye::model()->FindAll();
-
-		foreach ($avis as $a)
-		{
-			if($a->id_employe == $utilisateur->id_employe)
-			{
-				$a->delete();
-			}
-		}
-
-		$avisentreprise = AvisEntreprise::model()->FindAll();
-
-		foreach ($avisentreprise as $ae)
-		{
-			if($ae->id_utilisateur == $utilisateur->id_utilisateur)
-			{
-				$ae->id_utilisateur = NULL;
-				$ae->save();
-			}
-		}
-
-		/*$travaille = Travaille::model()->FindAll();
-
-		foreach ($travaille as $ab)
-		{
-			if($ab->id_employe == $utilisateur->id_employe)
-			$ab->delete();
-		}
-
-		$cvemploye = CvEmploye::model()->FindAll();
-
-		foreach ($cvemploye as $cve)
-		{
-			if($cve->id_employe == $utilisateur->id_employe)
-			$cve->delete();
-		}
-
-		$postule = Postule::model()->FindAll();
-
-		foreach ($postule as $post)
-		{
-			if($a->id_employe == $utilisateur->id_employe)
-			$post->delete();
-		}*/
-
-		$utilisateur->delete();
+		if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+        }
+        else
+        {
+            throw new CHttpException(400,'Profile not found.');
+        }
 		
+		//if(Yii::app()->request->isPostRequest)
+            //{
 
-		$model=$this->loadModel($id);
-		$model->delete();
+
+			$utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$id));
+
+			$avis = AvisEmploye::model()->FindAll();
+
+			foreach ($avis as $a)
+			{
+				if($a->id_employe == $utilisateur->id_employe)
+				{
+					$a->delete();
+				}
+			}
+
+			$avisentreprise = AvisEntreprise::model()->FindAll();
+
+			foreach ($avisentreprise as $ae)
+			{
+				if($ae->id_utilisateur == $utilisateur->id_utilisateur)
+				{
+					$ae->id_utilisateur = NULL;
+					$ae->save();
+				}
+			}
+
+			$travaille = Travaille::model()->FindAll();
+
+			foreach ($travaille as $ab)
+			{
+				if($ab->id_employe == $utilisateur->id_employe)
+				$ab->delete();
+			}
+
+			$cvemploye = CvEmploye::model()->FindAll();
+
+			foreach ($cvemploye as $cve)
+			{
+				if($cve->id_employe == $utilisateur->id_employe)
+				$cve->delete();
+			}
+
+			$postule = Postuler::model()->FindAll();
+
+			foreach ($postule as $post)
+			{
+				if($post->id_employe == $utilisateur->id_employe)
+				$post->delete();
+			}
+
+			Yii::app()->user->logout();
+			$utilisateur->delete();
+			
+
+			$model=$this->loadModel($id);
+			$model->delete();
+		//}	
+
+		$this->redirect('index.php');
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		/*if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
+
 	}
 
 	/**

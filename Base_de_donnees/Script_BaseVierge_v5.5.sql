@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Utilisateur` (
   `role` VARCHAR(45) NOT NULL,
   `date_creation_utilisateur` DATETIME NOT NULL,
   `date_derniere_connexion` DATETIME NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
+  `mail` VARCHAR(45) NULL,
   `id_employe` INT NULL,
   `id_entreprise` INT NULL,
   PRIMARY KEY (`id_utilisateur`),
