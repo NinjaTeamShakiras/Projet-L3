@@ -148,6 +148,9 @@ class AvisEmployeController extends Controller
 				}
 			}
 
+			/*		On ajout un cookie pour faire l'affichage du dernier avis 		*/
+			setcookie( "dernier-avis-employe", $avisEmploye->id_avis_employe, time() + 86400 );  /* expire dans 24 heures */
+
 			/*		On redirige vers l'employé concerné 		*/
 			$url =  $this->createUrl( 'employe/view', array( 	'id' => $avisEmploye->id_employe,
 																'error' => $erreurCounter_int ) );
@@ -300,6 +303,10 @@ class AvisEmployeController extends Controller
 			}
 			/*		On supprime l'avis 		*/
 			$avisEmploye_obj->delete();
+
+			if( isset( $_COOKIE['dernier-avis-employe'] ) )
+				unset( $_COOKIE['dernier-avis-employe'] );
+
 			/*		Rédirection vers la page d'accueil 		*/
 			$url =  $this->createUrl( 'employe/view', array( 	'id' => $id_employe ,
 																		'delete' => 'true' ) );

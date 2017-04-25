@@ -77,8 +77,19 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <?php  	
-		/*		Sila personnes vient de */
+		/*			Si la personne vient de publier un avis 		*/
 		if ( isset( $_COOKIE['dernier-avis'] ) ) :
 			$dernierAvis_obj = AvisEntreprise::model()->findByAttributes( array( "id_avis_entreprise" => intval( $_COOKIE['dernier-avis'] ) ) );	
 		endif;
@@ -119,12 +130,6 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 ?>
 							</div>
 					</div>
-
-
-
-
-
-
 
 <?php 
 				/*		Récupérations de tous les avis de l'entreprise 		*/
@@ -186,6 +191,19 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 <?php  				endif; 			?>
 
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

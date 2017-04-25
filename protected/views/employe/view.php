@@ -112,6 +112,117 @@ $this->widget('zii.widgets.CDetailView', array(
 ?>
 
 
+
+
+
+
+<?php  	
+		/*			Si la personne vient de publier un avis  		*/
+		if ( isset( $_COOKIE['dernier-avis-employe'] ) ) :
+			$dernierAvis_obj = AvisEmploye::model()->findByAttributes( array( "id_avis_employe" => intval( $_COOKIE['dernier-avis-employe'] ) ) );	
+		endif;
+		/*		On vérifie si l'avis appartient bien à l'employe et c'est la même personne qui l'a publié qui est connecté sur le compte 		*/
+		if( isset( $dernierAvis_obj ) && $dernierAvis_obj->id_employe == $model->id_employe && $dernierAvis_obj->id_utilisateur == Utilisateur::get_id_utilisateur_connexion(Yii::app()->user->getId() ) ) :
+?>
+				<div style="margin : 5% 0%;">
+					<h3>Votre dernier avis :</h3>
+<?php   			
+						$criteresEmployeDernier_arr = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $dernierAvis_obj->id_avis_employe );
+?>
+					<div>
+						<p>Note geénérale : <?php echo round( $dernierAvis_obj->note_generale_avis_employe, 1 ); ?></p>
+						<ul>
+<?php  						/*			On parcourt chaque critère de l'avis concerné 		*/
+							foreach ( $criteresEmployeDernier_arr as $key => $critere_obj ) :
+ 								$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );
+
+  								if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : 
+?>
+									<li><?php print( $critere_notation_obj->nom_critere_employe ); ?> : <?php is_null( $critere_obj->note_employe_avis ) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_employe_avis ); ?> </li>
+
+<?php   						endif; 			?>
+<?php  						endforeach; 		?>
+
+						</ul>
+						<p>
+							<button class="update-avis" id_avis="<?php print( $dernierAvis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
+							<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $dernierAvis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+						</p>
+							<div class="update-form-avis-<?php print( $dernierAvis_obj->id_avis_employe ); ?>" style="display: none;">
+<?php  						
+								$this->renderPartial('./../avisEmploye/update', array 	( 
+																								'model' => AvisEmploye::model(),
+																								'avisEmploye_layout' => $dernierAvis_obj,
+																								'criteresAvis_layout' => $criteresEmployeDernier_arr
+																							) );
+?>
+							</div>
+					</div>
+
+<?php 
+				/*		Récupérations de tous les avis de l'employe 		*/
+				$avis_all = AvisEmploye::model()->findAll( "id_employe = " . $model->id_employe );
+				/* 		S'il y a des avis on affiche le bouton pour afficher tous les avis		*/	
+				if( sizeof( $avis_all ) - 1 > 0 ) : 
+?>
+					<button class="show-all-avis-cook">Voir les autres avis</button>
+
+						<h2 class="last-avis-all-title hide">Les autres avis sur cette employe : </h2>
+						<div class="last-avis-all hide">
+<?php						
+							/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
+							foreach ( $avis_all as $key => $avis_obj ) :
+								if( $avis_obj->id_avis_employe != intval( $_COOKIE['dernier-avis-employe'] ) ) :				
+?>
+								
+									<p>Note générale : <b><?php echo round( $avis_obj->note_generale_avis_employe, 1 ); ?></b></p>
+
+<?php 								$criteresEmploye_arr = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $avis_obj->id_avis_employe ); 		?>
+
+									<ul class="ul-entre-single-avis-<?php print( $avis_obj->id_avis_employe ); ?>">
+
+<?php  								/*			On parcourt chaque critère de l'avis concerné 		*/
+									foreach ( $criteresEmploye_arr as $key => $critere_obj ) :
+										$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );
+ 										if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : 
+?>
+
+											<li><?php print( $critere_notation_obj->nom_critere_employe ); ?> : <?php is_null( $critere_obj->note_employe_avis ) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_employe_avis ); ?> </li>
+
+<?php   								endif; 
+									endforeach;
+									/*		Récupération de la personne qui a créé l'avis  		*/
+									$auteur_avis_obj = Entreprise::get_entreprise_by_id_utilisateur( $avis_obj->id_utilisateur );  
+?>				
+									</ul>
+									<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_entreprise ) :  print( "administrateur" );  ?></p>
+
+<?php  								if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
+					
+										<p>
+											<button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
+											<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+										</p>
+										<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
+<?php  									$this->renderPartial('./../avisEmploye/update', array 	( 
+																								'model' => AvisEmploye::model(),
+																								'avisEmploye_layout' => $avis_obj,
+																								'criteresAvis_layout' => $criteresEmploye_arr
+																							) ); 		?>
+										</div>
+
+<?php  								endif;
+								endif;
+  							endforeach; 	?>
+						</div>
+
+<?php  				endif; 			?>
+
+
+<?php  	else : 		?>
+
+
+
 <?php  	if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId())) : 	?>
 			<h2>Vos derniers avis :</h2>
 <?php  	else :  	?>
@@ -127,54 +238,60 @@ $this->widget('zii.widgets.CDetailView', array(
 
 <div>
 <?php 
-		if( sizeof( $avis_all ) > 0 ) :
-			/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
-			foreach ( $avis_all as $key => $avis_obj ) :				?>
+			if( sizeof( $avis_all ) > 0 ) :
+				/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
+				foreach ( $avis_all as $key => $avis_obj ) :				?>
 
-				<p>Note générale : <b><?php echo round( $avis_obj->note_generale_avis_employe, 1 ); ?></b></p>
+					<p>Note générale : <b><?php echo round( $avis_obj->note_generale_avis_employe, 1 ); ?></b></p>
 
-<?php 			$criteresEmploye_array = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $avis_obj->id_avis_employe ); 		?>
+<?php 				$criteresEmploye_array = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $avis_obj->id_avis_employe ); 		?>
 
-				<ul class="ul-single-avis-<?php print( $avis_obj->id_avis_employe ); ?>">
+					<ul class="ul-single-avis-<?php print( $avis_obj->id_avis_employe ); ?>">
 
-<?php  			/*			On parcourt chaque critère de l'avis concerné 		*/
-				foreach ( $criteresEmploye_array as $key => $critere_obj ) :			?>
-<?php 				$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
+<?php  				/*			On parcourt chaque critère de l'avis concerné 		*/
+					foreach ( $criteresEmploye_array as $key => $critere_obj ) :			?>
+<?php 					$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );		?>
 
-<?php  				if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
+<?php  					if( !empty( $critere_obj->commentaire_evaluation_critere ) || !is_null( $critere_obj->note_employe_avis ) ) : ?>
 
-						<li><?php print( $critere_notation_obj->nom_critere_employe); ?> : <?php is_null($critere_obj->note_employe_avis) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_employe_avis ); ?> </li>
+							<li><?php print( $critere_notation_obj->nom_critere_employe); ?> : <?php is_null($critere_obj->note_employe_avis) ? print( $critere_obj->commentaire_evaluation_critere ) : print( $critere_obj->note_employe_avis ); ?> </li>
 
-<?php   			endif; 			?>
-<?php  			endforeach; 		?>
+<?php   				endif; 			?>
+<?php  				endforeach; 		?>
 
 <?php  			
-				/*		Récupération de la personne qui a créé l'avis  		*/
-				$auteur_avis_obj = Entreprise::get_entreprise_by_id_utilisateur( $avis_obj->id_utilisateur );  
+					/*		Récupération de la personne qui a créé l'avis  		*/
+					$auteur_avis_obj = Entreprise::get_entreprise_by_id_utilisateur( $avis_obj->id_utilisateur );  
 ?>				
-				</ul>
-				<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_entreprise ) :  print( "administrateur" );  ?></p>
+					</ul>
+					<p>Par : <?php $auteur_avis_obj != NULL ? print( $auteur_avis_obj->nom_entreprise ) :  print( "administrateur" );  ?></p>
 
-<?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
+<?php  				if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
 					
-					<p>
-						<button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
-						<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
-					</p>
-					<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
-<?php  					$this->renderPartial('./../avisEmploye/update', array 	( 
-																				'model' => AvisEmploye::model(),
-																				'avisEmploye_layout' => $avis_obj,
-																				'criteresAvis_layout' => $criteresEmploye_array
-																			) ); 		?>
-					</div>
+						<p>
+							<button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
+							<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+						</p>
+						<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
+<?php  						$this->renderPartial('./../avisEmploye/update', array 	( 
+																					'model' => AvisEmploye::model(),
+																					'avisEmploye_layout' => $avis_obj,
+																					'criteresAvis_layout' => $criteresEmploye_array
+																				) ); 		?>
+						</div>
 
-<?php  			endif; ?>
+<?php  				endif; ?>
 
-<?php  		endforeach; 	?>
-<?php  	else : ?>
-	<p>Il n'y a pas encore d'avis.</p>
-<?php  	endif; ?>
+<?php  			endforeach; 	?>
+
+<?php  		else : ?>
+				<p>Il n'y a pas encore d'avis.</p>
+
+<?php  
+			endif;
+		/*			Endif pour savoir s'il y un dernier avis ou pas 		*/
+		endif; 
+?>
 
 
 </div>
@@ -205,5 +322,11 @@ $this->widget('zii.widgets.CDetailView', array(
 		$( '.update-form-avis-' + $(this).attr("id_avis") ).fadeIn();
 	});
 	
+	/*			Bout de code pour afficher les avis quand on a un avis qui a été récemment publié 			*/
+	$(document).on( 'click', '.show-all-avis-cook', function() {
+		$(this).hide();
+		$('.last-avis-all-title').fadeIn();
+		$('.last-avis-all').fadeIn();
+	});
 </script>
 
