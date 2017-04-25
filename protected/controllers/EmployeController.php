@@ -210,6 +210,11 @@ class EmployeController extends Controller
 		));
 	}
 
+	public function actionParametres($model)
+	{
+		$this->render('parametres', array('model'=>$model));
+	}
+
 	/**
 	 * Manages all models.
 	 */

@@ -10,8 +10,9 @@ $this->breadcrumbs=array(
 		/* 		Si ce n'est pas le profil de l'utilisateur en cours on ne l'affiche pas		*/
 		if($model->id_employe == $this->get_id_utilisateur_connexion(Yii::app()->user->getId())) :
 			$this->menu=array(
+				//array('label'=>'Paramètres du compte', 'url'=>array('parametres', 'model'=>$model)),
 				array('label'=>'Mettre à jour mon profil', 'url'=>array('update', 'id'=>$model->id_employe)),
-				array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir surpprimer votre profil?')),
+				//array('label'=>'Supprimer mon profil', 'url'=>'#', 'linkOptions'=>array('submit'=>array('Delete','id'=>$model->id_employe),'confirm'=>'Etes-vous sur de vouloir surpprimer votre profil?')),
 			);
 ?>
 <div>
@@ -84,10 +85,9 @@ $this->widget('zii.widgets.CDetailView', array(
 			'value'=>$adresse,
 			),
 	),
-)); ?>
+)); 
 
-
-
+?>
 
 <?php 
 		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
