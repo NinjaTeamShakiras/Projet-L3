@@ -28638,3 +28638,6 @@ REQUEST_URI=/projet/index.php?r=entreprise/view&id=5
 =======
 >>>>>>> 4f6cbf4edc4ba17320709bb0915f478c12c12fb0
 >>>>>>> e77f050ff2baac6a944ed689bad959157b85b8f1
+2017/04/12 16:59:05 [warning] [application] Failed to set unsafe attribute "date_naissance_employe" of "Employe".
+in C:\wamp64\www\projet\protected\controllers\EmployeController.php (122)
+in C:\wamp64\www\projet\index.php (13)
