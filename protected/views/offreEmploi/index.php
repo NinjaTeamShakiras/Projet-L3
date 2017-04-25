@@ -11,7 +11,7 @@
 	if (!Utilisateur::est_employe(Yii::app()->user->role) )
 	{ // Si entreprise
 		$this->menu=array(
-			array('label'=>'Créer une offre', 'url'=>array('create')) // On peut créer une offre d'emploi
+			array('label'=>'Créer une offre', 'url'=>array('create')), // On peut créer une offre d'emploi
 		);
 
 		$titre = "Mes offres d'emplois";
@@ -19,7 +19,9 @@
 	}
 	else if( Utilisateur::est_employe(Yii::app()->user->role))  
 	{  // Si employé
-
+		$this->menu=array(
+			array('label'=>'Voir mes offres d\'emplois', 'url'=>array('/offreEmploi/mesOffres')), // Voir les offre d'emplois au quel l'employé à postulé
+		);
 		$titre = "Liste des offres d'emplois";
 
 	}
@@ -70,10 +72,10 @@
 
 
 	}
-	else if( Utilisateur::est_employe(Yii::app()->user->role))  
+	else if( Utilisateur::est_employe(Yii::app()->user->role))
 	{  // Si employé on affiche toutes les offres d'emploi
 
-		foreach ($model as $key => $value ) //  Pour chaque offre ...
+		foreach ($model as $key => $value ) //  Pour chaque offre on affiche :
 		{
 			print("<p> ID entreprise : ".$value->id_entreprise."</p>");
 			print("<p> ID offre : ".$value->id_offre_emploi."</p>");
@@ -84,7 +86,6 @@
 			print("<p> Description de l'offre : ".$value->description_offre_emploi."</p>");
 			echo CHtml::link('Voir cette offre' ,array('offreEmploi/view', 'id'=>$value->id_offre_emploi));
 			echo "<hr/>";
-
 		}
 
 	}
