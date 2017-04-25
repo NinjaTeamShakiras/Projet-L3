@@ -119,8 +119,10 @@ class AvisEntrepriseController extends Controller
 					$avisEntrepriseCriteres_note->id_critere_notation_entreprise = intval( str_replace( '_note', '', $key ) );
 					$avisEntrepriseCriteres_note->id_avis_entreprise = $avisEntreprise->id_avis_entreprise;
 					$result_bool_2 = $avisEntrepriseCriteres_note->save();
-					//var_dump( $avisEntrepriseCriteres_note );
-					
+
+					/*		On ajout un cookie pour faire l'affichage du dernier avis 		*/
+					setcookie( "dernier-avis", $avisEntreprise->id_avis_entreprise, time()+ 86400 );  /* expire dans 24 heures */
+
 					if ( !$result_bool_2 )
 						$erreurCounter_int++;
 
@@ -255,6 +257,10 @@ class AvisEntrepriseController extends Controller
 			}
 			/*		On supprime l'avis 		*/
 			$avisEntreprise_obj->delete();
+			/*		On efface le cookie pour savoir si c'est un avis récent s'il existe 		*/
+			if( isset( $_COOKIE['dernier-avis'] ) )
+				unset( $_COOKIE['dernier-avis'] );
+			
 			/*		Rédirection vers la page d'accueil 		*/
 			$url =  $this->createUrl( 'entreprise/view', array( 	'id' => $id_entreprise ,
 																		'delete' => 'true' ) );
