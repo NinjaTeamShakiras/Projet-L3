@@ -55,10 +55,23 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 <?php 
 		/*		On affiche les message si l'avis a bien été publié, en gros s'il n'y pas d'erreurs 		*/
 		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && !isset( $_GET['update'] ) ) 
-			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
+			echo '<div class="success-avis-entreprise" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été publié</div>';
 		
-		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == true )
-			echo '<div class="success-update-avis-employe" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
+		/*		S'il y a des erreurs 	*/
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] > 0 && !isset( $_GET['update'] ) ) 
+			echo '<div class="success-avis-entreprise" style="margin : 2% 0%; color : red; border: solid 2px red; padding : 2%;" >Une erreur s\'est produite lors de la création de votre avis. Contactez l\'administrateur du site</div>';
+		
+
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] == 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == "true" )
+			echo '<div class="success-update-avis-entreprise" style="margin : 2% 0%; color : green; border: solid 2px green; padding : 2%;" >Votre avis a bien été modifié</div>';
+
+		if( Yii::app()->request->getParam('error') != NULL && $_GET['error'] > 0 && Yii::app()->request->getParam('update') != NULL &&  $_GET['update'] == "true" )
+			echo '<div class="success-avis-entreprise" style="margin : 2% 0%; color : red; border: solid 2px red; padding : 2%;" >Une erreur s\'est produite lors de la modification de votre avis. Contactez l\'administrateur du site</div>';
+
+		/*		Message de suppression d'un avis 		*/
+		if( Yii::app()->request->getParam( 'delete' ) != NULL && Yii::app()->request->getParam( 'delete' ) == "true" ) 
+			echo '<div class="success-avis-employe" style="margin : 2% 0%; color : blue; border: solid 2px blue; padding : 2%;" >Votre avis a bien été supprimé</div>';
+	
 ?>
 
 <?php  	/*		Modification du message en fonction de qui voit le profil	*/
@@ -110,7 +123,10 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 <?php  			if ( $avis_obj->id_utilisateur == Utilisateur::get_utilisateur_connexion( Yii::app()->user->getId() )->id_utilisateur ) :	?>
 					
-					<p><button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button></p>
+					<p>
+						<button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button>
+						<a href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $avis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
+					</p>
 					<div class="update-entrep-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
 <?php  					$this->renderPartial('./../avisEntreprise/update', array 	( 
 																				'model' => AvisEntreprise::model(),
