@@ -32,7 +32,7 @@ class OffreEmploiController extends Controller
 		{
 			return array(
 				array('allow',
-					  'actions'=>['index','view'],
+					  'actions'=>['index','view', 'employePostule'],
 					),
 				array('deny',
 					  'actions'=>['admin'],
@@ -239,8 +239,27 @@ class OffreEmploiController extends Controller
 	}
 
 
+	public function actionEmployePostule( $id_offre )
+	{
+		var_dump($id_offre);
+		$model=new Postuler;
 
+		if(isset($_POST['Postuler']))
+		{
+			
+			$utilisateur = Utilisateur::model()->FindByAttributes(array('login' => Yii::app()->user->getId())); 
+			$model->attributes=$_POST['Postuler'];
+			$model->id_entreprise = $utilisateur->id_entreprise;
 
+			var_dump($model);
+			//if($model->save())
+				//$this->redirect(array('view','id'=>$model->id_offre_emploi));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
 
 
 }

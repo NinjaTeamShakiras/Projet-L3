@@ -137,7 +137,7 @@ class AvisEmploye extends CActiveRecord
 	{
 		print( '<div class="barre-notation-employe">' );
 		for( $i = 0; $i <= 10; $i++ ) {
-			print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
+			print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" required> ' );
 			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
 		}
 		print( '</div>' );
@@ -147,7 +147,7 @@ class AvisEmploye extends CActiveRecord
 	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
 	public static function afficher_textearea( $nom_str )
 	{
-		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte..."></textarea>' );
+		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte..." required></textarea>' );
 	}
 
 
@@ -190,9 +190,9 @@ class AvisEmploye extends CActiveRecord
 		for( $i = 0; $i <= 10; $i++ ) {
 
 			if( $note_int == $i )
-				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" checked="true" >' );
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" checked="true" required>' );
 			else
-				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '"> ' );
+				print( '<input style="margin-left: 2%;" type="radio" name="' . $nom_str . '" value="' . $i . '" required> ' );
 			
 			print( '<label for="' . $nom_str . '_' . $i . '" style="display : inline-block;" >' . $i . '</label>' );
 		}
@@ -203,7 +203,7 @@ class AvisEmploye extends CActiveRecord
 	/*		Fonction pour afficher un espace pour écrire l'avis 		*/
 	public static function afficher_textearea_with_param( $nom_str, $value )
 	{
-		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte...">' . $value . '</textarea>' );
+		print( '<textarea name="' . $nom_str . '" class="textarea-avis-employe" placeholder="Votre texte..." required>' . $value . '</textarea>' );
 	}
 
 }

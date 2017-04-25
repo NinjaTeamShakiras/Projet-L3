@@ -15,16 +15,17 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 			array('label'=>'Créer une offre', 'url'=>array('create')),
 			array('label'=>'Modifier ', 'url'=>array('update', 'id'=>$model->id_offre_emploi)),
 			//Marche pas
-			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Êtes vous sur de vouloir supprimer ?')),
+			//array('label'=>'Supprimer', 'url'=>array('delete','id'=>$model->id_offre_emploi)),
 		);
 
 	}
 	else if( Utilisateur::est_employe(Yii::app()->user->role))  
 	{  // Si employé on affiche la possibilité de postuler à l'offre en question
 		$this->menu=array(
-			array('label'=>'Postuler', 'url'=>array('index')),
+			array('label'=>'Postuler', 'url'=>array('employePostule', 'id'=>$model->id_offre_emploi)), 
 		);
 
+//'linkOptions'=>array('submit'=>array('employePostule','id_offre'=>$model->id_offre_emploi,'id_employe'=>$utilisateur->id_employe),'confirm'=>'Vous êtes sur le point de postuler, voulez-vous continuer ?')),
 	}
 	else 
 	{ // Si autre on affiche toutes les possibilité
@@ -33,7 +34,7 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 			array('label'=>'Créer une offre', 'url'=>array('create')),
 			array('label'=>'Modifier', 'url'=>array('update', 'id'=>$model->id_offre_emploi)),
 			//Marche pas
-			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Êtes vous sur de vouloir supprimer ?')),
+			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Vous êtes sur le point de supprimer, voulez vous continuer ?)),
 		);
 
 	}

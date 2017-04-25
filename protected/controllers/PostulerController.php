@@ -170,4 +170,8 @@ class PostulerController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+
 }
