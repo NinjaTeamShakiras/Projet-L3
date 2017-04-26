@@ -12,20 +12,39 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array("login"=> Yii::app()
 if (!Utilisateur::est_employe(Yii::app()->user->role) )
 	{ // Si entreprise on affiche la possibilité de maj/suppr l'offre en question
 		$this->menu=array(
-			array('label'=>'Créer une offre', 'url'=>array('create')),
+			//array('label'=>'Créer une offre', 'url'=>array('create')),
 			array('label'=>'Modifier ', 'url'=>array('update', 'id'=>$model->id_offre_emploi)),
 			//Marche pas
 			//array('label'=>'Supprimer', 'url'=>array('delete','id'=>$model->id_offre_emploi)),
+			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Vous êtes sur le point de supprimer, voulez vous continuer ?')),
 		);
 
 	}
 	else if( Utilisateur::est_employe(Yii::app()->user->role))  
 	{  // Si employé on affiche la possibilité de postuler à l'offre en question
-		$this->menu=array(
-			array('label'=>'Postuler', 'url'=>array('employePostule', 'id'=>$model->id_offre_emploi)), 
-		);
+		$tablePostuler = Postuler::model()->FindAll();
+		$aPostuler = false;
+		foreach($tablePostuler as $postuler)
+		{
+			if($postuler->id_offre_emploi == $model->id_offre_emploi && $postuler->id_employe == $utilisateur->id_employe )
+			{
+				$aPostuler = true;
+			}
+		}
 
-//'linkOptions'=>array('submit'=>array('employePostule','id_offre'=>$model->id_offre_emploi,'id_employe'=>$utilisateur->id_employe),'confirm'=>'Vous êtes sur le point de postuler, voulez-vous continuer ?')),
+		if($aPostuler)
+		{
+			$this->menu=array(
+				array('label'=>'Dépostuler', 'url'=>array('depostule', 'id_offre'=>$model->id_offre_emploi)), 
+			);
+		}
+		else
+		{
+			$this->menu=array(
+				array('label'=>'Postuler', 'url'=>array('postule', 'id_offre'=>$model->id_offre_emploi)), 
+			);
+		}
+		
 	}
 	else 
 	{ // Si autre on affiche toutes les possibilité
@@ -34,7 +53,7 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 			array('label'=>'Créer une offre', 'url'=>array('create')),
 			array('label'=>'Modifier', 'url'=>array('update', 'id'=>$model->id_offre_emploi)),
 			//Marche pas
-			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Vous êtes sur le point de supprimer, voulez vous continuer ?)),
+			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Vous êtes sur le point de supprimer, voulez vous continuer ?')),
 		);
 
 	}
@@ -61,6 +80,16 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 		'id_entreprise',
 		),
 	));
+
+
+	/*		Message de postulation	*/
+	if( Yii::app()->request->getParam( 'postule' ) != NULL && Yii::app()->request->getParam( 'postule' ) == "true" ) 
+		echo '<div class="success-avis-employe" style="margin : 2% 0%; color : blue; border: solid 2px blue; padding : 2%;" >Vous avez bien postuler à cette offre</div>';
+
+
+	/*		Message de suppression d'une offre 		*/
+	if( Yii::app()->request->getParam( 'delete' ) != NULL && Yii::app()->request->getParam( 'delete' ) == "true" ) 
+		echo '<div class="success-avis-employe" style="margin : 2% 0%; color : blue; border: solid 2px blue; padding : 2%;" >Votre offre a bien été supprimé</div>';
 
 ?>
 

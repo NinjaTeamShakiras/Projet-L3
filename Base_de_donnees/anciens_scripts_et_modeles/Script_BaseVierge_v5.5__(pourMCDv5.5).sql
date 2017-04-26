@@ -13,7 +13,7 @@
 -- 4) Utilisateur
 -- 5) travaille
 -- 6) Competences_CV
--- 7) CVa
+-- 7) CV
 -- 8) CV_Employe
 -- 9) Criteres_Notation_Employe
 -- 10) Criteres_notation_entreprise

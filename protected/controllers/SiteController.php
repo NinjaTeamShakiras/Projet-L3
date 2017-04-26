@@ -113,9 +113,9 @@ class SiteController extends Controller
 
 	public function verif_mdp($mdp)
 	{
-		$res = 0;
+		$res = 1;
 
-		if(isset($_POST['confirm_mdp']))
+		/*if(isset($_POST['confirm_mdp']))
 		{
 			if($mdp != $_POST['confirm_mdp'])
 			{
@@ -123,7 +123,7 @@ class SiteController extends Controller
 				$this->render('inscription', array('model'=>$user));
 				$res = 1;
 			}
-		}
+		}*/
 
 		return $res;
 	}
@@ -173,7 +173,7 @@ class SiteController extends Controller
 				$user->id_employe = $employe->id_employe;
 
 				
-				//$user->save();
+				$user->save();
 				$this->redirect(array('site/login'));
 			}
 		} 	
@@ -200,7 +200,7 @@ class SiteController extends Controller
 			$entreprise = Entreprise::model()->findByAttributes(array("id_entreprise"=>$entreprise->id_entreprise));
 			$user->id_entreprise = $entreprise->id_entreprise;
 
-			//$user ->save();
+			$user ->save();
 			$this->redirect(array('site/login'));
 
 		}	
