@@ -15,7 +15,7 @@
 
 
 
-<h1>Liste des offres d'emplois</h1> <!-- Titre page -->
+<h1>Liste de mes candidatures</h1> <!-- Titre page -->
 
 
 
