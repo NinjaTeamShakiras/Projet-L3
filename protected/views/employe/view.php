@@ -131,7 +131,7 @@ $this->widget('zii.widgets.CDetailView', array(
 ?>
 					<div>
 						<p>Note geénérale : <?php echo round( $dernierAvis_obj->note_generale_avis_employe, 1 ); ?></p>
-						<ul>
+						<ul class="ul-single-avis-<?php print( $dernierAvis_obj->id_avis_employe ); ?>">
 <?php  						/*			On parcourt chaque critère de l'avis concerné 		*/
 							foreach ( $criteresEmployeDernier_arr as $key => $critere_obj ) :
  								$critere_notation_obj = CriteresNotationEmploye::model()->findByAttributes( array( "id_critere_notation_employe"=>$critere_obj->id_critere_notation_employe ) );
@@ -146,7 +146,7 @@ $this->widget('zii.widgets.CDetailView', array(
 						</ul>
 						<p>
 							<button class="update-avis" id_avis="<?php print( $dernierAvis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
-							<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $dernierAvis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+							<a class="delete-avis-employe" href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $dernierAvis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
 						</p>
 							<div class="update-form-avis-<?php print( $dernierAvis_obj->id_avis_employe ); ?>" style="display: none;">
 <?php  						
@@ -201,7 +201,7 @@ $this->widget('zii.widgets.CDetailView', array(
 					
 										<p>
 											<button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
-											<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+											<a class="delete-avis-employe" href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
 										</p>
 										<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
 <?php  									$this->renderPartial('./../avisEmploye/update', array 	( 
@@ -270,7 +270,7 @@ $this->widget('zii.widgets.CDetailView', array(
 					
 						<p>
 							<button class="update-avis" id_avis="<?php print( $avis_obj->id_avis_employe ); ?>">Modifier mon avis</button>
-							<a href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
+							<a class="delete-avis-employe" href="<?php echo $this->createUrl( 'AvisEmploye/delete', array( 'id' => $avis_obj->id_avis_employe, 'id_employe' => $model->id_employe ) ); ?>">Supprimer mon avis</a>
 						</p>
 						<div class="update-form-avis-<?php print( $avis_obj->id_avis_employe ); ?>" style="display: none;">
 <?php  						$this->renderPartial('./../avisEmploye/update', array 	( 
@@ -322,11 +322,19 @@ $this->widget('zii.widgets.CDetailView', array(
 		$( '.update-form-avis-' + $(this).attr("id_avis") ).fadeIn();
 	});
 	
-	/*			Bout de code pour afficher les avis quand on a un avis qui a été récemment publié 			*/
+	/*			Code pour afficher les avis quand on a un avis qui a été récemment publié 			*/
 	$(document).on( 'click', '.show-all-avis-cook', function() {
 		$(this).hide();
 		$('.last-avis-all-title').fadeIn();
 		$('.last-avis-all').fadeIn();
+	});
+
+	/*		Vérification JS lors qu'on veut supprimet un avis 		*/
+	$(document).on( 'click', '.delete-avis-employe', function(e) {
+		e.preventDefault();
+		var confirmation = confirm( 'Voulez-vous supprimer votre avis ?' );
+		if ( confirmation )
+			window.location.href = $(this).attr("href");
 	});
 </script>
 
