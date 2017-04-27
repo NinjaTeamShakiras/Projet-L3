@@ -36,8 +36,8 @@
 		$utilisateur = Utilisateur::model()->FindByAttributes(array('login'=>$user->id));
 		
 		
-
-		if($user->getState('type') == "employe") // Si c'est un employé, on lui affiche certains onglets
+		// Si c'est un employé, on lui affiche certains onglets
+		if($user->getState('type') == "employe")
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -51,7 +51,8 @@
 			));
 
 		}
-		else if($user->getState('type') == "entreprise") // Si c'est une entreprise, on lui affiche certains autres onglets
+		// Si c'est une entreprise, on lui affiche certains autres onglets
+		else if($user->getState('type') == "entreprise")
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -64,7 +65,8 @@
 				),
 			));
 		}
-		else //Si c'est un invité, il n'a que la connexion
+		//Si c'est un invité, il n'a que la connexion et l'accueil
+		else
 		{
 			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(

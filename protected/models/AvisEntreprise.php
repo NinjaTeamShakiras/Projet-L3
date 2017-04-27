@@ -34,11 +34,11 @@ class AvisEntreprise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'required'),
+			array('note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise', 'required'),
 			array('nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_avis_entreprise, note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise, id_utilisateur', 'safe', 'on'=>'search'),
+			array('id_avis_entreprise, note_generale_avis_entreprise, date_creation_avis_entreprise, nb_signalements_avis_entreprise, id_entreprise', 'safe', 'on'=>'search'),
 		);
 	}
 
