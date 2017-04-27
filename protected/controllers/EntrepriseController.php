@@ -211,4 +211,18 @@ class EntrepriseController extends Controller
 		$this->render('index_search', array('data'=>$entreprises));
 	}
 
+
+	/*		Fonction utilisée lors de l'auto-complétion de la page d'accueil pour envoyer les entreprises 		*/
+	public function actionGetAllEntreprisesJSON()
+	{
+		/*		Tableau pour sauvegarder les résultats*/
+		$results_arr = array();
+
+		foreach ( Entreprise::model()->findAll() as $key_int => $value_obj ) {
+			array_push( $results_arr, $value_obj->nom_entreprise );
+		}
+
+		echo json_encode($results_arr);
+	}
+
 }

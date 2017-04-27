@@ -13,7 +13,7 @@
 -- 4) Utilisateur
 -- 5) travaille
 -- 6) Competences_CV
--- 7) CVa
+-- 7) CV
 -- 8) CV_Employe
 -- 9) Criteres_Notation_Employe
 -- 10) Criteres_notation_entreprise
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Utilisateur` (
   `role` VARCHAR(45) NOT NULL,
   `date_creation_utilisateur` DATETIME NOT NULL,
   `date_derniere_connexion` DATETIME NOT NULL,
-  `mail` VARCHAR(45) NULL,
+  `mail` VARCHAR(45) NOT NULL,
   `id_employe` INT NULL,
   `id_entreprise` INT NULL,
   PRIMARY KEY (`id_utilisateur`),
