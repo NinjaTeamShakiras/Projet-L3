@@ -121,7 +121,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 ?>
 					<div>
 						<p>Note geénérale : <?php echo round( $dernierAvis_obj->note_generale_avis_entreprise, 1 ); ?></p>
-						<ul>
+						<ul class="ul-entre-single-avis-<?php print( $dernierAvis_obj->id_avis_entreprise ); ?>">
 <?php  						/*			On parcourt chaque critère de l'avis concerné 		*/
 							foreach ( $criteresEntrepriseDernier_arr as $key => $critere_obj ) :
  								$critere_notation_obj = CriteresNotationEntreprise::model()->findByAttributes( array( "id_critere_notation_entreprise"=>$critere_obj->id_critere_notation_entreprise ) );
@@ -136,7 +136,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 						</ul>
 						<p>
 							<button class="entreprise-update-avis" id_avis="<?php print( $dernierAvis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button>
-							<a href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $dernierAvis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
+							<a class="delete-avis-entreprise" href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $dernierAvis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
 						</p>
 							<div class="update-entrep-form-avis-<?php print( $dernierAvis_obj->id_avis_entreprise ); ?>" style="display: none;">
 <?php  						
@@ -191,7 +191,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 					
 										<p>
 											<button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button>
-											<a href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $avis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
+											<a class="delete-avis-entreprise" href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $avis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
 										</p>
 										<div class="update-entrep-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
 <?php  									$this->renderPartial('./../avisEntreprise/update', array 	( 
@@ -246,7 +246,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 
 <div>
 <?php 
-		/*		S'il y a des avis on les affiche 	 */
+		/*			S'il y a des avis on les affiche 	 	*/
 		if( sizeof( $avis_all ) > 0 ) :
 			/*		On parcourt tous les avis de l'utilisateur pour les afficher 		*/
 			foreach ( $avis_all as $key => $avis_obj ) :				?>
@@ -279,7 +279,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 					
 					<p>
 						<button class="entreprise-update-avis" id_avis="<?php print( $avis_obj->id_avis_entreprise ); ?>">Modifier mon avis</button>
-						<a href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $avis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
+						<a class="delete-avis-entreprise" href="<?php echo $this->createUrl( 'AvisEntreprise/delete', array( 'id' => $avis_obj->id_avis_entreprise, 'id_entreprise' => $model->id_entreprise ) ); ?>">Supprimer mon avis</a>
 					</p>
 					<div class="update-entrep-form-avis-<?php print( $avis_obj->id_avis_entreprise ); ?>" style="display: none;">
 <?php  					$this->renderPartial('./../avisEntreprise/update', array 	( 
@@ -318,6 +318,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 <!-- A supprimer pour remmetre dans un vrai fichier .js -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
+	
 	$(document).on( 'click', ".entreprise-update-avis", function() {
 		$(this).hide();
 		$( '.ul-entre-single-avis-' + $(this).attr("id_avis") ).hide();
@@ -330,4 +331,11 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 		$('.last-avis-all').fadeIn();
 	});
 
+	/*		Vérification JS lors qu'on veut supprimet un avis 		*/
+	$(document).on( 'click', '.delete-avis-entreprise', function(e) {
+		e.preventDefault();
+		var confirmation = confirm( 'Voulez-vous supprimer votre avis ?' );
+		if ( confirmation )
+			window.location.href = $(this).attr("href");
+	});
 </script>
