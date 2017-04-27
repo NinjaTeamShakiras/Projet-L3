@@ -53,12 +53,15 @@
 	{ // Si entreprise on affiche les offres d'emploi de l'entreprise
 		$nombreCandidature = 0;
 		$tabIdEmploye=array();
+		$nombreOffre = 0;
 		
 		foreach ($model as $key => $offre ) // Pour chaque offre ...
 		{
 
-			if($offre->id_entreprise == $utilisateur->id_entreprise) // Si l'id de l'entreprise de l'offre correspond à l'idée de l'entreprise logée
+			// On affiche les offres de l'entreprise
+			if($offre->id_entreprise == $utilisateur->id_entreprise) // Si l'offre appartient à l'entreprise
 			{
+				$nombreOffre++;
 				//print("<p> ID entreprise : ".$offre->id_entreprise."</p>");
 				//print("<p> ID offre : ".$offre->id_offre_emploi."</p>");
 				print("<p> Date de mise en ligne : ".$this->changeDateNaissance($offre->date_creation_offre_emploi)."</p>");
@@ -70,22 +73,37 @@
 	
 				$candidats = Postuler::model()->FindAll("id_offre_emploi =".$offre->id_offre_emploi); // On récupère tout les candidats à l'offre
 
-				foreach($candidats as $candidat)
+				// Recherche du nombre de candidature et des candidat
+				foreach($candidats as $candidat) // Pour chaque candidat
 				{ // On stoque tout les id des employé qui on candidaté dans un tableau
 					$tabIdEmploye[$nombreCandidature] = $candidat->id_employe;
 					$nombreCandidature++;
 				}
-					
-				print("<p> Vous avez ".$nombreCandidature." pour cette offre</p>");
+				
 
-				for($i=0; $i<$nombreCandidature; $i++)
-				{ // On affiche un lien pour chacun des candidat
-					echo CHtml::link("<p> Voir la candidature $i </p>",array('employe/view', 'id'=>$tabIdEmploye[$i]));
+				// Affichage des candidats ou non
+				if($nombreCandidature > 0) // Si il y a des candidats
+				{ // On affiche le nombre de candidat, puis un lien vers les candidats
+					print("<p> Vous avez ".$nombreCandidature." candidature pour cette offre : </p>");
+
+					for($i=0; $i<$nombreCandidature; $i++)
+					{ // On affiche un lien pour chacun des candidat
+						echo CHtml::link("<p> Voir la candidature $i </p>",array('employe/view', 'id'=>$tabIdEmploye[$i]));
+					}
 				}
-
+				else
+				{
+					print("<p> Vous n'avez aucune candidature à cette offre </p>");
+				}
 			}
 
 			echo "<hr/>";
+		}
+
+		// Si l'entreprise n'as pas d'offres, il faut bien afficher quelque chose
+		if($nombreOffre ==0)
+		{// Si il n'y a pas d'offre correspondante
+			print("<p> Vous n'avez aucune offre d'emploie </p>");
 		}
 
 
