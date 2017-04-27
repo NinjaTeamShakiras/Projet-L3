@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `prozzl_test`.`Avis_Entreprise` (
   `date_creation_avis_entreprise` DATETIME NOT NULL,
   `nb_signalements_avis_entreprise` INT NOT NULL,
   `id_entreprise` INT NOT NULL,
-  `id_utilisateur` INT NOT NULL,
+  `id_utilisateur` INT,
   PRIMARY KEY (`id_avis_entreprise`),
   INDEX `index_id_entreprise_avis_entreprise` (`id_entreprise` ASC),
   INDEX `index_id_utilisateur_utilisateur` (`id_utilisateur` ASC),

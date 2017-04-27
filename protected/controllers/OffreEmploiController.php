@@ -15,7 +15,6 @@ class OffreEmploiController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -137,11 +136,19 @@ class OffreEmploiController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$postuler = Postuler::model()->FindAll("id_offre_emploi =".$id);
+
+		//Dans la table Postuler, pour chaque occurence ou le numero d'offre == offfre actuelle, on supprime
+		foreach($postuler as $un_postuler){
+
+			$un_postuler->delete();
+		}	
+
+		//On supprime l'offre d'emploi
 		$this->loadModel($id)->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		//Redirection vers la liste de mes offres
+		$this->redirect(array('index'));
 	}
 
 

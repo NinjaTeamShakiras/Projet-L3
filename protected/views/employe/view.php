@@ -32,11 +32,25 @@ $this->breadcrumbs=array(
 
 <?php 
 
+//On change le format du téléphone via une fonction du controller
+$telephone = $this->AfficheTelephone($model->telephone_employe," ");
+
 //On passe la date de naissance au format français via une fonction du controller
 $date_naissance = $this->changeDateNaissance($model->date_naissance_employe);
 
-$telephone = $this->AfficheTelephone($model->telephone_employe," ");
+//On récupère l'adresse depuis la table Adresse
+$adresse = "Non renseignée";
+if($model->id_adresse != NULL)
+{
+	$modelAdresse = Adresse::model()->FindByAttributes(array("id_adresse" => $model->id_adresse));
 
+	if ($modelAdresse->rue != NULL && $modelAdresse->code_postal != NULL && $modelAdresse->ville != NULL)
+	{
+		 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
+	}
+}
+
+//On change le champ emploi par rapport au contenu de la base
 $emploi = "Non renseigné";
 if($model->employe_travaille == 0)
 {
@@ -47,20 +61,7 @@ else if ($model->employe_travaille)
 	$emploi = "Non";
 }
 
-$adresse = "Non renseignée";
-if($model->id_adresse != NULL)
-{
-	$modelAdresse = Adresse::model()->FindByAttributes(array("id_adresse" => $model->id_adresse));
-
-	if ($modelAdresse->rue != NULL && $modelAdresse->code_postal != NULL && $modelAdresse->ville != NULL)
-	{
-		 $adresse = $model->Adresse->rue.", ".$model->Adresse->code_postal." ".$model->Adresse->ville;
-	}
-
-
-}
-
-
+//On récupère l'utulisateur dans la base
 $utilisateur = Utilisateur::model()->FindByAttributes(array('id_employe'=>$model->id_employe));
 
 
@@ -94,6 +95,7 @@ $this->widget('zii.widgets.CDetailView', array(
 	),
 ));
 
+//Lien de supression du profil
 echo CHtml::link(CHtml::encode('Supprimer mon profil'), array('employe/delete', 'id'=>$model->id_employe), array('confirm'=>'Etes-vous sur de vouloir supprimer votre profil ?'));
  
 
