@@ -120,7 +120,7 @@ $utilisateur = Utilisateur::model()->FindByAttributes(array('id_entreprise'=>$mo
 						$criteresEntrepriseDernier_arr = EntrepriseAvisCritere::model()->findAll( "id_avis_entreprise = " . $dernierAvis_obj->id_avis_entreprise );
 ?>
 					<div>
-						<p>Note geénérale : <?php echo round( $dernierAvis_obj->note_generale_avis_entreprise, 1 ); ?></p>
+						<p>Note générale : <?php echo round( $dernierAvis_obj->note_generale_avis_entreprise, 1 ); ?></p>
 						<ul class="ul-entre-single-avis-<?php print( $dernierAvis_obj->id_avis_entreprise ); ?>">
 <?php  						/*			On parcourt chaque critère de l'avis concerné 		*/
 							foreach ( $criteresEntrepriseDernier_arr as $key => $critere_obj ) :

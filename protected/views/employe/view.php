@@ -140,7 +140,7 @@ echo CHtml::link(CHtml::encode('Supprimer mon profil'), array('employe/delete', 
 						$criteresEmployeDernier_arr = EmployeAvisCritere::model()->findAll( "id_avis_employe = " . $dernierAvis_obj->id_avis_employe );
 ?>
 					<div>
-						<p>Note geénérale : <?php echo round( $dernierAvis_obj->note_generale_avis_employe, 1 ); ?></p>
+						<p>Note générale : <?php echo round( $dernierAvis_obj->note_generale_avis_employe, 1 ); ?></p>
 						<ul class="ul-single-avis-<?php print( $dernierAvis_obj->id_avis_employe ); ?>">
 <?php  						/*			On parcourt chaque critère de l'avis concerné 		*/
 							foreach ( $criteresEmployeDernier_arr as $key => $critere_obj ) :
