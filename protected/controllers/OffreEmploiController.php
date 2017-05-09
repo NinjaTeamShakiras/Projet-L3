@@ -113,6 +113,7 @@ class OffreEmploiController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		var_dump($model);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -332,5 +333,32 @@ class OffreEmploiController extends Controller
 		$this->redirect(array('view','id'=>$id_offre));
 	
 	}
+
+	/*	Fonction qui recherche une ou plusieurs entreprises dans la base en fonction 
+		des infos entrées par l'utilisateur 
+	*/		
+	public function actionSearch()
+	{
+		//On récupère la liste des offres d'emplois par rapport au type entré
+		$type_offre = $_POST['Entreprise']['nom_entreprise'];
+		$entreprises = Entreprise::model()->FindAll("nom_entreprise LIKE '%$nom_entreprise%'");
+
+		$this->render('index_search', array('data'=>$entreprises));
+	}
+
+	/*		Fonction utilisée lors de l'auto-complétion de la page d'accueil pour envoyer les entreprises 		*/
+	public function actionGetAllEntreprisesJSON()
+	{
+		/*		Tableau pour sauvegarder les résultats*/
+		$results_arr = array();
+
+		foreach ( Entreprise::model()->findAll() as $key_int => $value_obj ) {
+			array_push( $results_arr, $value_obj->nom_entreprise );
+		}
+
+		echo json_encode($results_arr);
+	}
+
+
 
 }

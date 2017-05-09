@@ -40,7 +40,7 @@ class OffreEmploi extends CActiveRecord
 			array('experience_offre_emploi, description_offre_emploi', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_offre_emploi, date_creation_offre_emploi, type_offre_emploi, salaire_offre_emploi, experience_offre_emploi, description_offre_emploi, id_entreprise', 'safe', 'on'=>'search'),
+			array('id_offre_emploi, date_creation_offre_emploi, poste_offre_emploi, type_offre_emploi, date_debut_offre_emploi, salaire_offre_emploi, experience_offre_emploi, description_offre_emploi, id_entreprise', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +64,9 @@ class OffreEmploi extends CActiveRecord
 	{
 		return array(
 			'id_offre_emploi' => 'Id Offre Emploi',
+			'poste_offre_emploi' => 'Poste proposé :',
 			'date_creation_offre_emploi' => 'Date Creation Offre Emploi',
+			'date_debut_offre_emploi' => 'Date prévisionnel d\'embauche',
 			'type_offre_emploi' => 'Type de l\'offre d\'emploi :',
 			'salaire_offre_emploi' => 'Salaire de l\'offre d\'emploi :',
 			'experience_offre_emploi' => 'Experience nécéssaire :',
@@ -92,7 +94,9 @@ class OffreEmploi extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_offre_emploi',$this->id_offre_emploi);
+		$criteria->compare('poste_offre_emploi',$this->poste_offre_emploi,true);
 		$criteria->compare('date_creation_offre_emploi',$this->date_creation_offre_emploi,true);
+		$criteria->compare('date_debut_offre_emploi',$this->date_debut_offre_emploi,true);
 		$criteria->compare('type_offre_emploi',$this->type_offre_emploi,true);
 		$criteria->compare('salaire_offre_emploi',$this->salaire_offre_emploi);
 		$criteria->compare('experience_offre_emploi',$this->experience_offre_emploi,true);

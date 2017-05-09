@@ -20,7 +20,8 @@
 	else if( Utilisateur::est_employe(Yii::app()->user->role))  
 	{  // Si employé
 		$this->menu=array(
-			array('label'=>'Voir mes candidatures', 'url'=>array('/offreEmploi/mesOffres')), // Voir les offre d'emplois au quel l'employé à postulé
+			array('label'=>'Voir mes candidatures', 'url'=>array('/offreEmploi/mesOffres')), // Voir les offres d'emplois au quel l'employé à postulé
+			array('label'=>'Rechercher des offres d\'emplois', 'url'=>array('/offreEmploi/_search')), // Rechercher des offres d'emplois
 		);
 		$titre = "Liste des offres d'emplois";
 
@@ -64,11 +65,13 @@
 				$nombreOffre++;
 				//print("<p> ID entreprise : ".$offre->id_entreprise."</p>");
 				//print("<p> ID offre : ".$offre->id_offre_emploi."</p>");
-				print("<p> Date de mise en ligne : ".$this->changeDateNaissance($offre->date_creation_offre_emploi)."</p>");
+				print("<p> Poste proposé : ".$offre->poste_offre_emploi."</p>");
 				print("<p> Type de l'offre : ".$offre->type_offre_emploi."</p>");
-				print("<p> Sallaire proposé : ".$offre->salaire_offre_emploi." €</p>");
+				print("<p> Date prévisionnel d'embauche : ".$this->changeDateNaissance($offre->date_debut_offre_emploi)."</p>");
+				print("<p> Salaire proposé : ".$offre->salaire_offre_emploi." €</p>");
 				print("<p> Expérience nécéssaire : ".$offre->experience_offre_emploi."</p>");
 				print("<p> Description de l'offre : ".$offre->description_offre_emploi."</p>");
+				print("<p> Date de mise en ligne : ".$this->changeDateNaissance($offre->date_creation_offre_emploi)."</p>");
 				echo CHtml::link('Voir cette offre' ,array('offreEmploi/view', 'id'=>$offre->id_offre_emploi));
 	
 				$candidats = Postuler::model()->FindAll("id_offre_emploi =".$offre->id_offre_emploi); // On récupère tout les candidats à l'offre
@@ -84,20 +87,20 @@
 				// Affichage des candidats ou non
 				if($nombreCandidature > 0) // Si il y a des candidats
 				{ // On affiche le nombre de candidat, puis un lien vers les candidats
-					print("<p> Vous avez ".$nombreCandidature." candidature pour cette offre : </p>");
+					print("<p> Vous avez ".$nombreCandidature." candidature pour cette offre</p>");
 
-					for($i=0; $i<$nombreCandidature; $i++)
+					/*for($i=0; $i<$nombreCandidature; $i++)
 					{ // On affiche un lien pour chacun des candidat
 						echo CHtml::link("<p> Voir la candidature $i </p>",array('employe/view', 'id'=>$tabIdEmploye[$i]));
-					}
+					}*/
 				}
 				else
 				{
 					print("<p> Vous n'avez aucune candidature à cette offre </p>");
 				}
-			}
 
-			echo "<hr/>";
+				echo "<hr/>";
+			}
 		}
 
 		// Si l'entreprise n'as pas d'offres, il faut bien afficher quelque chose
@@ -118,11 +121,13 @@
 			//print("<p> ID entreprise : ".$offre->id_entreprise."</p>");
 			//print("<p> ID offre : ".$offre->id_offre_emploi."</p>");
 			print("<p> Proposé par : ".$entreprise->nom_entreprise."</p>");
-			print("<p> Date de mise en ligne : ".$this->changeDateNaissance($offre->date_creation_offre_emploi)."</p>");
+			print("<p> Poste proposé : ".$offre->poste_offre_emploi."</p>");
 			print("<p> Type de l'offre : ".$offre->type_offre_emploi."</p>");
-			print("<p> Sallaire proposé : ".$offre->salaire_offre_emploi." €</p>");
+			print("<p> Date prévisionnel d'embauche : ".$this->changeDateNaissance($offre->date_debut_offre_emploi)."</p>");
+			print("<p> Salaire proposé : ".$offre->salaire_offre_emploi." €</p>");
 			print("<p> Expérience nécéssaire : ".$offre->experience_offre_emploi."</p>");
 			print("<p> Description de l'offre : ".$offre->description_offre_emploi."</p>");
+			print("<p> Date de mise en ligne : ".$this->changeDateNaissance($offre->date_creation_offre_emploi)."</p>");
 			foreach($tablePostuler as $postuler)
 			{
 				if($postuler->id_employe == $utilisateur->id_employe && $postuler->id_offre_emploi == $offre->id_offre_emploi )

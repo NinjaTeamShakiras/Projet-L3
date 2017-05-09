@@ -332,15 +332,15 @@ VALUES  (	"Type de contrat",				 										0, 		"Type de contrat que vous aviez 
 -- 19) OFFRE EMPLOI 
 --
 INSERT INTO `prozzl_test`.`Offre_Emploi`(`date_creation_offre_emploi`, `poste_offre_emploi`, `type_offre_emploi`, `date_debut_offre_emploi`, `salaire_offre_emploi`, `experience_offre_emploi`,`description_offre_emploi`, `id_entreprise`)
-	VALUES  (	now(),		'CDI ', 	'Commercial', 			'2017-04-12'	,1200, 	'BAC STMG',		'Achat,vente en tout genre', 		1	),
-			(	now(),		'CDD ', 	'Assistant', 			'2017-04-13'	,1500, 	'BAC L',		'Gestion de plannig',		 		2	),
-			(	now(),		'CDD ', 	'Developpeur', 			'2017-04-14'	,3200, 	'BAC S',		'Maintenance de site web',	 		3	),
-			(	now(),		'CDI ', 	'Ingénieur systeme',	'2017-04-15'	,2200, 	'BAC S',		'Maintenance serveur',		 		4	),
-			(	now(),		'CDD ', 	'Commercial', 			'2017-04-16'	,1450, 	'BAC S',		'Vente dans l\'immobilier',	 		1	),
-			(	now(),		'Stage ', 	'Commercial', 			'2017-04-17'	,400, 	'BREVET',		'Sous-fifre qui apporte le café', 	2	),
-			(	now(),		'CDD ', 	'Commercial', 			'2017-04-18'	,1700, 	'BAC S',		'Achat de materiels ménagé', 		3	),
-			(	now(),		'CDI ', 	'Commercial', 			'2017-04-19'	,1800, 	'BAC STMG',		'Achat,vente ordinateur portable',	4	);
-		--	  	date 		poste 			type 						salaire 	experience 				description 		entreprise
+	VALUES  (	now(),		'Commercial',			'CDI ', 			'2017-04-12'	,1200, 	'BAC STMG',		'Achat,vente en tout genre', 		1	),
+			(	now(),		'Assistant',			'CDD ', 			'2017-04-13'	,1500, 	'BAC L',		'Gestion de plannig',		 		2	),
+			(	now(),		'Developpeur',			'CDD ', 	 		'2017-04-14'	,3200, 	'BAC S',		'Maintenance de site web',	 		3	),
+			(	now(),		'Ingénieur systeme',	'CDI ',				'2017-04-15'	,2200, 	'BAC S',		'Maintenance serveur',		 		4	),
+			(	now(),		'Commercial',			'CDD ', 	 		'2017-04-16'	,1450, 	'BAC S',		'Vente dans l\'immobilier',	 		1	),
+			(	now(),		'Commercial',			'Stage ', 	 		'2017-04-17'	,400, 	'BREVET',		'Sous-fifre qui apporte le café', 	2	),
+			(	now(),		'Commercial',			'CDD ', 	 		'2017-04-18'	,1700, 	'BAC S',		'Achat de materiels ménagé', 		3	),
+			(	now(),		'Commercial',			'CDI ', 	 		'2017-04-19'	,1800, 	'BAC STMG',		'Achat,vente ordinateur portable',	4	);
+		--	  date_crea 		poste 				type 				date_debut		salaire 	experience 				description 		entreprise
 
 
 
@@ -361,6 +361,6 @@ INSERT INTO `prozzl_test`.`Postuler`(`id_employe`,`id_offre_emploi`,`date_postul
 			(	4,			8,			'2017-02-17'	),
 			(	4,			1,			'2017-03-21'	),
 			(	3,			2,			'2017-02-26'	),
-			(	2,			3,			'2017-04-12'	);
-			(	1,			4,			'2017-04-12'	);
-		--	  employe 	offre_emploi 		date
+			(	2,			3,			'2017-04-12'	),
+			(	1,			4,			'2017-04-13'	);
+		--	  employe 	offre_emploi 		date_postule

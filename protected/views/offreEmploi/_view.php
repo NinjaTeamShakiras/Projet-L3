@@ -13,13 +13,24 @@
 	<?php echo CHtml::encode($data->date_creation_offre_emploi); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('poste_offre_emploi')); ?>:</b>
+	<?php echo CHtml::encode($data->poste_offre_emploi); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type_offre_emploi')); ?>:</b>
 	<?php echo CHtml::encode($data->type_offre_emploi); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('date_debut_offre_emploi')); ?>:</b>
+	<?php echo CHtml::encode($data->date_debut_offre_emploi); ?>
+	<br />
+
+	<?php /* ?>
 	<b><?php echo CHtml::encode($data->getAttributeLabel('salaire_offre_emploi')); ?>:</b>
 	<?php echo CHtml::encode($data->salaire_offre_emploi . ' €'); ?>
 	<br />
+	<?php */ ?>
+
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('experience_offre_emploi')); ?>:</b>
 	<?php echo CHtml::encode($data->experience_offre_emploi); ?>

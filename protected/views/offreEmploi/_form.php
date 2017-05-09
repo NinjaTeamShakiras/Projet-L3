@@ -30,11 +30,22 @@
 	*/
 	?>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'poste_offre_emploi'); ?>
+		<?php echo $form->textField($model,'poste_offre_emploi',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->error($model,'poste_offre_emploi'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type_offre_emploi'); ?>
 		<?php echo $form->textField($model,'type_offre_emploi',array('size'=>30,'maxlength'=>30)); ?>
 		<?php echo $form->error($model,'type_offre_emploi'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'date_debut_offre_emploi'); ?>
+		<?php echo $form->textField($model,'date_debut_offre_emploi',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->error($model,'date_debut_offre_emploi'); ?>
 	</div>
 
 	<div class="row">

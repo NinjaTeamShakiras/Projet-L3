@@ -8,7 +8,9 @@
 );
 */
 
+$titre ="";
 $utilisateur = Utilisateur::model()->FindByAttributes(array("login"=> Yii::app()->user->getId()));
+
 if (!Utilisateur::est_employe(Yii::app()->user->role) )
 	{ // Si entreprise on affiche la possibilité de maj/suppr l'offre en question
 		$this->menu=array(
@@ -18,6 +20,7 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 			//array('label'=>'Supprimer', 'url'=>array('delete','id'=>$model->id_offre_emploi)),
 			//array('label'=>'Supprimer', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_offre_emploi),'confirm'=>'Vous êtes sur le point de supprimer, voulez vous continuer ?')),
 		);
+		$titre = "Mon offre d'emploi";
 
 
 	}
@@ -45,6 +48,7 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 				array('label'=>'Postuler', 'url'=>array('postule', 'id_offre'=>$model->id_offre_emploi)), 
 			);
 		}
+		$titre = "Offre d'emploi";
 		
 	}
 	else 
@@ -61,24 +65,30 @@ if (!Utilisateur::est_employe(Yii::app()->user->role) )
 
 ?>
 
-<h1>View OffreEmploi #<?php echo $model->id_offre_emploi; ?></h1>
+<h1><?php echo $titre ?> (offre <?php echo $model->id_offre_emploi; ?>)</h1>
 
 <?php
 	$date_creation = $this->changeDateNaissance($model->date_creation_offre_emploi);
+	$date_debut = $this->changeDateNaissance($model->date_debut_offre_emploi);
 
 	$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id_offre_emploi',
-		array(
-			'label'=>'Date de création de l\'offre',
-			'value'=>$model->date_creation_offre_emploi != NULL ? $date_creation : "Non renseignée",
-			),
+		'poste_offre_emploi',
 		'type_offre_emploi',
+		array(
+			'label'=>'Date de début de l\'offre',
+			'value'=>$model->date_debut_offre_emploi != NULL ? $date_debut : "Non renseignée",
+			),
 		'salaire_offre_emploi',
 		'experience_offre_emploi',
 		'description_offre_emploi',
 		'id_entreprise',
+		array(
+			'label'=>'Date de création de l\'offre',
+			'value'=>$model->date_creation_offre_emploi != NULL ? $date_creation : "Non renseignée",
+			),
 		),
 	));
 
